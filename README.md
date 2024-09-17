@@ -159,14 +159,122 @@ Develop Customer Order Management System for candidate evaluation -  Hélio Marq
 	ALTER SERVER ROLE [bulkadmin] ADD MEMBER [helio]
 	GO
 
-### insertClients_Items.sql
+### schemeDB.sql
+
+	/****** SCHEME DB ORDER SYSTEM  Script Date: 17/09/2024 13:12:42 ******/
+	/****** Hélio Marques ******/
+
+	use [ordersystem]
+	go
+
+	/* DROPS */
+	IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tab_order_item]') AND type in (N'U'))
+	DROP TABLE [dbo].[tab_order_item]
+	go
+	IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tab_item]') AND type in (N'U'))
+	DROP TABLE [dbo].[tab_item] 
+	go
+	IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tab_orders]') AND type in (N'U'))
+	DROP TABLE [dbo].[tab_orders]
+	go
+	IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tab_clients]') AND type in (N'U'))
+	DROP TABLE [dbo].[tab_clients]
+	go
+
+	/* CREATES */
+	CREATE TABLE tab_clients
+	(
+		code_client  int  NOT NULL IDENTITY PRIMARY KEY,
+		name_client  varchar(100)  NOT NULL ,
+		address_client  varchar(250)  NULL ,
+		phone_client  varchar(20)  NULL ,
+		email_client  varchar(50)  NULL 
+	)
+	go
+	CREATE INDEX XAKtab_clients_name ON tab_clients (name_client  ASC)
+	go
+	GRANT SELECT, UPDATE, DELETE, INSERT ON tab_clients TO helio;
+	go
+
+	CREATE TABLE tab_item
+	(
+		code_item  int  NOT NULL IDENTITY PRIMARY KEY,
+		name_item  varchar(100)  NOT NULL ,
+		description_item  varchar(250)  NULL ,
+		price_item  decimal(20,4)  NULL 
+	)
+	go
+	CREATE INDEX XAKtab_item_name ON tab_item (name_item  ASC)
+	go
+	GRANT SELECT, UPDATE, DELETE, INSERT ON tab_item TO helio;
+	go
+
+
+	CREATE TABLE tab_orders
+	(
+		code_order  int  IDENTITY PRIMARY KEY,
+		code_client  int  NOT NULL, 
+		date_order  datetime  NOT NULL ,
+		value_order  decimal(20,4)  NULL 
+	)
+	go
+	CREATE INDEX XIFKtab_orders_code_client ON tab_orders (code_client  ASC) 
+	go
+	GRANT SELECT, UPDATE, DELETE, INSERT ON tab_orders TO helio;
+	go
+
+
+	CREATE TABLE tab_order_item
+	(
+		code_order_item  int  IDENTITY PRIMARY KEY,
+		code_order  int  NOT NULL ,
+		code_item  int  NOT NULL ,
+		amount_order_item  decimal(20,4)  NULL ,
+		unitprice_order_item  decimal(20,4)  NULL 
+	)
+	go
+	CREATE INDEX XIFKtab_order_item_code_order ON tab_order_item (code_order ASC)
+	go
+	CREATE INDEX XIFKtab_order_item_code_item ON tab_order_item (code_item ASC)
+	go
+	CREATE INDEX XIFKtab_order_item_code_order_item ON tab_order_item (code_order, code_item ASC)
+	go
+	GRANT SELECT, UPDATE, DELETE, INSERT ON tab_orders TO helio;
+	go
+
+	/* REFERENCES */
+	ALTER TABLE tab_orders
+	ADD  FOREIGN KEY (code_client) REFERENCES tab_clients(code_client)
+			ON DELETE NO ACTION
+			ON UPDATE NO ACTION
+	go
+
+	ALTER TABLE tab_order_item
+	ADD  FOREIGN KEY (code_order) REFERENCES tab_orders(code_order)
+			ON DELETE NO ACTION
+			ON UPDATE NO ACTION
+	go
+
+	ALTER TABLE tab_order_item
+	ADD  FOREIGN KEY (code_item) REFERENCES tab_item(code_item)
+			ON DELETE NO ACTION
+			ON UPDATE NO ACTION
+	go
+
+### insertClients_Items_Orders.sql
 
 	USE [ordersystem]
 	GO
 
-	DELETE FROM [dbo].[tab_clients] 
+	DELETE FROM [dbo].[tab_order_item] 
 	GO
 
+	DELETE FROM [dbo].[tab_orders] 
+	GO
+
+	DELETE FROM [dbo].[tab_clients] 
+	GO
+	/*CLIENTS*/
 	INSERT INTO [dbo].[tab_clients] ([name_client],[address_client],[phone_client],[email_client])  VALUES('HELIO MARQUES',	'RUA 10, 1, CENTRO, FORTALEZA, CEARA, BRASIL',	'558599991111',	'558599991111@www.com')
 	GO
 	INSERT INTO [dbo].[tab_clients] ([name_client],[address_client],[phone_client],[email_client])  VALUES('PAULO PEDRO',	'RUA 10, 2, CENTRO, FORTALEZA, CEARA, BRASIL',	'558599992222',	'558599992222@www.com')
@@ -177,4 +285,89 @@ Develop Customer Order Management System for candidate evaluation -  Hélio Marq
 	GO
 	INSERT INTO [dbo].[tab_clients] ([name_client],[address_client],[phone_client],[email_client])  VALUES('VILMA MARIA',	'RUA 10, 5, CENTRO, FORTALEZA, CEARA, BRASIL',	'558599991111',	'558599991111@www.com')
 	GO
+
+
+	DELETE FROM [dbo].[tab_item] 
+	GO
+	/*ITEM*/
+	INSERT INTO [dbo].[tab_item] ([name_item],[description_item],[price_item]) VALUES ('Produto A','Produto referente a necessidade do público A',	10.0000)
+	go
+	INSERT INTO [dbo].[tab_item] ([name_item],[description_item],[price_item]) VALUES ('Produto B','Produto referente a necessidade do público B',	15.0000)
+	go
+	INSERT INTO [dbo].[tab_item] ([name_item],[description_item],[price_item]) VALUES ('Produto C','Produto referente a necessidade do público C',	20.0000)
+	go
+
+	/*ORDERS*/
+	SET DATEFORMAT ymd; 
+	GO
+	INSERT INTO [dbo].[tab_orders] ([date_order],[value_order],[code_client]) VALUES (CAST('2024-09-17' AS DATETIME), 0, 
+				(SELECT TOP (1) [code_client] FROM [ordersystem].[dbo].[tab_clients] WHERE [name_client] = 'HELIO MARQUES'))
+	GO
+	INSERT INTO [dbo].[tab_orders] ([date_order],[value_order],[code_client]) VALUES ('2024-09-17', 0, 
+				(SELECT TOP (1) [code_client] FROM [ordersystem].[dbo].[tab_clients] WHERE [name_client] = 'ISABEL LEGAL'))
+	GO
+
+
+	/*ORDER_ITEM*/
+	INSERT INTO [dbo].[tab_order_item] ([code_order],[code_item],[amount_order_item],[unitprice_order_item]) VALUES (
+				(SELECT TOP (1) [code_order]  FROM [ordersystem].[dbo].[tab_orders] WHERE [code_client] = (SELECT TOP (1) [code_client] FROM [ordersystem].[dbo].[tab_clients] WHERE [name_client] = 'HELIO MARQUES')),
+				(SELECT TOP (1) [code_item]   FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO A'),
+				1,
+				(SELECT TOP (1) [price_item]  FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO A'))
+	GO
+	INSERT INTO [dbo].[tab_order_item] ([code_order],[code_item],[amount_order_item],[unitprice_order_item]) VALUES (
+				(SELECT TOP (1) [code_order]  FROM [ordersystem].[dbo].[tab_orders] WHERE [code_client] = (SELECT TOP (1) [code_client] FROM [ordersystem].[dbo].[tab_clients] WHERE [name_client] = 'HELIO MARQUES')),
+				(SELECT TOP (1) [code_item]   FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO B'),
+				1,
+				(SELECT TOP (1) [price_item]  FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO B'))
+	GO
+	INSERT INTO [dbo].[tab_order_item] ([code_order],[code_item],[amount_order_item],[unitprice_order_item]) VALUES (
+				(SELECT TOP (1) [code_order]  FROM [ordersystem].[dbo].[tab_orders] WHERE [code_client] = (SELECT TOP (1) [code_client] FROM [ordersystem].[dbo].[tab_clients] WHERE [name_client] = 'HELIO MARQUES')),
+				(SELECT TOP (1) [code_item]   FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO C'),
+				1,
+				(SELECT TOP (1) [price_item]  FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO C'))
+	GO
+
+
+	INSERT INTO [dbo].[tab_order_item] ([code_order],[code_item],[amount_order_item],[unitprice_order_item]) VALUES (
+				(SELECT TOP (1) [code_order]  FROM [ordersystem].[dbo].[tab_orders] WHERE [code_client] = (SELECT TOP (1) [code_client] FROM [ordersystem].[dbo].[tab_clients] WHERE [name_client] = 'ISABEL LEGAL')),
+				(SELECT TOP (1) [code_item]   FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO B'),
+				1,
+				(SELECT TOP (1) [price_item]  FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO B'))
+	GO
+	INSERT INTO [dbo].[tab_order_item] ([code_order],[code_item],[amount_order_item],[unitprice_order_item]) VALUES (
+				(SELECT TOP (1) [code_order]  FROM [ordersystem].[dbo].[tab_orders] WHERE [code_client] = (SELECT TOP (1) [code_client] FROM [ordersystem].[dbo].[tab_clients] WHERE [name_client] = 'ISABEL LEGAL')),
+				(SELECT TOP (1) [code_item]   FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO C'),
+				1,
+				(SELECT TOP (1) [price_item]  FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO C'))
+	GO
+
+### selectsDB.sql
+
+	SELECT TOP (1000) [code_client]
+		,[name_client]
+		,[address_client]
+		,[phone_client]
+		,[email_client]
+	FROM [ordersystem].[dbo].[tab_clients]
+
+	SELECT TOP (1000) [code_item]
+		,[name_item]
+		,[description_item]
+		,[price_item]
+	FROM [ordersystem].[dbo].[tab_item]
+
+	SELECT TOP (1000) [code_order]
+		  ,[date_order]
+		  ,[value_order]
+		  ,[code_client]
+	FROM [ordersystem].[dbo].[tab_orders]
+
+	SELECT TOP (1000) [code_order_item]
+		  ,[code_order]
+		  ,[code_item]
+		  ,[amount_order_item]
+		  ,[unitprice_order_item]
+	FROM [ordersystem].[dbo].[tab_order_item]
+
 
