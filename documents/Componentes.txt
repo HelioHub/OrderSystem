@@ -1,0 +1,21 @@
+Componentes:
+
+• SQL Server Express:
+https://download.microsoft.com/download/7/f/8/7f8a9c43-
+8c8a-4f7c-9f92-83c18d96b681/SQL20 19-SSEI-Expr–exe
+
+• Delphi Community Edition:
+https://www.embarcadero.com/products/delphi/starter/free-download
+pw: 1X9X7X3X8X2
+
+• DevExpress: 
+https://go.devexpress.com/DevExpressDownload_VCLTrial.aspx
+
+• FastReport: 
+https://www.fast-report.com/pt/download/public_files/267/
+user: heliomarques
+pw: 1X9X7X3X8X2
+
+
+
+
