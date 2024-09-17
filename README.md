@@ -29,7 +29,12 @@ Develop Customer Order Management System for candidate evaluation -  Hélio Marq
 	user:heliomsi@gmail.com 
 	pw: 1x9x7x3x8x2x
 	
-	![## Diagrama de Entidade e Relacionamento OrderSystem](https://github.com/HelioHub/ordersystem/blob/main/imagens/modelOrderSystem.png)
+	![## Diagrama de Entidade e Relacionamento Lógico OrderSystem](https://github.com/HelioHub/OrderSystem/blob/main/images/modelOrderSystem.png)
+	
+	````
+	ERWIN
+	````
+	![## Diagrama de Entidade e Relacionamento Lógico OrderSystem](https://github.com/HelioHub/OrderSystem/blob/main/images/modelPhysicalOrderSystem.png)
 
 ## Code Order System
 
