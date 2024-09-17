@@ -1,3 +1,4 @@
+
 SELECT TOP (1000) [code_client]
     ,[name_client]
     ,[address_client]
@@ -24,3 +25,8 @@ SELECT TOP (1000) [code_order_item]
       ,[unitprice_order_item]
   FROM [ordersystem].[dbo].[tab_order_item]
 
+
+  USE [ordersystem]
+  go
+  select dbo.fn_get_total_value_ordered(26)
+  go
