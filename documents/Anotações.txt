@@ -6,11 +6,13 @@ https://app.brmodeloweb.com/#!/logic/%7B%22modelid%22:%2266e8c8a549573442c5b92fb
 pw: 1x9x7x3x8x2x
 
 
-
+---------
 - Revisar
-
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+- CLEAR
+- SOLID
 - REST X SOAP
-- CLUSTER INDECES
+- CLUSTER INDICES
 - POO
 - DESING PARTENS
 - ESTUDAR: 
@@ -40,5 +42,16 @@ pw: 1x9x7x3x8x2x
 	GO
 
 
-- 
+- DADOS:
+PAULO PEDRO
+RUA 10, 1, CENTRO, FORTALEZA, CEARA, BRASIL
+558599991111
+558599991111@WWW.COM
 
+
+![## Diagrama de Entidade e Relacionamento Lógico OrderSystem](https://github.com/HelioHub/OrderSystem/blob/main/images/modelOrderSystem.png)
+
+````
+ERWIN
+````
+![## Diagrama de Entidade e Relacionamento Lógico OrderSystem](https://github.com/HelioHub/OrderSystem/blob/main/images/modelPhysicalOrderSystem.png)
