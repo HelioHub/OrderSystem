@@ -7,6 +7,7 @@ pw: 1x9x7x3x8x2x
 
 
 - CRIAR VIEWS VISANDO OS CLUSTER.
+- 
 
 ---------
 - Revisar
@@ -15,7 +16,7 @@ pw: 1x9x7x3x8x2x
 - SOLID
 - REST X SOAP
 - CLUSTER INDICES
-- POO
+- POO - ABSTRACT 
 - DESING PARTENS
 - ESTUDAR: 
 
@@ -57,3 +58,42 @@ RUA 10, 1, CENTRO, FORTALEZA, CEARA, BRASIL
 ERWIN
 ````
 ![## Diagrama de Entidade e Relacionamento Lógico OrderSystem](https://github.com/HelioHub/OrderSystem/blob/main/images/modelPhysicalOrderSystem.png)
+
+
+-- ELES PEDEM:
+
+A Minerva Foods é líder na exportação de carne bovina na América do Sul e atua no segmento de carnes processadas, comercializando seus produtos em mais de 100 países. Além do Brasil, a Minerva Foods está presente na Argentina, Colômbia, Paraguai, Uruguai e Austrália.
+
+A missão da área de Desenvolvimento de Sistemas é fornecer soluções sistêmicas para a organização, alinhadas aos processos e que possibilitem o alcance dos objetivos de negócio. Assegurar níveis adequados de custo, qualidade e prazo.
+
+Principais Atividades
+
+Desenvolver sistemas informatizados: estudar as regras de negócio inerentes aos objetivos e abrangência de sistema; dimensionar requisitos e funcionalidade de sistema; fazer levantamento de dados; modelar dados; especificar programas; codificar aplicativos; montar protótipo do sistema; testar sistema; implantar sistemas;
+Prestar suporte técnico ao usuário: orientar áreas de apoio; consultar documentação técnica; consultar fontes alternativas de informações; simular problema em ambiente controlado; acionar suporte de terceiros, visando manter a operação sistêmica da Companhia;
+Treinar usuário, abrangendo elaboração de material didático e instrumentos para avaliação de treinamento; configurar ambiente de treinamento; ministrar treinamento, visando a transferência de conhecimento para os usuários;
+Elaborar documentação para ambiente informatizado: descrever processos; desenhar diagrama de fluxos de informações; elaborar dicionário de dados, manuais do sistema e relatórios técnicos; emitir pareceres técnicos; divulgar documentação, objetivando a manutenção da base de conhecimentos formal e acessível para as áreas envolvidas;
+Oferecer soluções para ambientes informatizados: propor mudanças de processos e funções; prestar consultoria técnica; identificar necessidade do usuário; negociar alternativas de solução com usuário; adequar soluções a necessidade do usuário; demonstrar alternativas de solução; propor adoção de novos métodos e técnicas; organizar fóruns de discussão;
+Pesquisar tecnologias em informática: pesquisar padrões, técnicas e ferramentas disponíveis no mercado; identificar fornecedores; solicitar demonstrações de produto; avaliar novas tecnologias por meio de visitas técnicas; construir plataforma de testes; analisar funcionalidade do produto; comparar alternativas tecnológicas; participar de eventos para qualificação profissional;
+Replicar o conhecimento técnico, abrangendo o planejamento dos trabalhos técnicos, organização de agendas, avaliação dos trabalhos executados pela equipe, definição de boas práticas de desenvolvimento (metodologias a serem utilizadas), inspeção da utilização dos padrões, visando disseminação de conhecimento e melhoria na qualidade das entregas junto aos clientes internos.
+Pré-requisitos
+
+Superior completo ou cursando em Ciência da Computação, Sistemas da Informação, Engenharia da Computação e/ou áreas afins;
+Desejável: especialização ou pós-graduação na área;
+Lógica de programação, Delphi, SQL Server (TSQL), programação orientada a objeto (OOP), conhecimento em desenvolvimento para serviços, desenvolvimento de APIs e desenvolvimento Delph para mobile;
+Controles de versão (GIT, SVN, Bitbucket), Modelagem de dados, Diagramas de Caso de Uso (UML) e Diagrama de atividades (UML), conhecimento em gestão projetos de software;
+Inglês - Nível Básico;
+Espanhol - Nível Intermediário.
+Esta vaga se estende para pessoas PCD
+
+#LI-VC1
+
+Departamento
+TECH
+Função
+Analista Sistema Sênior
+Localizações
+Barretos
+Tipo de contratação
+Tempo integral
+Tipo de posição
+Efectiva

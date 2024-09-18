@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{59B8A0F6-D442-40F7-A940-C6DF1A52E187}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="BackEndOS\BackEndOS.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="FrontEndOS\FrontEndOS.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="BackEndOS">
+        <MSBuild Projects="BackEndOS\BackEndOS.dproj"/>
+    </Target>
+    <Target Name="BackEndOS:Clean">
+        <MSBuild Projects="BackEndOS\BackEndOS.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BackEndOS:Make">
+        <MSBuild Projects="BackEndOS\BackEndOS.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="FrontEndOS">
+        <MSBuild Projects="FrontEndOS\FrontEndOS.dproj"/>
+    </Target>
+    <Target Name="FrontEndOS:Clean">
+        <MSBuild Projects="FrontEndOS\FrontEndOS.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FrontEndOS:Make">
+        <MSBuild Projects="FrontEndOS\FrontEndOS.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="BackEndOS;FrontEndOS"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="BackEndOS:Clean;FrontEndOS:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="BackEndOS:Make;FrontEndOS:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
