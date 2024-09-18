@@ -33,7 +33,6 @@ type
     dxBarLargeButton5: TdxBarLargeButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure dxBarBCloseClick(Sender: TObject);
-    procedure dxBarLargeButton3Click(Sender: TObject);
   private
     { Private declarations }
 
@@ -51,12 +50,6 @@ implementation
 procedure TFOS.dxBarBCloseClick(Sender: TObject);
 begin
   Close;
-end;
-
-procedure TFOS.dxBarLargeButton3Click(Sender: TObject);
-begin
-  Beep;
-  ShowMessage('Em desenvolvimento!');
 end;
 
 procedure TFOS.FormClose(Sender: TObject;

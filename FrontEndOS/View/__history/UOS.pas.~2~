@@ -1,0 +1,219 @@
+unit UOS;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, dxBar, dxRibbonBackstageView, cxClasses,
+  dxRibbon, Vcl.ImgList, Vcl.ExtCtrls, Vcl.DBCtrls, Data.DB, IWSystem,
+  Vcl.StdCtrls, Vcl.Imaging.jpeg, dxRibbonSkins,
+  dxGDIPlusClasses, dxBevel, dxSkinsCore, dxSkinBlue, dxSkinsdxRibbonPainter,
+  dxSkinsdxBarPainter, dxSkinDevExpressStyle, dxSkinOffice2013White,
+  cxContainer, cxEdit, cxImage, dxRibbonCustomizationForm, MidasLib,
+  UDadosConfiguracao, cxImageList;
+
+type
+  TFPrincipalAGENDIX = class(TForm)
+    dxRibbon1: TdxRibbon;
+    dxRibbon1Tab2: TdxRibbonTab;
+    dxRibbonBackstageView1: TdxRibbonBackstageView;
+    dxRibbonBackstageViewTabSheet1: TdxRibbonBackstageViewTabSheet;
+    ImageList: TImageList;
+    cxILImageGrande: TcxImageList;
+    dxBarManager: TdxBarManager;
+    dxBMBLancamentos: TdxBar;
+    dxBarCalculo: TdxBar;
+    dxBarConsultas: TdxBar;
+    dxBarMMenu: TdxBar;
+    dxBarLargeButton1: TdxBarLargeButton;
+    dxBarLargeButton2: TdxBarLargeButton;
+    dxBarLargeButton3: TdxBarLargeButton;
+    dxBarLargeButton4: TdxBarLargeButton;
+    dxBarBUsuario: TdxBarButton;
+    dxBarBConfiguracoes: TdxBarButton;
+    dxBarBLogOff: TdxBarButton;
+    dxBarBSair: TdxBarButton;
+    DSConsultaCenario: TDataSource;
+    dxBarSeparator1: TdxBarSeparator;
+    dxBarLargeButton5: TdxBarLargeButton;
+    procedure dxBarBLogOffClick(Sender: TObject);
+    procedure dxBarBSairClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
+    procedure dxBarLargeButton3Click(Sender: TObject);
+    procedure dxBarLargeButton4Click(Sender: TObject);
+    procedure dxBarLargeButton2Click(Sender: TObject);
+    procedure dxBarLargeButton1Click(Sender: TObject);
+    procedure dxBarLargeButton5Click(Sender: TObject);
+    procedure dxBarBUsuarioClick(Sender: TObject);
+    procedure dxBarBConfiguracoesClick(Sender: TObject);
+  private
+    { Private declarations }
+    Function ReativarJanela(PNomeFrm: String): Boolean;
+    Procedure PRelatorio;
+
+  public
+    { Public declarations }
+    //Formulario: TFSplash;
+  end;
+
+var
+  FPrincipalAGENDIX: TFPrincipalAGENDIX;
+
+implementation
+
+uses
+  UViewSala, UDM1, ULogin, Inifiles, ULibSCR, UViewDenominacao, UViewContato,
+  UViewAmbiente, UViewFeriado, UViewUsuario;
+
+{$R *.dfm}
+
+procedure TFPrincipalAGENDIX.dxBarBConfiguracoesClick(Sender: TObject);
+var Formulario: TFDadosConfiguracao;
+begin
+  Formulario := TFDadosConfiguracao.Create(Application);
+  try
+    Formulario.ShowModal;
+  finally
+    FreeAndNil(Formulario);
+  end;
+end;
+
+procedure TFPrincipalAGENDIX.dxBarBLogOffClick(Sender: TObject);
+Var
+  Arquivo: TIniFile;
+  iCenario: Integer;
+  Formulario: TFLogin;
+begin
+  Formulario := TFLogin.Create(Application);
+  Formulario.ShowModal;
+
+  Arquivo := TIniFile.Create(gsAppPath+'SCRUSU.INI');
+  Try
+    iCenario := Arquivo.ReadInteger('CENARIO', 'CENARIO', 1);
+  Finally
+    Arquivo.Free;
+  End;
+end;
+
+procedure TFPrincipalAGENDIX.dxBarBSairClick(Sender: TObject);
+begin
+  Application.Terminate;
+end;
+
+procedure TFPrincipalAGENDIX.dxBarBUsuarioClick(Sender: TObject);
+var Formulario: TFViewUsuario;
+begin
+  if (DM1.GNivel <> '0') then
+  begin
+    Beep;
+    ShowMessage('Usuário sem Autorização!! Consulte Administrador do Sistema.');
+    Exit;
+  end;
+
+  Formulario := TFViewUsuario.Create(Application);
+  Formulario.ShowModal;
+end;
+
+procedure TFPrincipalAGENDIX.dxBarLargeButton1Click(Sender: TObject);
+var Formulario: TFViewAmbiente;
+begin
+  Formulario := TFViewAmbiente.Create(Application);
+  Formulario.WindowState := wsMaximized;
+  Formulario.ShowModal;
+end;
+
+procedure TFPrincipalAGENDIX.dxBarLargeButton2Click(Sender: TObject);
+var Formulario: TFViewContato;
+begin
+  Formulario := TFViewContato.Create(Application);
+  Formulario.WindowState := wsMaximized;
+  Formulario.ShowModal;
+end;
+
+procedure TFPrincipalAGENDIX.dxBarLargeButton3Click(Sender: TObject);
+var Formulario: TFViewSala;
+begin
+  Formulario := TFViewSala.Create(Application);
+  Formulario.WindowState := wsMaximized;
+  Formulario.ShowModal;
+end;
+
+procedure TFPrincipalAGENDIX.dxBarLargeButton4Click(Sender: TObject);
+var Formulario: TFViewDenominacao;
+begin
+  Formulario := TFViewDenominacao.Create(Application);
+  Formulario.WindowState := wsMaximized;
+  Formulario.ShowModal;
+end;
+
+procedure TFPrincipalAGENDIX.dxBarLargeButton5Click(Sender: TObject);
+var Formulario: TFViewFeriado;
+begin
+  Formulario := TFViewFeriado.Create(Application);
+  Formulario.WindowState := wsMaximized;
+  Formulario.ShowModal;
+  Formulario.Destroy;
+end;
+
+procedure TFPrincipalAGENDIX.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  DM1.SQLCSCR.Close;
+  Application.Terminate;
+end;
+
+procedure TFPrincipalAGENDIX.FormShow(Sender: TObject);
+Var
+  Arquivo: TIniFile;
+  iCenario: Integer;
+  Formulario: TFLogin;
+begin
+  DM1.sVersaoSis := VersaoExe(gsAppPath+gsAppName+'.exe');
+
+  Formulario := TFLogin.Create(Application);
+  If Formulario.ShowModal = mrOk Then
+  Else
+    Application.Terminate;
+
+  if Date >= StrToDate('01/10/2025') then
+  begin
+    Beep;
+    Application.Terminate;
+  end;
+
+  Arquivo := TIniFile.Create(gsAppPath+'SCRUSU.INI');
+  Try
+    iCenario := Arquivo.ReadInteger('CENARIO', 'CENARIO', 1);
+  Finally
+    Arquivo.Free;
+  End;
+end;
+
+procedure TFPrincipalAGENDIX.PRelatorio;
+Begin
+end;
+
+function TFPrincipalAGENDIX.ReativarJanela(PNomeFrm: String): Boolean;
+var
+  I: Integer;
+  B: Boolean;
+begin
+  B := True;
+  For I := MDIChildCount - 1 DownTo 0 Do
+  Begin
+    If MDIChildren[I].Name = PNomeFrm Then
+    Begin
+      MDIChildren[I].BringToFront;
+      B := False;
+      Break;
+    End;
+  End;
+  Result := B;
+end;
+
+end.
+
+

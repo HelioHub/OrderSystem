@@ -27,13 +27,19 @@ type
     dxBarCalculo: TdxBar;
     dxBarMMenu: TdxBar;
     dxBarLargeButton1: TdxBarLargeButton;
+    dxBarLargeButton2: TdxBarLargeButton;
     dxBarLargeButton3: TdxBarLargeButton;
-    dxBarBClose: TdxBarButton;
+    dxBarLargeButton4: TdxBarLargeButton;
+    dxBarBUsuario: TdxBarButton;
+    dxBarBConfiguracoes: TdxBarButton;
+    dxBarBLogOff: TdxBarButton;
+    dxBarBSair: TdxBarButton;
+    DSConsultaCenario: TDataSource;
     dxBarSeparator1: TdxBarSeparator;
     dxBarLargeButton5: TdxBarLargeButton;
+    procedure dxBarBSairClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure dxBarBCloseClick(Sender: TObject);
-    procedure dxBarLargeButton3Click(Sender: TObject);
+    procedure dxBarBConfiguracoesClick(Sender: TObject);
   private
     { Private declarations }
 
@@ -46,17 +52,17 @@ var
 
 implementation
 
+uses
+
 {$R *.dfm}
 
-procedure TFOS.dxBarBCloseClick(Sender: TObject);
+procedure TFOS.dxBarBConfiguracoesClick(Sender: TObject);
 begin
-  Close;
 end;
 
-procedure TFOS.dxBarLargeButton3Click(Sender: TObject);
+procedure TFOS.dxBarBSairClick(Sender: TObject);
 begin
-  Beep;
-  ShowMessage('Em desenvolvimento!');
+  Application.Terminate;
 end;
 
 procedure TFOS.FormClose(Sender: TObject;
