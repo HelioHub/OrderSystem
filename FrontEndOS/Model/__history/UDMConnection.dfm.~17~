@@ -1869,9 +1869,6 @@ object DMConnection: TDMConnection
     object MemTableOrders_Itemscode_order_item: TAutoIncField
       FieldName = 'code_order_item'
     end
-    object MemTableOrders_Itemscode_order: TIntegerField
-      FieldName = 'code_order'
-    end
     object MemTableOrders_Itemscode_item: TIntegerField
       DisplayLabel = 'Code Item'
       FieldName = 'code_item'

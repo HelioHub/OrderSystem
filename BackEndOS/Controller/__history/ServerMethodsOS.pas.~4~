@@ -51,7 +51,7 @@ begin
   PrepareOrders_Items(pIDCodeOrder, pLimit);
 
   Result := TFDJSONDataSets.Create;
-  TFDJSONDataSetsWriter.ListAdd(Result, DMOS.OSOrders_Items);
+  TFDJSONDataSetsWriter.ListAdd(Result, DMOS.OSOrders);
 end;
 
 procedure TServerMethodsOS.PrepareOrders(const pIDCodeOrder, pLimit: String);
@@ -107,7 +107,6 @@ begin
 
 
   sSQL := 'SELECT '+sLimit+' a.[code_order_item] '+
-          ',a.[code_order]                                 '+
           ',a.[code_item]                                  '+
           ',a.[amount_order_item]                          '+
           ',a.[unitprice_order_item]                       '+

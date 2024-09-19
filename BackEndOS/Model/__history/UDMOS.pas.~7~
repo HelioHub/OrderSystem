@@ -36,7 +36,6 @@ type
     OSOrders_Itemsvalue_item: TFMTBCDField;
     OSOrders_Itemsname_item: TStringField;
     OSOrders_Itemsdescription_item: TStringField;
-    OSOrders_Itemscode_order: TIntegerField;
   private
     { Private declarations }
   public

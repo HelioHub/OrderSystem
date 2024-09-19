@@ -221,6 +221,7 @@ object FViewOrder: TFViewOrder
     Font.Style = []
     ParentFont = False
     TabOrder = 1
+    ExplicitTop = 55
     object cxGridOrdersDBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.Insert.Visible = False
@@ -439,41 +440,38 @@ object FViewOrder: TFViewOrder
       OptionsView.Indicator = True
       object cxGridDBTableView1Column7: TcxGridDBColumn
         Caption = 'Code Order'
-        DataBinding.FieldName = 'code_order'
-        Width = 100
+        DataBinding.FieldName = 'code_order_item'
       end
       object cxGridDBTableView1Column1: TcxGridDBColumn
-        Caption = 'Code Item'
         DataBinding.FieldName = 'code_item'
-        Width = 89
+        Width = 98
       end
       object cxGridDBTableView1Column2: TcxGridDBColumn
-        Caption = 'Name Item'
         DataBinding.FieldName = 'name_item'
-        Width = 189
+        Width = 398
       end
       object cxGridDBTableView1Column3: TcxGridDBColumn
         Caption = 'Amount '
         DataBinding.FieldName = 'amount_order_item'
         HeaderAlignmentHorz = taRightJustify
-        Width = 88
+        Width = 122
       end
       object cxGridDBTableView1Column4: TcxGridDBColumn
         Caption = 'Unit Price'
         DataBinding.FieldName = 'unitprice_order_item'
         HeaderAlignmentHorz = taRightJustify
-        Width = 97
+        Width = 112
       end
       object cxGridDBTableView1Column5: TcxGridDBColumn
         Caption = 'Value'
         DataBinding.FieldName = 'value_item'
         HeaderAlignmentHorz = taRightJustify
-        Width = 83
+        Width = 137
       end
       object cxGridDBTableView1Column6: TcxGridDBColumn
         Caption = 'Description'
         DataBinding.FieldName = 'description_item'
-        Width = 427
+        Width = 206
       end
     end
     object cxGridLevel1: TcxGridLevel

@@ -36,7 +36,6 @@ type
     MemTableOrders_Itemsname_item: TStringField;
     MemTableOrders_Itemsdescription_item: TStringField;
     MemTableOrders_Itemscode_order_item: TAutoIncField;
-    MemTableOrders_Itemscode_order: TIntegerField;
   private
     { Private declarations }
 

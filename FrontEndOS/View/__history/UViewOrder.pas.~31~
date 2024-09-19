@@ -121,7 +121,7 @@ begin
     ShowMessage('Attention! Invalid number of records.');
   End;
 
-  //DSOrderItems.DataSet.Close;
+  DSOrderItems.DataSet.Close;
   DMConnection.LoadOrders_Items(DSOrders.DataSet.FieldByName('code_order').AsString, sNumberRecords);
 end;
 

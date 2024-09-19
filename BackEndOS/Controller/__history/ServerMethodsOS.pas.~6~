@@ -107,8 +107,8 @@ begin
 
 
   sSQL := 'SELECT '+sLimit+' a.[code_order_item] '+
-          ',a.[code_order]                                 '+
           ',a.[code_item]                                  '+
+          ',a.[code_order]                                 '+
           ',a.[amount_order_item]                          '+
           ',a.[unitprice_order_item]                       '+
           ',a.[amount_order_item] * a.[unitprice_order_item] as value_item '+

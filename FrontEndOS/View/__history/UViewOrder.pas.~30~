@@ -44,7 +44,7 @@ type
     cxDBLabel3: TcxDBLabel;
     cxDBLabel4: TcxDBLabel;
     DSOrderItems: TDataSource;
-    cxGridOrderItems: TcxGrid;
+    cxGrid1: TcxGrid;
     cxGridDBTableView1: TcxGridDBTableView;
     cxGridLevel1: TcxGridLevel;
     cxGridDBTableView1Column1: TcxGridDBColumn;
@@ -121,7 +121,7 @@ begin
     ShowMessage('Attention! Invalid number of records.');
   End;
 
-  //DSOrderItems.DataSet.Close;
+  DSOrderItems.DataSet.Close;
   DMConnection.LoadOrders_Items(DSOrders.DataSet.FieldByName('code_order').AsString, sNumberRecords);
 end;
 

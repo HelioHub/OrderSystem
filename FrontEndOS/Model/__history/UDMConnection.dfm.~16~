@@ -1866,11 +1866,9 @@ object DMConnection: TDMConnection
     StoreDefs = True
     Left = 48
     Top = 160
-    object MemTableOrders_Itemscode_order_item: TAutoIncField
+    object MemTableOrders_Itemscode_order_item: TFDAutoIncField
       FieldName = 'code_order_item'
-    end
-    object MemTableOrders_Itemscode_order: TIntegerField
-      FieldName = 'code_order'
+      ReadOnly = True
     end
     object MemTableOrders_Itemscode_item: TIntegerField
       DisplayLabel = 'Code Item'
@@ -1882,7 +1880,7 @@ object DMConnection: TDMConnection
       DisplayFormat = '###,##0.00'
     end
     object MemTableOrders_Itemsunitprice_order_item: TFMTBCDField
-      DisplayLabel = 'Unit Price '
+      DisplayLabel = 'Price '
       FieldName = 'unitprice_order_item'
       currency = True
     end

@@ -24,6 +24,7 @@ object FViewOrder: TFViewOrder
     Align = alTop
     TabOrder = 0
     Properties.CustomButtons.Buttons = <>
+    ExplicitWidth = 949
     DesignSize = (
       1087
       54)
@@ -167,6 +168,7 @@ object FViewOrder: TFViewOrder
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
       Style.IsFontAssigned = True
+      ExplicitLeft = 726
     end
     object cxTENumberRecords: TcxTextEdit
       Left = 1010
@@ -184,6 +186,7 @@ object FViewOrder: TFViewOrder
       Style.IsFontAssigned = True
       TabOrder = 6
       Text = '100'
+      ExplicitLeft = 872
       Width = 67
     end
     object cxBItems: TcxButton
@@ -221,6 +224,7 @@ object FViewOrder: TFViewOrder
     Font.Style = []
     ParentFont = False
     TabOrder = 1
+    ExplicitWidth = 949
     object cxGridOrdersDBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.Insert.Visible = False
@@ -283,6 +287,7 @@ object FViewOrder: TFViewOrder
     TabOrder = 2
     Properties.ActivePage = cxTabSheet1
     Properties.CustomButtons.Buttons = <>
+    ExplicitWidth = 949
     ClientRectBottom = 124
     ClientRectLeft = 2
     ClientRectRight = 1082
@@ -290,6 +295,7 @@ object FViewOrder: TFViewOrder
     object cxTabSheet1: TcxTabSheet
       Caption = 'Data Client'
       ImageIndex = 0
+      ExplicitWidth = 942
       object cxLdescricao: TcxLabel
         Left = 9
         Top = 2
@@ -400,7 +406,7 @@ object FViewOrder: TFViewOrder
       end
     end
   end
-  object cxGridOrderItems: TcxGrid
+  object cxGrid1: TcxGrid
     Left = 0
     Top = 323
     Width = 1087
@@ -413,6 +419,7 @@ object FViewOrder: TFViewOrder
     Font.Style = []
     ParentFont = False
     TabOrder = 3
+    ExplicitWidth = 949
     object cxGridDBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.Insert.Visible = False
@@ -439,41 +446,38 @@ object FViewOrder: TFViewOrder
       OptionsView.Indicator = True
       object cxGridDBTableView1Column7: TcxGridDBColumn
         Caption = 'Code Order'
-        DataBinding.FieldName = 'code_order'
-        Width = 100
+        DataBinding.FieldName = 'code_order_item'
       end
       object cxGridDBTableView1Column1: TcxGridDBColumn
-        Caption = 'Code Item'
         DataBinding.FieldName = 'code_item'
-        Width = 89
+        Width = 98
       end
       object cxGridDBTableView1Column2: TcxGridDBColumn
-        Caption = 'Name Item'
         DataBinding.FieldName = 'name_item'
-        Width = 189
+        Width = 398
       end
       object cxGridDBTableView1Column3: TcxGridDBColumn
         Caption = 'Amount '
         DataBinding.FieldName = 'amount_order_item'
         HeaderAlignmentHorz = taRightJustify
-        Width = 88
+        Width = 122
       end
       object cxGridDBTableView1Column4: TcxGridDBColumn
         Caption = 'Unit Price'
         DataBinding.FieldName = 'unitprice_order_item'
         HeaderAlignmentHorz = taRightJustify
-        Width = 97
+        Width = 112
       end
       object cxGridDBTableView1Column5: TcxGridDBColumn
         Caption = 'Value'
         DataBinding.FieldName = 'value_item'
         HeaderAlignmentHorz = taRightJustify
-        Width = 83
+        Width = 137
       end
       object cxGridDBTableView1Column6: TcxGridDBColumn
         Caption = 'Description'
         DataBinding.FieldName = 'description_item'
-        Width = 427
+        Width = 206
       end
     end
     object cxGridLevel1: TcxGridLevel
