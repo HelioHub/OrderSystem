@@ -310,7 +310,13 @@ Develop Customer Order Management System for candidate evaluation -  Hélio Marq
 	INSERT INTO [dbo].[tab_orders] ([date_order],[value_order],[code_client]) VALUES (CAST('2024-09-17' AS DATETIME), 0, 
 				(SELECT TOP (1) [code_client] FROM [ordersystem].[dbo].[tab_clients] WHERE [name_client] = 'HELIO MARQUES'))
 	GO
-	INSERT INTO [dbo].[tab_orders] ([date_order],[value_order],[code_client]) VALUES ('2024-09-17', 0, 
+	INSERT INTO [dbo].[tab_orders] ([date_order],[value_order],[code_client]) VALUES ('2024-09-18', 0, 
+				(SELECT TOP (1) [code_client] FROM [ordersystem].[dbo].[tab_clients] WHERE [name_client] = 'LUCAS JUCÁ'))
+	GO
+	INSERT INTO [dbo].[tab_orders] ([date_order],[value_order],[code_client]) VALUES ('2024-09-19', 0, 
+				(SELECT TOP (1) [code_client] FROM [ordersystem].[dbo].[tab_clients] WHERE [name_client] = 'VILMA MARIA'))
+	GO
+	INSERT INTO [dbo].[tab_orders] ([date_order],[value_order],[code_client]) VALUES ('2024-09-19', 0, 
 				(SELECT TOP (1) [code_client] FROM [ordersystem].[dbo].[tab_clients] WHERE [name_client] = 'ISABEL LEGAL'))
 	GO
 
@@ -337,9 +343,22 @@ Develop Customer Order Management System for candidate evaluation -  Hélio Marq
 
 
 	INSERT INTO [dbo].[tab_order_item] ([code_order],[code_item],[amount_order_item],[unitprice_order_item]) VALUES (
+				(SELECT TOP (1) [code_order]  FROM [ordersystem].[dbo].[tab_orders] WHERE [code_client] = (SELECT TOP (1) [code_client] FROM [ordersystem].[dbo].[tab_clients] WHERE [name_client] = 'LUCAS JUCÁ')),
+				(SELECT TOP (1) [code_item]   FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO A'),
+				2,
+				(SELECT TOP (1) [price_item]  FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO A'))
+	GO
+	INSERT INTO [dbo].[tab_order_item] ([code_order],[code_item],[amount_order_item],[unitprice_order_item]) VALUES (
+				(SELECT TOP (1) [code_order]  FROM [ordersystem].[dbo].[tab_orders] WHERE [code_client] = (SELECT TOP (1) [code_client] FROM [ordersystem].[dbo].[tab_clients] WHERE [name_client] = 'LUCAS JUCÁ')),
+				(SELECT TOP (1) [code_item]   FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO C'),
+				1,
+				(SELECT TOP (1) [price_item]  FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO C'))
+	GO
+
+	INSERT INTO [dbo].[tab_order_item] ([code_order],[code_item],[amount_order_item],[unitprice_order_item]) VALUES (
 				(SELECT TOP (1) [code_order]  FROM [ordersystem].[dbo].[tab_orders] WHERE [code_client] = (SELECT TOP (1) [code_client] FROM [ordersystem].[dbo].[tab_clients] WHERE [name_client] = 'ISABEL LEGAL')),
 				(SELECT TOP (1) [code_item]   FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO B'),
-				1,
+				2,
 				(SELECT TOP (1) [price_item]  FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO B'))
 	GO
 	INSERT INTO [dbo].[tab_order_item] ([code_order],[code_item],[amount_order_item],[unitprice_order_item]) VALUES (
@@ -349,7 +368,19 @@ Develop Customer Order Management System for candidate evaluation -  Hélio Marq
 				(SELECT TOP (1) [price_item]  FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO C'))
 	GO
 
+
+	INSERT INTO [dbo].[tab_order_item] ([code_order],[code_item],[amount_order_item],[unitprice_order_item]) VALUES (
+				(SELECT TOP (1) [code_order]  FROM [ordersystem].[dbo].[tab_orders] WHERE [code_client] = (SELECT TOP (1) [code_client] FROM [ordersystem].[dbo].[tab_clients] WHERE [name_client] = 'VILMA MARIA')),
+				(SELECT TOP (1) [code_item]   FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO A'),
+				2,
+				(SELECT TOP (1) [price_item]  FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO A'))
+	GO
+
+
 ### selectsDB.sql
+
+	USE [ordersystem]
+	go
 
 	SELECT TOP (1000) [code_client]
 		,[name_client]
@@ -375,12 +406,70 @@ Develop Customer Order Management System for candidate evaluation -  Hélio Marq
 		  ,[code_item]
 		  ,[amount_order_item]
 		  ,[unitprice_order_item]
-	FROM [ordersystem].[dbo].[tab_order_item]
+	FROM [ordersystem].[dbo].[tab_order_item] a
+	INNER JOIN 
 
 	USE [ordersystem]
 	go
+
+	SELECT TOP (1000) a.[code_order]
+		  ,a.[date_order]
+		  ,a.[code_client]
+		  ,b.[name_client]
+		  ,b.[address_client]
+		  ,b.[phone_client]
+		  ,b.[email_client]
+		  ,a.[value_order]
+		  ,dbo.fn_get_total_value_ordered(26) as valueorder 
+	FROM [dbo].[tab_orders] a
+	INNER JOIN [dbo].[tab_clients] b ON b.code_client = a.code_client 
+
+	USE [ordersystem]
+	go
+
+
+	SELECT TOP (1000) a.[code_order]
+		  ,a.[code_order_item]
+		  ,a.[code_item]
+		  ,a.[amount_order_item]
+		  ,a.[unitprice_order_item]
+		  ,a.[amount_order_item] * a.[unitprice_order_item] as value_item
+		  ,b.[name_item]
+		  ,b.[description_item]
+	FROM [dbo].[tab_order_item] a
+	INNER JOIN [dbo].[tab_item] b ON b.[code_item] = a.[code_item] 
+
+### Function T-SQL
+
+	USE [ordersystem]
+	go
+
+    -- Request Function 
 	select dbo.fn_get_total_value_ordered(26)
 	go
+	
+	/* ------------------------------------- */
+	/* FUNCTION - fn_get_total_value_ordered */
+	/* Calculate the total value of an Order */
+	/* Hélio Marques - 2024-09-17            */
+	/* ------------------------------------- */
+	USE [ordersystem]
+	GO
+
+	CREATE OR 
+	 ALTER FUNCTION [dbo].[fn_get_total_value_ordered] (@pCode_Order INT) RETURNS DECIMAL(20,4)
+	AS
+	BEGIN
+	  DECLARE @vTotalValue DECIMAL(20,4) = 0
+			 
+	  SELECT @vTotalValue = ISNULL(SUM(b.amount_order_item * b.unitprice_order_item), 0)
+	  FROM tab_orders a WITH (NOLOCK)
+	  INNER JOIN tab_order_item b WITH(NOLOCK) ON b.code_order = a.code_order 
+	  WHERE a.code_order = @pCode_Order
+
+	  RETURN @vTotalValue;
+	END
+	GO
 
 ### function: fn_get_total_value_ordered.sql
 
