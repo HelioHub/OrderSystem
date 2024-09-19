@@ -530,4 +530,4 @@ Develop Customer Order Management System for candidate evaluation -  Hélio Marq
 	CRUD Items
 	````
 	
-![## Diagrama de Entidade e Relacionamento Lógico OrderSystem](https://github.com/HelioHub/OrderSystem/blob/main/images/CRUD.Item.png)
+![## Diagrama de Entidade e Relacionamento Lógico OrderSystem](https://github.com/HelioHub/OrderSystem/blob/main/images/CRUD_Item.png)
