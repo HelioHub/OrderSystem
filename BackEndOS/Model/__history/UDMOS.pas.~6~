@@ -1,0 +1,54 @@
+unit UDMOS;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MSSQL,
+  FireDAC.ConsoleUI.Wait, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf,
+  FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  FireDAC.Stan.StorageBin, FireDAC.Stan.StorageJSON, FireDAC.Phys.IBBase,
+  FireDAC.Phys.IB, FireDAC.Comp.UI;
+
+type
+  TDMOS = class(TDataModule)
+    OSConnection: TFDConnection;
+    FDGUIxWaitCursor1: TFDGUIxWaitCursor;
+    FDPhysIBDriverLink1: TFDPhysIBDriverLink;
+    FDStanStorageJSONLink1: TFDStanStorageJSONLink;
+    FDStanStorageBinLink1: TFDStanStorageBinLink;
+    OSOrders: TFDQuery;
+    OSOrderscode_order: TFDAutoIncField;
+    OSOrdersdate_order: TSQLTimeStampField;
+    OSOrderscode_client: TIntegerField;
+    OSOrdersname_client: TStringField;
+    OSOrdersaddress_client: TStringField;
+    OSOrdersphone_client: TStringField;
+    OSOrdersemail_client: TStringField;
+    OSOrdersvalue_order: TFMTBCDField;
+    OSOrdersvalueorder: TFMTBCDField;
+    OSOrder_Items: TFDQuery;
+    OSOrder_Itemscode_order_item: TFDAutoIncField;
+    OSOrder_Itemscode_item: TIntegerField;
+    OSOrder_Itemsamount_order_item: TFMTBCDField;
+    OSOrder_Itemsunitprice_order_item: TFMTBCDField;
+    OSOrder_Itemsvalue_item: TFMTBCDField;
+    OSOrder_Itemsname_item: TStringField;
+    OSOrder_Itemsdescription_item: TStringField;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DMOS: TDMOS;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.

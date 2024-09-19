@@ -12,14 +12,30 @@ uses
   FireDAC.Phys.IB, FireDAC.Comp.UI;
 
 type
-  TDataModule1 = class(TDataModule)
-    WKConnection: TFDConnection;
+  TDMOS = class(TDataModule)
+    OSConnection: TFDConnection;
     FDGUIxWaitCursor1: TFDGUIxWaitCursor;
     FDPhysIBDriverLink1: TFDPhysIBDriverLink;
     FDStanStorageJSONLink1: TFDStanStorageJSONLink;
     FDStanStorageBinLink1: TFDStanStorageBinLink;
-    WKPessoa: TFDQuery;
-    WKSequencial: TFDQuery;
+    OSOrders: TFDQuery;
+    OSOrderscode_order: TFDAutoIncField;
+    OSOrdersdate_order: TSQLTimeStampField;
+    OSOrderscode_client: TIntegerField;
+    OSOrdersname_client: TStringField;
+    OSOrdersaddress_client: TStringField;
+    OSOrdersphone_client: TStringField;
+    OSOrdersemail_client: TStringField;
+    OSOrdersvalue_order: TFMTBCDField;
+    OSOrdersvalueorder: TFMTBCDField;
+    OSOrders_Items: TFDQuery;
+    OSOrders_Itemscode_order_item: TFDAutoIncField;
+    OSOrders_Itemscode_item: TIntegerField;
+    OSOrders_Itemsamount_order_item: TFMTBCDField;
+    OSOrders_Itemsunitprice_order_item: TFMTBCDField;
+    OSOrders_Itemsvalue_item: TFMTBCDField;
+    OSOrders_Itemsname_item: TStringField;
+    OSOrders_Itemsdescription_item: TStringField;
   private
     { Private declarations }
   public
@@ -27,7 +43,7 @@ type
   end;
 
 var
-  DataModule1: TDataModule1;
+  DMOS: TDMOS;
 
 implementation
 

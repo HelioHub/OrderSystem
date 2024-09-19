@@ -74,6 +74,10 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <DCC_ExeOutput>D:\HelioMarques\projects\BackEnd\</DCC_ExeOutput>
+        <DCC_DcuOutput>D:\HelioMarques\projects\BackEnd\</DCC_DcuOutput>
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
@@ -106,7 +110,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <DesignClass>TWebModule</DesignClass>
         </DCCReference>
         <DCCReference Include="Model\UDMOS.pas">
-            <Form>DataModule1</Form>
+            <Form>DMOS</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
@@ -139,6 +143,10 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 <Source>
                     <Source Name="MainSource">BackEndOS.dpr</Source>
                 </Source>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k200.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp200.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                </Excluded_Packages>
             </Delphi.Personality>
             <Deployment/>
             <Platforms>

@@ -1,0 +1,93 @@
+unit ServerMethodsUOS;
+
+interface
+
+uses System.SysUtils, System.Classes, System.Json,
+     Datasnap.DSServer, Datasnap.DSAuth, DataSnap.DSProviderDataModuleAdapter,
+     FireDAC.Stan.StorageBin, FireDAC.Stan.StorageJSON, Data.FireDACJSONReflect,
+     Rest.JSON;
+type
+{$METHODINFO ON}
+  TServerMethods1 = class(TDataModule)
+    FDStanStorageJSONLink1: TFDStanStorageJSONLink;
+    FDStanStorageBinLink1: TFDStanStorageBinLink;
+  private
+    { Private declarations }
+    //Orders
+    procedure PrepareOrders(const pIDCodeOrder: String=''; const pLimit: String='');
+
+  public
+    { Public declarations }
+    function EchoString(Value: string): string;
+    function ReverseString(Value: string): string;
+
+    //Orders
+    function GetOrders(const pIDCodeOrder: String; const pLimit: String): TFDJSONDataSets;
+
+  end;
+{$METHODINFO OFF}
+
+implementation
+
+
+{$R *.dfm}
+
+
+uses UDMConnection;
+
+function TServerMethods1.EchoString(Value: string): string;
+begin
+  Result := Value;
+end;
+
+function TServerMethods1.ReverseString(Value: string): string;
+begin
+  Result := System.StrUtils.ReverseString(Value);
+end;
+
+function TServerMethods1.GetOrders(const pIDCodeOrder: String;
+  const pLimit: String): TFDJSONDataSets;
+begin
+  PrepareOrders(IDCodeOrder, SLimit);
+
+  Result := TFDJSONDataSets.Create;
+  TFDJSONDataSetsWriter.ListAdd(Result, DMOS.OSOrders);
+end;
+
+
+procedure TServerMethods1.PrepareOrders(const pIDCodeOrder, pLimit: String);
+var sSQL, sLimit, sIDCodeOrder: string;
+begin
+  sLimit := pLimit;
+  sIDCodeOrder := pIDCodeOrder;
+
+  if not sLimit.IsEmpty then
+     sLimit := 'TOP ('+sLimit+')'
+  else
+     sLimit := '';
+
+  if not sIDCodeOrder.IsEmpty then
+     sIDCodeOrder := 'WHERE a.[code_client] = '+sIDCodeOrder
+  else
+     sIDCodeOrder := '';
+
+
+  sSQL := 'SELECT '+sLimit+' a.[code_order] '+
+          ',a.[date_order]      '+
+          ',a.[code_client]     '+
+          ',b.[name_client]     '+
+          ',b.[address_client]  '+
+          ',b.[phone_client]    '+
+          ',b.[email_client]    '+
+          ',a.[value_order]     '+
+          ',dbo.fn_get_total_value_ordered(26) as valueorder '+
+          'FROM [dbo].[tab_orders] a '+
+          'INNER JOIN [dbo].[tab_clients] b ON b.code_client = a.code_client '+
+          sIDCodeOrder;
+
+  DMOS.OSOrders.Active   := False;
+  DMOS.OSOrders.SQL.Text := sSQL;
+end;
+
+end.
+

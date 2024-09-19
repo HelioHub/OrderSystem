@@ -3,17 +3,27 @@ unit ServerMethodsUOS;
 interface
 
 uses System.SysUtils, System.Classes, System.Json,
-    Datasnap.DSServer, Datasnap.DSAuth, DataSnap.DSProviderDataModuleAdapter;
-
+     Datasnap.DSServer, Datasnap.DSAuth, DataSnap.DSProviderDataModuleAdapter,
+     FireDAC.Stan.StorageBin, FireDAC.Stan.StorageJSON, Data.FireDACJSONReflect,
+     Rest.JSON;
 type
 {$METHODINFO ON}
   TServerMethods1 = class(TDataModule)
+    FDStanStorageJSONLink1: TFDStanStorageJSONLink;
+    FDStanStorageBinLink1: TFDStanStorageBinLink;
   private
     { Private declarations }
+    //Orders
+    procedure PrepareOrders(const pIDCodeOrder: String=''; const pLimit: String='');
+    procedure PrepareOrders_Items(const pIDCodeOrder: String=''; const pLimit: String='');
+
   public
     { Public declarations }
-    function EchoString(Value: string): string;
-    function ReverseString(Value: string): string;
+
+    //Orders
+    function GetOrders(const pIDCodeOrder: String; const pLimit: String): TFDJSONDataSets;
+    function GetOrders_Items(const pIDCodeOrder: String; const pLimit: String): TFDJSONDataSets;
+
   end;
 {$METHODINFO OFF}
 
@@ -23,16 +33,93 @@ implementation
 {$R *.dfm}
 
 
-uses System.StrUtils;
+uses UDMOS;
 
-function TServerMethods1.EchoString(Value: string): string;
+function TServerMethods1.GetOrders(const pIDCodeOrder: String;
+  const pLimit: String): TFDJSONDataSets;
 begin
-  Result := Value;
+  PrepareOrders(pIDCodeOrder, pLimit);
+
+  Result := TFDJSONDataSets.Create;
+  TFDJSONDataSetsWriter.ListAdd(Result, DMOS.OSOrders);
 end;
 
-function TServerMethods1.ReverseString(Value: string): string;
+
+function TServerMethods1.GetOrders_Items(const pIDCodeOrder,
+  pLimit: String): TFDJSONDataSets;
 begin
-  Result := System.StrUtils.ReverseString(Value);
+  PrepareOrders_Items(pIDCodeOrder, pLimit);
+
+  Result := TFDJSONDataSets.Create;
+  TFDJSONDataSetsWriter.ListAdd(Result, DMOS.OSOrders);
+end;
+
+procedure TServerMethods1.PrepareOrders(const pIDCodeOrder, pLimit: String);
+var sSQL, sLimit, sIDCodeOrder: string;
+begin
+  sLimit := pLimit;
+  sIDCodeOrder := pIDCodeOrder;
+
+  if not sLimit.IsEmpty then
+     sLimit := 'TOP ('+sLimit+')'
+  else
+     sLimit := '';
+
+  if not sIDCodeOrder.IsEmpty then
+     sIDCodeOrder := 'WHERE a.[code_order] = '+sIDCodeOrder
+  else
+     sIDCodeOrder := '';
+
+
+  sSQL := 'SELECT '+sLimit+' a.[code_order] '+
+          ' ,a.[date_order]      '+
+          ' ,a.[code_client]     '+
+          ' ,b.[name_client]     '+
+          ' ,b.[address_client]  '+
+          ' ,b.[phone_client]    '+
+          ' ,b.[email_client]    '+
+          ' ,a.[value_order]     '+
+          ' ,dbo.fn_get_total_value_ordered(a.[code_order]) as valueorder '+
+          'FROM [dbo].[tab_orders] a '+
+          'INNER JOIN [dbo].[tab_clients] b ON b.code_client = a.code_client '+
+          sIDCodeOrder+
+          ' ORDER BY [dbo].[code_order] a ';
+
+  DMOS.OSOrders.Active   := False;
+  DMOS.OSOrders.SQL.Text := sSQL;
+end;
+
+procedure TServerMethods1.PrepareOrders_Items(const pIDCodeOrder,  pLimit: String);
+var sSQL, sLimit, sIDCodeOrder: string;
+begin
+  sLimit := pLimit;
+  sIDCodeOrder := pIDCodeOrder;
+
+  if not sLimit.IsEmpty then
+     sLimit := 'TOP ('+sLimit+')'
+  else
+     sLimit := '';
+
+  if not sIDCodeOrder.IsEmpty then
+     sIDCodeOrder := 'WHERE a.[code_order] = '+sIDCodeOrder
+  else
+     sIDCodeOrder := '';
+
+
+  sSQL := 'SELECT '+sLimit+' a.[code_order_item] '+
+          ',a.[code_item]                                  '+
+          ',a.[amount_order_item]                          '+
+          ',a.[unitprice_order_item]                       '+
+          ',a.[amount_order_item] * a.[unitprice_order_item] as value_item '+
+          ',b.[name_item]                                                  '+
+          ',b.[description_item]                                           '+
+          'FROM [dbo].[tab_order_item] a                                   '+
+          'INNER JOIN [dbo].[tab_item] b ON b.[code_item] = a.[code_item]  '+
+          sIDCodeOrder+
+          ' ORDER BY [dbo].[code_order_item] a ';
+
+  DMOS.OSOrders_Items.Active   := False;
+  DMOS.OSOrders_Items.SQL.Text := sSQL;
 end;
 
 end.

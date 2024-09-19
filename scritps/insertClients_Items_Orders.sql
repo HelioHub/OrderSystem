@@ -38,7 +38,13 @@ GO
 INSERT INTO [dbo].[tab_orders] ([date_order],[value_order],[code_client]) VALUES (CAST('2024-09-17' AS DATETIME), 0, 
             (SELECT TOP (1) [code_client] FROM [ordersystem].[dbo].[tab_clients] WHERE [name_client] = 'HELIO MARQUES'))
 GO
-INSERT INTO [dbo].[tab_orders] ([date_order],[value_order],[code_client]) VALUES ('2024-09-17', 0, 
+INSERT INTO [dbo].[tab_orders] ([date_order],[value_order],[code_client]) VALUES ('2024-09-18', 0, 
+            (SELECT TOP (1) [code_client] FROM [ordersystem].[dbo].[tab_clients] WHERE [name_client] = 'LUCAS JUCÁ'))
+GO
+INSERT INTO [dbo].[tab_orders] ([date_order],[value_order],[code_client]) VALUES ('2024-09-19', 0, 
+            (SELECT TOP (1) [code_client] FROM [ordersystem].[dbo].[tab_clients] WHERE [name_client] = 'VILMA MARIA'))
+GO
+INSERT INTO [dbo].[tab_orders] ([date_order],[value_order],[code_client]) VALUES ('2024-09-19', 0, 
             (SELECT TOP (1) [code_client] FROM [ordersystem].[dbo].[tab_clients] WHERE [name_client] = 'ISABEL LEGAL'))
 GO
 
@@ -65,9 +71,22 @@ GO
 
 
 INSERT INTO [dbo].[tab_order_item] ([code_order],[code_item],[amount_order_item],[unitprice_order_item]) VALUES (
+            (SELECT TOP (1) [code_order]  FROM [ordersystem].[dbo].[tab_orders] WHERE [code_client] = (SELECT TOP (1) [code_client] FROM [ordersystem].[dbo].[tab_clients] WHERE [name_client] = 'LUCAS JUCÁ')),
+			(SELECT TOP (1) [code_item]   FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO A'),
+			2,
+			(SELECT TOP (1) [price_item]  FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO A'))
+GO
+INSERT INTO [dbo].[tab_order_item] ([code_order],[code_item],[amount_order_item],[unitprice_order_item]) VALUES (
+            (SELECT TOP (1) [code_order]  FROM [ordersystem].[dbo].[tab_orders] WHERE [code_client] = (SELECT TOP (1) [code_client] FROM [ordersystem].[dbo].[tab_clients] WHERE [name_client] = 'LUCAS JUCÁ')),
+			(SELECT TOP (1) [code_item]   FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO C'),
+			1,
+			(SELECT TOP (1) [price_item]  FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO C'))
+GO
+
+INSERT INTO [dbo].[tab_order_item] ([code_order],[code_item],[amount_order_item],[unitprice_order_item]) VALUES (
             (SELECT TOP (1) [code_order]  FROM [ordersystem].[dbo].[tab_orders] WHERE [code_client] = (SELECT TOP (1) [code_client] FROM [ordersystem].[dbo].[tab_clients] WHERE [name_client] = 'ISABEL LEGAL')),
 			(SELECT TOP (1) [code_item]   FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO B'),
-			1,
+			2,
 			(SELECT TOP (1) [price_item]  FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO B'))
 GO
 INSERT INTO [dbo].[tab_order_item] ([code_order],[code_item],[amount_order_item],[unitprice_order_item]) VALUES (
@@ -75,6 +94,14 @@ INSERT INTO [dbo].[tab_order_item] ([code_order],[code_item],[amount_order_item]
 			(SELECT TOP (1) [code_item]   FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO C'),
 			1,
 			(SELECT TOP (1) [price_item]  FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO C'))
+GO
+
+
+INSERT INTO [dbo].[tab_order_item] ([code_order],[code_item],[amount_order_item],[unitprice_order_item]) VALUES (
+            (SELECT TOP (1) [code_order]  FROM [ordersystem].[dbo].[tab_orders] WHERE [code_client] = (SELECT TOP (1) [code_client] FROM [ordersystem].[dbo].[tab_clients] WHERE [name_client] = 'VILMA MARIA')),
+			(SELECT TOP (1) [code_item]   FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO A'),
+			2,
+			(SELECT TOP (1) [price_item]  FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO A'))
 GO
 
 

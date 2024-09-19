@@ -21,7 +21,7 @@ type
     dxRibbonBackstageView1: TdxRibbonBackstageView;
     dxRibbonBackstageViewTabSheet1: TdxRibbonBackstageViewTabSheet;
     ImageList: TImageList;
-    cxILImageGrande: TcxImageList;
+    cxILImageBig: TcxImageList;
     dxBarManager: TdxBarManager;
     dxBMBLancamentos: TdxBar;
     dxBarCalculo: TdxBar;
@@ -34,6 +34,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure dxBarBCloseClick(Sender: TObject);
     procedure dxBarLargeButton3Click(Sender: TObject);
+    procedure dxBarLargeButton1Click(Sender: TObject);
   private
     { Private declarations }
 
@@ -48,9 +49,18 @@ implementation
 
 {$R *.dfm}
 
+uses UViewOrder;
+
 procedure TFOS.dxBarBCloseClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TFOS.dxBarLargeButton1Click(Sender: TObject);
+var Form: TFViewOrder;
+begin
+  Form := TFViewOrder.Create(Application);
+  Form.ShowModal;
 end;
 
 procedure TFOS.dxBarLargeButton3Click(Sender: TObject);

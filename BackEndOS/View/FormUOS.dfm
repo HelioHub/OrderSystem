@@ -4,7 +4,7 @@ object Form1: TForm1
   BorderIcons = [biSystemMenu]
   Caption = 'Server Order System DataSnap REST FireDAC'
   ClientHeight = 181
-  ClientWidth = 298
+  ClientWidth = 300
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -25,7 +25,7 @@ object Form1: TForm1
   object LWK: TLabel
     Left = 0
     Top = 0
-    Width = 298
+    Width = 300
     Height = 46
     Align = alTop
     Alignment = taCenter

@@ -1,0 +1,102 @@
+object DMOS: TDMOS
+  OldCreateOrder = False
+  Height = 400
+  Width = 720
+  object OSConnection: TFDConnection
+    Params.Strings = (
+      'Database=ordersystem'
+      'User_Name=sa'
+      'Password=197382'
+      'Server=HELIOLENOVO\SQLEXPRESS'
+      'DriverID=MSSQL')
+    LoginPrompt = False
+    Left = 49
+    Top = 24
+  end
+  object FDGUIxWaitCursor1: TFDGUIxWaitCursor
+    Provider = 'Console'
+    Left = 160
+    Top = 24
+  end
+  object FDPhysIBDriverLink1: TFDPhysIBDriverLink
+    Left = 264
+    Top = 24
+  end
+  object FDStanStorageJSONLink1: TFDStanStorageJSONLink
+    Left = 264
+    Top = 72
+  end
+  object FDStanStorageBinLink1: TFDStanStorageBinLink
+    Left = 264
+    Top = 128
+  end
+  object OSOrders: TFDQuery
+    Connection = OSConnection
+    SQL.Strings = (
+      'SELECT TOP (1000) a.[code_order]'
+      '      ,a.[date_order]'
+      '      ,a.[code_client]'
+      '      ,b.[name_client]'
+      '      ,b.[address_client]'
+      '      ,b.[phone_client]'
+      '      ,b.[email_client]'
+      '      ,a.[value_order]'
+      '      ,dbo.fn_get_total_value_ordered(26) as valueorder '
+      'FROM [dbo].[tab_orders] a'
+      
+        'INNER JOIN [dbo].[tab_clients] b ON b.code_client = a.code_clien' +
+        't '
+      '')
+    Left = 49
+    Top = 76
+    object OSOrderscode_order: TFDAutoIncField
+      FieldName = 'code_order'
+      Origin = 'code_order'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object OSOrdersdate_order: TSQLTimeStampField
+      FieldName = 'date_order'
+      Origin = 'date_order'
+      Required = True
+    end
+    object OSOrderscode_client: TIntegerField
+      FieldName = 'code_client'
+      Origin = 'code_client'
+      Required = True
+    end
+    object OSOrdersname_client: TStringField
+      FieldName = 'name_client'
+      Origin = 'name_client'
+      Required = True
+      Size = 100
+    end
+    object OSOrdersaddress_client: TStringField
+      FieldName = 'address_client'
+      Origin = 'address_client'
+      Size = 250
+    end
+    object OSOrdersphone_client: TStringField
+      FieldName = 'phone_client'
+      Origin = 'phone_client'
+    end
+    object OSOrdersemail_client: TStringField
+      FieldName = 'email_client'
+      Origin = 'email_client'
+      Size = 50
+    end
+    object OSOrdersvalue_order: TFMTBCDField
+      FieldName = 'value_order'
+      Origin = 'value_order'
+      Precision = 20
+      Size = 4
+    end
+    object OSOrdersvalueorder: TFMTBCDField
+      FieldName = 'valueorder'
+      Origin = 'valueorder'
+      ReadOnly = True
+      Precision = 20
+      Size = 4
+    end
+  end
+end

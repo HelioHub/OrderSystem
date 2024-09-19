@@ -7,7 +7,7 @@ pw: 1x9x7x3x8x2x
 
 
 - CRIAR VIEWS VISANDO OS CLUSTER.
-- 
+- aplicação mult-tier
 
 ---------
 - Revisar
@@ -97,3 +97,10 @@ Tipo de contratação
 Tempo integral
 Tipo de posição
 Efectiva
+
+
+POO
+-ENCAPSULAMENTO
+-ABSTRAÇÃO CLASSE -OBJETO
+-HERANÇA
+-POLIMORFISMO 

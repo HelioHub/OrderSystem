@@ -11,7 +11,7 @@ object FOS: TFOS
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poScreenCenter
   OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
@@ -349,7 +349,7 @@ object FOS: TFOS
       0000F0FF000000000000FFFF0000000000000000000000000000000000000000
       000000000000}
   end
-  object cxILImageGrande: TcxImageList
+  object cxILImageBig: TcxImageList
     SourceDPI = 96
     Height = 32
     Width = 32
@@ -3570,7 +3570,7 @@ object FOS: TFOS
       True)
     DockColor = clDefault
     ImageOptions.Images = ImageList
-    ImageOptions.LargeImages = cxILImageGrande
+    ImageOptions.LargeImages = cxILImageBig
     PopupMenuLinks = <>
     UseSystemFont = True
     Left = 423
@@ -3645,6 +3645,7 @@ object FOS: TFOS
       Category = 1
       Hint = 'Orders'
       Visible = ivAlways
+      OnClick = dxBarLargeButton1Click
       LargeImageIndex = 14
       SyncImageIndex = False
       ImageIndex = 13
@@ -3673,8 +3674,7 @@ object FOS: TFOS
       Category = 2
       Hint = 'Close App'
       Visible = ivAlways
-      ImageIndex = 49
-      LargeImageIndex = 55
+      ImageIndex = 3
       OnClick = dxBarBCloseClick
     end
   end
