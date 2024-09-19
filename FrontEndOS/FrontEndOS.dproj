@@ -88,10 +88,6 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="View\UOS.pas">
-            <Form>Form2</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="View\UDataOrder.pas">
             <Form>FDataOrder</Form>
             <FormType>dfm</FormType>
@@ -106,6 +102,10 @@
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="Controller\ClientClassesOS.pas"/>
+        <DCCReference Include="View\UOS.pas">
+            <Form>FOS</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

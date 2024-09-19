@@ -90,29 +90,29 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="View\FormUOS.pas">
-            <Form>Form1</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Controller\ServerMethodsUOS.pas">
-            <Form>ServerMethods1</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="View\ServerContainerUOS.pas">
-            <Form>ServerContainer1</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="View\WebModuleUOS.pas">
-            <Form>WebModule1</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TWebModule</DesignClass>
-        </DCCReference>
         <DCCReference Include="Model\UDMOS.pas">
             <Form>DMOS</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="View\UServerOS.pas">
+            <Form>FServerOS</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Controller\ServerMethodsOS.pas">
+            <Form>ServerMethodsOS</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="View\ServerContainerOS.pas">
+            <Form>ServerContainerOS</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="View\WebModuleOS.pas">
+            <Form>WebModuleOS</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TWebModule</DesignClass>
         </DCCReference>
         <None Include="js\base64.js"/>
         <None Include="js\ServerFunctionExecutor.js"/>

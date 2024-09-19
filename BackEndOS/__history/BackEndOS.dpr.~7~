@@ -1,0 +1,23 @@
+program BackEndOS;
+{$APPTYPE GUI}
+
+uses
+  Vcl.Forms,
+  Web.WebReq,
+  IdHTTPWebBrokerBridge,
+  FormUOS in 'View\FormUOS.pas' {Form1},
+  ServerMethodsUOS in 'Controller\ServerMethodsUOS.pas' {ServerMethods1: TDataModule},
+  ServerContainerUOS in 'View\ServerContainerUOS.pas' {ServerContainerOS: TDataModule},
+  WebModuleUOS in 'View\WebModuleUOS.pas' {WebModuleOS: TWebModule},
+  UDMOS in 'Model\UDMOS.pas' {DMOS: TDataModule};
+
+{$R *.res}
+
+begin
+  if WebRequestHandler <> nil then
+    WebRequestHandler.WebModuleClass := WebModuleClass;
+  Application.Initialize;
+  Application.CreateForm(TFormOS, FormOS);
+  Application.CreateForm(TDMOS, DMOS);
+  Application.Run;
+end.

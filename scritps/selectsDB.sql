@@ -47,7 +47,8 @@ SELECT TOP (1000) a.[code_order]
 FROM [dbo].[tab_orders] a
 INNER JOIN [dbo].[tab_clients] b ON b.code_client = a.code_client 
 
-SELECT TOP (1000) a.[code_order_item]
+SELECT TOP (1000) a.[code_order]
+	  ,a.[code_order_item]
       ,a.[code_item]
       ,a.[amount_order_item]
       ,a.[unitprice_order_item]

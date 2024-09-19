@@ -9,11 +9,11 @@
     <Transaction>2024/09/18 07:56:05.000.891,=D:\HelioMarques\projects\OrderSystem\BackEndOS\js\json2.js</Transaction>
     <Transaction>2024/09/18 07:56:05.000.722,=D:\HelioMarques\projects\OrderSystem\BackEndOS\js\base64.js</Transaction>
     <Transaction>2024/09/18 07:56:06.000.011,=D:\HelioMarques\projects\OrderSystem\BackEndOS\js\CallbackFramework.js</Transaction>
-    <Transaction>2024/09/18 07:56:06.000.138,=D:\HelioMarques\projects\OrderSystem\BackEndOS\js\json2-min.js</Transaction>
     <Transaction>2024/09/18 07:56:06.000.178,=D:\HelioMarques\projects\OrderSystem\BackEndOS\js\ServerFunctionExecutor-min.js</Transaction>
     <Transaction>2024/09/18 07:56:06.000.100,=D:\HelioMarques\projects\OrderSystem\BackEndOS\js\base64-min.js</Transaction>
-    <Transaction>2024/09/18 07:56:06.000.056,=D:\HelioMarques\projects\OrderSystem\BackEndOS\js\ServerFunctions.js</Transaction>
+    <Transaction>2024/09/18 07:56:06.000.138,=D:\HelioMarques\projects\OrderSystem\BackEndOS\js\json2-min.js</Transaction>
     <Transaction>2024/09/18 07:56:06.000.226,=D:\HelioMarques\projects\OrderSystem\BackEndOS\js\CallbackFramework-min.js</Transaction>
+    <Transaction>2024/09/18 07:56:06.000.056,=D:\HelioMarques\projects\OrderSystem\BackEndOS\js\ServerFunctions.js</Transaction>
     <Transaction>2024/09/18 07:56:36.000.523,D:\HelioMarques\projects\OrderSystem\BackEndOS\FormUOS.pas=D:\HelioMarques\projects\OrderSystem\BackEndOS\FormUnit1.pas</Transaction>
     <Transaction>2024/09/18 07:56:36.000.523,D:\HelioMarques\projects\OrderSystem\BackEndOS\FormUOS.dfm=D:\HelioMarques\projects\OrderSystem\BackEndOS\FormUnit1.dfm</Transaction>
     <Transaction>2024/09/18 07:56:41.000.885,D:\HelioMarques\projects\OrderSystem\BackEndOS\WebModuleUOS.dfm=D:\HelioMarques\projects\OrderSystem\BackEndOS\WebModuleUnit1.dfm</Transaction>
@@ -29,18 +29,34 @@
     <Transaction>2024/09/18 08:02:21.000.606,D:\HelioMarques\projects\OrderSystem\FrontEndOS\UOS.dfm=D:\HelioMarques\projects\OrderSystem\BackEndOS\Unit2.dfm</Transaction>
     <Transaction>2024/09/18 08:02:37.000.581,D:\HelioMarques\projects\OrderSystem\FrontEndOS\UOS.pas=</Transaction>
     <Transaction>2024/09/18 08:03:14.000.868,=D:\HelioMarques\projects\OrderSystem\BackEndOS\Unit2.pas</Transaction>
-    <Transaction>2024/09/18 08:32:22.419,D:\HelioMarques\projects\OrderSystem\BackEndOS\View\FormUOS.dfm=D:\HelioMarques\projects\OrderSystem\BackEndOS\FormUOS.dfm</Transaction>
-    <Transaction>2024/09/18 08:32:22.419,D:\HelioMarques\projects\OrderSystem\BackEndOS\View\FormUOS.pas=D:\HelioMarques\projects\OrderSystem\BackEndOS\FormUOS.pas</Transaction>
-    <Transaction>2024/09/18 08:33:17.770,D:\HelioMarques\projects\OrderSystem\BackEndOS\View\ServerContainerUOS.pas=D:\HelioMarques\projects\OrderSystem\BackEndOS\ServerContainerUOS.pas</Transaction>
-    <Transaction>2024/09/18 08:33:17.770,D:\HelioMarques\projects\OrderSystem\BackEndOS\View\ServerContainerUOS.dfm=D:\HelioMarques\projects\OrderSystem\BackEndOS\ServerContainerUOS.dfm</Transaction>
-    <Transaction>2024/09/18 08:34:13.075,D:\HelioMarques\projects\OrderSystem\BackEndOS\View\WebModuleUOS.pas=D:\HelioMarques\projects\OrderSystem\BackEndOS\WebModuleUOS.pas</Transaction>
-    <Transaction>2024/09/18 08:34:13.075,D:\HelioMarques\projects\OrderSystem\BackEndOS\View\WebModuleUOS.dfm=D:\HelioMarques\projects\OrderSystem\BackEndOS\WebModuleUOS.dfm</Transaction>
-    <Transaction>2024/09/18 08:34:32.601,D:\HelioMarques\projects\OrderSystem\BackEndOS\Controller\ServerMethodsUOS.pas=D:\HelioMarques\projects\OrderSystem\BackEndOS\ServerMethodsUOS.pas</Transaction>
-    <Transaction>2024/09/18 08:34:32.601,D:\HelioMarques\projects\OrderSystem\BackEndOS\Controller\ServerMethodsUOS.dfm=D:\HelioMarques\projects\OrderSystem\BackEndOS\ServerMethodsUOS.dfm</Transaction>
-    <Transaction>2024/09/18 08:35:13.507,=D:\HelioMarques\projects\OrderSystem\BackEndOS\Unit1.pas</Transaction>
-    <Transaction>2024/09/18 08:35:34.613,D:\HelioMarques\projects\OrderSystem\BackEndOS\Model\UDMOS.pas=D:\HelioMarques\projects\OrderSystem\BackEndOS\Unit1.pas</Transaction>
-    <Transaction>2024/09/18 08:35:34.613,D:\HelioMarques\projects\OrderSystem\BackEndOS\Model\UDMOS.dfm=D:\HelioMarques\projects\OrderSystem\BackEndOS\Unit1.dfm</Transaction>
-  </Transactions>  <ProjectSortOrder AutoSort="0" SortType="0">
+    <Transaction>2024/09/18 08:32:22.000.419,D:\HelioMarques\projects\OrderSystem\BackEndOS\View\FormUOS.pas=D:\HelioMarques\projects\OrderSystem\BackEndOS\FormUOS.pas</Transaction>
+    <Transaction>2024/09/18 08:32:22.000.419,D:\HelioMarques\projects\OrderSystem\BackEndOS\View\FormUOS.dfm=D:\HelioMarques\projects\OrderSystem\BackEndOS\FormUOS.dfm</Transaction>
+    <Transaction>2024/09/18 08:33:17.000.770,D:\HelioMarques\projects\OrderSystem\BackEndOS\View\ServerContainerUOS.pas=D:\HelioMarques\projects\OrderSystem\BackEndOS\ServerContainerUOS.pas</Transaction>
+    <Transaction>2024/09/18 08:33:17.000.770,D:\HelioMarques\projects\OrderSystem\BackEndOS\View\ServerContainerUOS.dfm=D:\HelioMarques\projects\OrderSystem\BackEndOS\ServerContainerUOS.dfm</Transaction>
+    <Transaction>2024/09/18 08:34:13.000.075,D:\HelioMarques\projects\OrderSystem\BackEndOS\View\WebModuleUOS.dfm=D:\HelioMarques\projects\OrderSystem\BackEndOS\WebModuleUOS.dfm</Transaction>
+    <Transaction>2024/09/18 08:34:13.000.075,D:\HelioMarques\projects\OrderSystem\BackEndOS\View\WebModuleUOS.pas=D:\HelioMarques\projects\OrderSystem\BackEndOS\WebModuleUOS.pas</Transaction>
+    <Transaction>2024/09/18 08:34:32.000.601,D:\HelioMarques\projects\OrderSystem\BackEndOS\Controller\ServerMethodsUOS.pas=D:\HelioMarques\projects\OrderSystem\BackEndOS\ServerMethodsUOS.pas</Transaction>
+    <Transaction>2024/09/18 08:34:32.000.601,D:\HelioMarques\projects\OrderSystem\BackEndOS\Controller\ServerMethodsUOS.dfm=D:\HelioMarques\projects\OrderSystem\BackEndOS\ServerMethodsUOS.dfm</Transaction>
+    <Transaction>2024/09/18 08:35:13.000.507,=D:\HelioMarques\projects\OrderSystem\BackEndOS\Unit1.pas</Transaction>
+    <Transaction>2024/09/18 08:35:34.000.613,D:\HelioMarques\projects\OrderSystem\BackEndOS\Model\UDMOS.dfm=D:\HelioMarques\projects\OrderSystem\BackEndOS\Unit1.dfm</Transaction>
+    <Transaction>2024/09/18 08:35:34.000.613,D:\HelioMarques\projects\OrderSystem\BackEndOS\Model\UDMOS.pas=D:\HelioMarques\projects\OrderSystem\BackEndOS\Unit1.pas</Transaction>
+    <Transaction>2024/09/19 06:44:28.000.233,D:\HelioMarques\projects\OrderSystem\BackEndOS\View\UServerOS.pas=D:\HelioMarques\projects\OrderSystem\BackEndOS\View\FormUOS.pas</Transaction>
+    <Transaction>2024/09/19 06:44:28.000.233,D:\HelioMarques\projects\OrderSystem\BackEndOS\View\UServerOS.dfm=D:\HelioMarques\projects\OrderSystem\BackEndOS\View\FormUOS.dfm</Transaction>
+    <Transaction>2024/09/19 06:46:50.000.894,D:\HelioMarques\projects\OrderSystem\BackEndOS\View\UServerOS.pas=</Transaction>
+    <Transaction>2024/09/19 06:48:46.000.226,=D:\HelioMarques\projects\OrderSystem\BackEndOS\View\UServerOS.pas</Transaction>
+    <Transaction>2024/09/19 06:55:16.000.937,D:\HelioMarques\projects\OrderSystem\BackEndOS\View\ServerContainerUOS.pas=</Transaction>
+    <Transaction>2024/09/19 06:55:24.000.120,D:\HelioMarques\projects\OrderSystem\BackEndOS\Controller\ServerMethodsUOS.pas=</Transaction>
+    <Transaction>2024/09/19 06:55:35.000.895,D:\HelioMarques\projects\OrderSystem\BackEndOS\View\WebModuleUOS.pas=</Transaction>
+    <Transaction>2024/09/19 06:56:55.000.013,=D:\HelioMarques\projects\OrderSystem\BackEndOS\Controller\ServerMethodsUOS.pas</Transaction>
+    <Transaction>2024/09/19 06:57:36.000.580,D:\HelioMarques\projects\OrderSystem\BackEndOS\Controller\ServerMethodsUOS.pas=</Transaction>
+    <Transaction>2024/09/19 07:00:51.000.833,=D:\HelioMarques\projects\OrderSystem\BackEndOS\Controller\ServerMethodsOS.pas</Transaction>
+    <Transaction>2024/09/19 07:01:08.000.132,=D:\HelioMarques\projects\OrderSystem\BackEndOS\View\WebModuleOS.pas</Transaction>
+    <Transaction>2024/09/19 07:01:08.000.076,=D:\HelioMarques\projects\OrderSystem\BackEndOS\View\ServerContainerOS.pas</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="Controller"/>
+    <File Path="Controller\ServerMethodsOS.pas"/>
+    <File Path="Controller\ServerMethodsOS.dfm"/>
     <File Path="js"/>
     <File Path="js\base64-min.js"/>
     <File Path="js\base64.js"/>
@@ -51,18 +67,15 @@
     <File Path="js\ServerFunctionExecutor-min.js"/>
     <File Path="js\ServerFunctionExecutor.js"/>
     <File Path="js\ServerFunctions.js"/>
-    <File Path="View"/>
-    <File Path="View\FormUOS.pas"/>
-    <File Path="View\FormUOS.dfm"/>
-    <File Path="View\ServerContainerUOS.pas"/>
-    <File Path="View\ServerContainerUOS.dfm"/>
-    <File Path="View\WebModuleUOS.pas"/>
-    <File Path="View\WebModuleUOS.dfm"/>
-    <File Path="Controller"/>
-    <File Path="Controller\ServerMethodsUOS.pas"/>
-    <File Path="Controller\ServerMethodsUOS.dfm"/>
     <File Path="Model"/>
     <File Path="Model\UDMOS.pas"/>
     <File Path="Model\UDMOS.dfm"/>
+    <File Path="View"/>
+    <File Path="View\UServerOS.pas"/>
+    <File Path="View\UServerOS.dfm"/>
+    <File Path="View\ServerContainerOS.pas"/>
+    <File Path="View\ServerContainerOS.dfm"/>
+    <File Path="View\WebModuleOS.pas"/>
+    <File Path="View\WebModuleOS.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>

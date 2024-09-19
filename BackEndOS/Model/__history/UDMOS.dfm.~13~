@@ -9,7 +9,6 @@ object DMOS: TDMOS
       'Password=197382'
       'Server=HELIOLENOVO\SQLEXPRESS'
       'DriverID=MSSQL')
-    Connected = True
     LoginPrompt = False
     Left = 49
     Top = 24
@@ -100,7 +99,7 @@ object DMOS: TDMOS
       Size = 4
     end
   end
-  object OSOrder_Item: TFDQuery
+  object OSOrders_Items: TFDQuery
     Connection = OSConnection
     SQL.Strings = (
       'SELECT TOP (1000) a.[code_order_item]'
@@ -117,43 +116,43 @@ object DMOS: TDMOS
       '')
     Left = 49
     Top = 135
-    object OSOrder_Itemcode_order_item: TFDAutoIncField
+    object OSOrders_Itemscode_order_item: TFDAutoIncField
       FieldName = 'code_order_item'
       Origin = 'code_order_item'
       ProviderFlags = [pfInWhere, pfInKey]
       ReadOnly = True
     end
-    object OSOrder_Itemcode_item: TIntegerField
+    object OSOrders_Itemscode_item: TIntegerField
       FieldName = 'code_item'
       Origin = 'code_item'
       Required = True
     end
-    object OSOrder_Itemamount_order_item: TFMTBCDField
+    object OSOrders_Itemsamount_order_item: TFMTBCDField
       FieldName = 'amount_order_item'
       Origin = 'amount_order_item'
       Precision = 20
       Size = 4
     end
-    object OSOrder_Itemunitprice_order_item: TFMTBCDField
+    object OSOrders_Itemsunitprice_order_item: TFMTBCDField
       FieldName = 'unitprice_order_item'
       Origin = 'unitprice_order_item'
       Precision = 20
       Size = 4
     end
-    object OSOrder_Itemvalue_item: TFMTBCDField
+    object OSOrders_Itemsvalue_item: TFMTBCDField
       FieldName = 'value_item'
       Origin = 'value_item'
       ReadOnly = True
       Precision = 38
       Size = 6
     end
-    object OSOrder_Itemname_item: TStringField
+    object OSOrders_Itemsname_item: TStringField
       FieldName = 'name_item'
       Origin = 'name_item'
       Required = True
       Size = 100
     end
-    object OSOrder_Itemdescription_item: TStringField
+    object OSOrders_Itemsdescription_item: TStringField
       FieldName = 'description_item'
       Origin = 'description_item'
       Size = 250

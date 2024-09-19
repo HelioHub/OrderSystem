@@ -6,10 +6,7 @@ uses
   Web.WebReq,
   IdHTTPWebBrokerBridge,
   UDMOS in 'Model\UDMOS.pas' {DMOS: TDataModule},
-  UServerOS in 'View\UServerOS.pas' {FServerOS},
-  ServerMethodsOS in 'Controller\ServerMethodsOS.pas' {ServerMethodsOS: TDataModule},
-  ServerContainerOS in 'View\ServerContainerOS.pas' {ServerContainerOS: TDataModule},
-  WebModuleOS in 'View\WebModuleOS.pas' {WebModuleOS: TWebModule};
+  UServerOS in 'View\UServerOS.pas' {FServerOS};
 
 {$R *.res}
 

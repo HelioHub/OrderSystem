@@ -48,7 +48,7 @@ object DMOS: TDMOS
         't '
       '')
     Left = 49
-    Top = 76
+    Top = 81
     object OSOrderscode_order: TFDAutoIncField
       FieldName = 'code_order'
       Origin = 'code_order'
@@ -97,6 +97,65 @@ object DMOS: TDMOS
       ReadOnly = True
       Precision = 20
       Size = 4
+    end
+  end
+  object OSOrders_Items: TFDQuery
+    Connection = OSConnection
+    SQL.Strings = (
+      'SELECT TOP (1000) a.[code_order_item]'
+      '      ,a.[code_item]'
+      '      ,a.[amount_order_item]'
+      '      ,a.[unitprice_order_item]'
+      
+        '      ,a.[amount_order_item] * a.[unitprice_order_item] as value' +
+        '_item'
+      '      ,b.[name_item]'
+      '      ,b.[description_item]'
+      'FROM [dbo].[tab_order_item] a'
+      'INNER JOIN [dbo].[tab_item] b ON b.[code_item] = a.[code_item] '
+      '')
+    Left = 49
+    Top = 135
+    object OSOrders_Itemscode_order_item: TFDAutoIncField
+      FieldName = 'code_order_item'
+      Origin = 'code_order_item'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object OSOrders_Itemscode_item: TIntegerField
+      FieldName = 'code_item'
+      Origin = 'code_item'
+      Required = True
+    end
+    object OSOrders_Itemsamount_order_item: TFMTBCDField
+      FieldName = 'amount_order_item'
+      Origin = 'amount_order_item'
+      Precision = 20
+      Size = 4
+    end
+    object OSOrders_Itemsunitprice_order_item: TFMTBCDField
+      FieldName = 'unitprice_order_item'
+      Origin = 'unitprice_order_item'
+      Precision = 20
+      Size = 4
+    end
+    object OSOrders_Itemsvalue_item: TFMTBCDField
+      FieldName = 'value_item'
+      Origin = 'value_item'
+      ReadOnly = True
+      Precision = 38
+      Size = 6
+    end
+    object OSOrders_Itemsname_item: TStringField
+      FieldName = 'name_item'
+      Origin = 'name_item'
+      Required = True
+      Size = 100
+    end
+    object OSOrders_Itemsdescription_item: TStringField
+      FieldName = 'description_item'
+      Origin = 'description_item'
+      Size = 250
     end
   end
 end

@@ -1,0 +1,126 @@
+unit ServerMethodsOS;
+
+interface
+
+uses System.SysUtils, System.Classes, System.Json,
+     Datasnap.DSServer, Datasnap.DSAuth, DataSnap.DSProviderDataModuleAdapter,
+     FireDAC.Stan.StorageBin, FireDAC.Stan.StorageJSON, Data.FireDACJSONReflect,
+     Rest.JSON;
+type
+{$METHODINFO ON}
+  TServerMethodsOS = class(TDataModule)
+    FDStanStorageJSONLink1: TFDStanStorageJSONLink;
+    FDStanStorageBinLink1: TFDStanStorageBinLink;
+  private
+    { Private declarations }
+    //Orders
+    procedure PrepareOrders(const pIDCodeOrder: String=''; const pLimit: String='');
+    procedure PrepareOrders_Items(const pIDCodeOrder: String=''; const pLimit: String='');
+
+  public
+    { Public declarations }
+
+    //Orders
+    function GetOrders(const pIDCodeOrder: String; const pLimit: String): TFDJSONDataSets;
+    function GetOrders_Items(const pIDCodeOrder: String; const pLimit: String): TFDJSONDataSets;
+
+  end;
+{$METHODINFO OFF}
+
+implementation
+
+
+{$R *.dfm}
+
+
+uses UDMOS;
+
+function TServerMethodsOS.GetOrders(const pIDCodeOrder: String;
+  const pLimit: String): TFDJSONDataSets;
+begin
+  PrepareOrders(pIDCodeOrder, pLimit);
+
+  Result := TFDJSONDataSets.Create;
+  TFDJSONDataSetsWriter.ListAdd(Result, DMOS.OSOrders);
+end;
+
+
+function TServerMethodsOS.GetOrders_Items(const pIDCodeOrder,
+  pLimit: String): TFDJSONDataSets;
+begin
+  PrepareOrders_Items(pIDCodeOrder, pLimit);
+
+  Result := TFDJSONDataSets.Create;
+  TFDJSONDataSetsWriter.ListAdd(Result, DMOS.OSOrders);
+end;
+
+procedure TServerMethodsOS.PrepareOrders(const pIDCodeOrder, pLimit: String);
+var sSQL, sLimit, sIDCodeOrder: string;
+begin
+  sLimit := pLimit;
+  sIDCodeOrder := pIDCodeOrder;
+
+  if not sLimit.IsEmpty then
+     sLimit := 'TOP ('+sLimit+')'
+  else
+     sLimit := '';
+
+  if not sIDCodeOrder.IsEmpty then
+     sIDCodeOrder := 'WHERE a.[code_order] = '+sIDCodeOrder
+  else
+     sIDCodeOrder := '';
+
+
+  sSQL := 'SELECT '+sLimit+' a.[code_order] '+
+          ' ,a.[date_order]      '+
+          ' ,a.[code_client]     '+
+          ' ,b.[name_client]     '+
+          ' ,b.[address_client]  '+
+          ' ,b.[phone_client]    '+
+          ' ,b.[email_client]    '+
+          ' ,a.[value_order]     '+
+          ' ,dbo.fn_get_total_value_ordered(a.[code_order]) as valueorder '+
+          'FROM [dbo].[tab_orders] a '+
+          'INNER JOIN [dbo].[tab_clients] b ON b.code_client = a.code_client '+
+          sIDCodeOrder+
+          ' ORDER BY [dbo].[code_order] ';
+
+  DMOS.OSOrders.Active   := False;
+  DMOS.OSOrders.SQL.Text := sSQL;
+end;
+
+procedure TServerMethodsOS.PrepareOrders_Items(const pIDCodeOrder,  pLimit: String);
+var sSQL, sLimit, sIDCodeOrder: string;
+begin
+  sLimit := pLimit;
+  sIDCodeOrder := pIDCodeOrder;
+
+  if not sLimit.IsEmpty then
+     sLimit := 'TOP ('+sLimit+')'
+  else
+     sLimit := '';
+
+  if not sIDCodeOrder.IsEmpty then
+     sIDCodeOrder := 'WHERE a.[code_order] = '+sIDCodeOrder
+  else
+     sIDCodeOrder := '';
+
+
+  sSQL := 'SELECT '+sLimit+' a.[code_order_item] '+
+          ',a.[code_item]                                  '+
+          ',a.[amount_order_item]                          '+
+          ',a.[unitprice_order_item]                       '+
+          ',a.[amount_order_item] * a.[unitprice_order_item] as value_item '+
+          ',b.[name_item]                                                  '+
+          ',b.[description_item]                                           '+
+          'FROM [dbo].[tab_order_item] a                                   '+
+          'INNER JOIN [dbo].[tab_item] b ON b.[code_item] = a.[code_item]  '+
+          sIDCodeOrder+
+          ' ORDER BY [dbo].[code_item] ';
+
+  DMOS.OSOrders_Items.Active   := False;
+  DMOS.OSOrders_Items.SQL.Text := sSQL;
+end;
+
+end.
+

@@ -40,8 +40,8 @@ type
     { Private declarations }
 
     FInstanceOwner: Boolean;
-    FServerMethods1Client: TServerMethodsOSClient;
-    function GetServerMethods1Client: TServerMethodsOSClient;
+    FServerMethods1Client: TServerMethods1Client;
+    function GetServerMethods1Client: TServerMethods1Client;
 public
     { Public declarations }
     procedure LoadOrders(const pIDCodeOrder: string; const pLimit: string);
@@ -50,7 +50,7 @@ public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     property InstanceOwner: Boolean read FInstanceOwner write FInstanceOwner;
-    property ServerMethods1Client: TServerMethodsOSClient read GetServerMethods1Client write FServerMethods1Client;
+    property ServerMethods1Client: TServerMethods1Client read GetServerMethods1Client write FServerMethods1Client;
   end;
 
 var
@@ -76,10 +76,10 @@ begin
   inherited;
 end;
 
-function TDMConnection.GetServerMethods1Client: TServerMethodsOSClient;
+function TDMConnection.GetServerMethods1Client: TServerMethods1Client;
 begin
   if FServerMethods1Client = nil then
-    FServerMethods1Client:= TServerMethodsOSClient.Create(DSRestConnectionOS, FInstanceOwner);
+    FServerMethods1Client:= TServerMethods1Client.Create(DSRestConnectionOS, FInstanceOwner);
   Result := FServerMethods1Client;
 end;
 

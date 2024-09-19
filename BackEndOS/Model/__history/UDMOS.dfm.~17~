@@ -9,6 +9,7 @@ object DMOS: TDMOS
       'Password=197382'
       'Server=HELIOLENOVO\SQLEXPRESS'
       'DriverID=MSSQL')
+    Connected = True
     LoginPrompt = False
     Left = 49
     Top = 24

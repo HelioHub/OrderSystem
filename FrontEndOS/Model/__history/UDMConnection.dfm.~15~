@@ -1777,7 +1777,7 @@ object DMConnection: TDMConnection
   end
   object DSRestConnectionOS: TDSRestConnection
     Host = 'localhost'
-    Port = 9090
+    Port = 9999
     LoginPrompt = False
     Left = 48
     Top = 40
@@ -1805,5 +1805,99 @@ object DMConnection: TDMConnection
     StoreDefs = True
     Left = 48
     Top = 104
+    object MemTableOrderscode_order: TFDAutoIncField
+      DisplayLabel = 'Code Order'
+      FieldName = 'code_order'
+      ReadOnly = True
+    end
+    object MemTableOrdersdate_order: TSQLTimeStampField
+      Alignment = taCenter
+      DisplayLabel = 'Date Order'
+      FieldName = 'date_order'
+      ReadOnly = True
+    end
+    object MemTableOrderscode_client: TIntegerField
+      Alignment = taLeftJustify
+      DisplayLabel = 'Code Client'
+      FieldName = 'code_client'
+      ReadOnly = True
+    end
+    object MemTableOrdersname_client: TStringField
+      FieldName = 'name_client'
+      ReadOnly = True
+      Size = 100
+    end
+    object MemTableOrdersaddress_client: TStringField
+      FieldName = 'address_client'
+      ReadOnly = True
+      Size = 250
+    end
+    object MemTableOrdersphone_client: TStringField
+      FieldName = 'phone_client'
+      ReadOnly = True
+    end
+    object MemTableOrdersemail_client: TStringField
+      FieldName = 'email_client'
+      ReadOnly = True
+      Size = 50
+    end
+    object MemTableOrdersvalue_order: TFMTBCDField
+      FieldName = 'value_order'
+      ReadOnly = True
+    end
+    object MemTableOrdersvalueorder: TFMTBCDField
+      DisplayLabel = 'Value Order'
+      FieldName = 'valueorder'
+      ReadOnly = True
+      currency = True
+    end
+  end
+  object MemTableOrders_Items: TFDMemTable
+    FieldDefs = <>
+    CachedUpdates = True
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvPersistent, rvSilentMode]
+    ResourceOptions.Persistent = True
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired]
+    UpdateOptions.CheckRequired = False
+    StoreDefs = True
+    Left = 48
+    Top = 160
+    object MemTableOrders_Itemscode_order_item: TFDAutoIncField
+      FieldName = 'code_order_item'
+      ReadOnly = True
+    end
+    object MemTableOrders_Itemscode_item: TIntegerField
+      DisplayLabel = 'Code Item'
+      FieldName = 'code_item'
+    end
+    object MemTableOrders_Itemsamount_order_item: TFMTBCDField
+      DisplayLabel = 'Amount'
+      FieldName = 'amount_order_item'
+      DisplayFormat = '###,##0.00'
+    end
+    object MemTableOrders_Itemsunitprice_order_item: TFMTBCDField
+      DisplayLabel = 'Price '
+      FieldName = 'unitprice_order_item'
+      currency = True
+    end
+    object MemTableOrders_Itemsvalue_item: TFMTBCDField
+      DisplayLabel = 'Value Item'
+      FieldName = 'value_item'
+      currency = True
+    end
+    object MemTableOrders_Itemsname_item: TStringField
+      DisplayLabel = 'Name Item'
+      FieldName = 'name_item'
+      Size = 100
+    end
+    object MemTableOrders_Itemsdescription_item: TStringField
+      DisplayLabel = 'Description Item'
+      FieldName = 'description_item'
+      Size = 250
+    end
   end
 end

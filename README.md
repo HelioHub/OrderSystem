@@ -406,3 +406,16 @@ Develop Customer Order Management System for candidate evaluation -  Hélio Marq
 	  RETURN @vTotalValue;
 	END
 	GO
+
+### Server, Main and Order Screen 
+	````
+	Server and Main Screen
+	````
+	
+![## Diagrama de Entidade e Relacionamento Lógico OrderSystem](https://github.com/HelioHub/OrderSystem/blob/main/images/aplicacaoDataSnapRest.png)
+
+	````
+	Order Screen
+	````
+	
+![## Diagrama de Entidade e Relacionamento Lógico OrderSystem](https://github.com/HelioHub/OrderSystem/blob/main/images/aplicacaoDataSnapRest2.png)
