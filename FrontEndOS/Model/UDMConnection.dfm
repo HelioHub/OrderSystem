@@ -1902,4 +1902,36 @@ object DMConnection: TDMConnection
       Size = 250
     end
   end
+  object MemTableItems: TFDMemTable
+    FieldDefs = <>
+    CachedUpdates = True
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvPersistent, rvSilentMode]
+    ResourceOptions.Persistent = True
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired]
+    UpdateOptions.CheckRequired = False
+    StoreDefs = True
+    Left = 48
+    Top = 224
+    object MemTableItemscode_item: TFDAutoIncField
+      FieldName = 'code_item'
+      ReadOnly = True
+    end
+    object MemTableItemsname_item: TStringField
+      FieldName = 'name_item'
+      Size = 100
+    end
+    object MemTableItemsdescription_item: TStringField
+      FieldName = 'description_item'
+      Size = 250
+    end
+    object MemTableItemsprice_item: TFMTBCDField
+      FieldName = 'price_item'
+      currency = True
+      Size = 0
+    end
+  end
 end

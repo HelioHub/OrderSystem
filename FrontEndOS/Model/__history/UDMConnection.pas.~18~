@@ -20,20 +20,43 @@ type
     FDStanStorageBinLink1: TFDStanStorageBinLink;
     MemTableOrders: TFDMemTable;
     MemTableOrderscode_order: TFDAutoIncField;
+    MemTableOrdersdate_order: TSQLTimeStampField;
+    MemTableOrderscode_client: TIntegerField;
+    MemTableOrdersvalueorder: TFMTBCDField;
+    MemTableOrdersname_client: TStringField;
+    MemTableOrdersaddress_client: TStringField;
+    MemTableOrdersphone_client: TStringField;
+    MemTableOrdersemail_client: TStringField;
+    MemTableOrdersvalue_order: TFMTBCDField;
+    MemTableOrders_Items: TFDMemTable;
+    MemTableOrders_Itemscode_item: TIntegerField;
+    MemTableOrders_Itemsamount_order_item: TFMTBCDField;
+    MemTableOrders_Itemsunitprice_order_item: TFMTBCDField;
+    MemTableOrders_Itemsvalue_item: TFMTBCDField;
+    MemTableOrders_Itemsname_item: TStringField;
+    MemTableOrders_Itemsdescription_item: TStringField;
+    MemTableOrders_Itemscode_order_item: TAutoIncField;
+    MemTableOrders_Itemscode_order: TIntegerField;
+    FDMemTableItems: TFDMemTable;
+    FDMemTableItemscode_item: TFDAutoIncField;
+    FDMemTableItemsname_item: TStringField;
+    FDMemTableItemsdescription_item: TStringField;
+    FDMemTableItemsprice_item: TFMTBCDField;
   private
     { Private declarations }
 
     FInstanceOwner: Boolean;
-    FServerMethods1Client: TServerMethods1Client;
-    function GetServerMethods1Client: TServerMethods1Client;
+    FServerMethods1Client: TServerMethodsOSClient;
+    function GetServerMethods1Client: TServerMethodsOSClient;
 public
     { Public declarations }
     procedure LoadOrders(const pIDCodeOrder: string; const pLimit: string);
+    procedure LoadOrders_Items(const pIDCodeOrder: string; const pLimit: string);
 
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     property InstanceOwner: Boolean read FInstanceOwner write FInstanceOwner;
-    property ServerMethods1Client: TServerMethods1Client read GetServerMethods1Client write FServerMethods1Client;
+    property ServerMethods1Client: TServerMethodsOSClient read GetServerMethods1Client write FServerMethods1Client;
   end;
 
 var
@@ -59,10 +82,10 @@ begin
   inherited;
 end;
 
-function TDMConnection.GetServerMethods1Client: TServerMethods1Client;
+function TDMConnection.GetServerMethods1Client: TServerMethodsOSClient;
 begin
   if FServerMethods1Client = nil then
-    FServerMethods1Client:= TServerMethods1Client.Create(DSRestConnectionOS, FInstanceOwner);
+    FServerMethods1Client:= TServerMethodsOSClient.Create(DSRestConnectionOS, FInstanceOwner);
   Result := FServerMethods1Client;
 end;
 
@@ -73,6 +96,16 @@ begin
 
   MemTableOrders.Close;
   MemTableOrders.AppendData(TFDJSONDataSetsReader.GetListValue(LDataSetList, 0));
+  MemTableOrders.Open;
+end;
+
+procedure TDMConnection.LoadOrders_Items(const pIDCodeOrder, pLimit: string);
+var LDataSetList: TFDJSONDataSets;
+begin
+  LDataSetList := ServerMethods1Client.GetOrders_Items(pIDCodeOrder, pLimit);
+
+  MemTableOrders.Close;
+  MemTableOrders_Items.AppendData(TFDJSONDataSetsReader.GetListValue(LDataSetList, 0));
   MemTableOrders.Open;
 end;
 

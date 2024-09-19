@@ -106,6 +106,14 @@
             <Form>FOS</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="View\UViewItems.pas">
+            <Form>FViewItems</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="View\UDataItems.pas">
+            <Form>FDataItems</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

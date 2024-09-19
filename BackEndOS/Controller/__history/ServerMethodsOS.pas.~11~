@@ -88,9 +88,9 @@ begin
 
 
   sSQL := 'SELECT '+sLimit+' a.[code_item] '+
-          ' ,a.[name_item]         '+
-          ' ,a.[description_item]  '+
-          ' ,a.[price_item]        '+
+          ' ,b.[name_item]         '+
+          ' ,b.[description_item]  '+
+          ' ,b.[price_item]        '+
           'FROM [dbo].[tab_item] a '+
           sIDCodeItem+
           ' ORDER BY a.[code_item] ';

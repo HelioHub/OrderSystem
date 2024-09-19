@@ -96,7 +96,7 @@ end;
 procedure TDMConnection.LoadItems(const pIDCodeItem, pLimit: string);
 var LDataSetList: TFDJSONDataSets;
 begin
-  LDataSetList := ServerMethods1Client.GetItems(pIDCodeItem, pLimit);
+  LDataSetList := ServerMethods1Client.GetOrders(pIDCodeItem, pLimit);
 
   MemTableItems.Close;
   MemTableItems.AppendData(TFDJSONDataSetsReader.GetListValue(LDataSetList, 0));

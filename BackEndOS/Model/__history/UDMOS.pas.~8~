@@ -37,11 +37,6 @@ type
     OSOrders_Itemsname_item: TStringField;
     OSOrders_Itemsdescription_item: TStringField;
     OSOrders_Itemscode_order: TIntegerField;
-    OSItems: TFDQuery;
-    OSItemscode_item: TFDAutoIncField;
-    OSItemsname_item: TStringField;
-    OSItemsdescription_item: TStringField;
-    OSItemsprice_item: TFMTBCDField;
   private
     { Private declarations }
   public

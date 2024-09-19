@@ -67,7 +67,7 @@ begin
   PrepareOrders_Items(pIDCodeOrder, pLimit);
 
   Result := TFDJSONDataSets.Create;
-  TFDJSONDataSetsWriter.ListAdd(Result, DMOS.OSItems);
+  TFDJSONDataSetsWriter.ListAdd(Result, DMOS.OSOrders_Items);
 end;
 
 procedure TServerMethodsOS.PrepareItems(const pIDCodeItem, pLimit: String);
@@ -82,15 +82,15 @@ begin
      sLimit := '';
 
   if not sIDCodeItem.IsEmpty then
-     sIDCodeItem := 'WHERE a.[code_item] = '+sIDCodeItem
+     sIDCodeItem := 'WHERE a.[code_order] = '+sIDCodeItem
   else
      sIDCodeItem := '';
 
 
   sSQL := 'SELECT '+sLimit+' a.[code_item] '+
-          ' ,a.[name_item]         '+
-          ' ,a.[description_item]  '+
-          ' ,a.[price_item]        '+
+          ' ,b.[name_item]         '+
+          ' ,b.[description_item]  '+
+          ' ,b.[price_item]        '+
           'FROM [dbo].[tab_item] a '+
           sIDCodeItem+
           ' ORDER BY a.[code_item] ';

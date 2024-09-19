@@ -35,7 +35,6 @@ type
     procedure dxBarBCloseClick(Sender: TObject);
     procedure dxBarLargeButton3Click(Sender: TObject);
     procedure dxBarLargeButton1Click(Sender: TObject);
-    procedure dxBarLargeButton5Click(Sender: TObject);
   private
     { Private declarations }
 
@@ -50,7 +49,7 @@ implementation
 
 {$R *.dfm}
 
-uses UViewOrder, UViewItems;
+uses UViewOrder;
 
 procedure TFOS.dxBarBCloseClick(Sender: TObject);
 begin
@@ -68,13 +67,6 @@ procedure TFOS.dxBarLargeButton3Click(Sender: TObject);
 begin
   Beep;
   ShowMessage('Em desenvolvimento!');
-end;
-
-procedure TFOS.dxBarLargeButton5Click(Sender: TObject);
-var Form: TFViewItems;
-begin
-  Form := TFViewItems.Create(Application);
-  Form.ShowModal;
 end;
 
 procedure TFOS.FormClose(Sender: TObject;

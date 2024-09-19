@@ -51,7 +51,7 @@ begin
   PrepareOrders_Items(pIDCodeOrder, pLimit);
 
   Result := TFDJSONDataSets.Create;
-  TFDJSONDataSetsWriter.ListAdd(Result, DMOS.OSOrders);
+  TFDJSONDataSetsWriter.ListAdd(Result, DMOS.OSOrders_Items);
 end;
 
 procedure TServerMethodsOS.PrepareOrders(const pIDCodeOrder, pLimit: String);
@@ -83,7 +83,7 @@ begin
           'FROM [dbo].[tab_orders] a '+
           'INNER JOIN [dbo].[tab_clients] b ON b.code_client = a.code_client '+
           sIDCodeOrder+
-          ' ORDER BY [dbo].[code_order] a ';
+          ' ORDER BY a.[code_order] ';
 
   DMOS.OSOrders.Active   := False;
   DMOS.OSOrders.SQL.Text := sSQL;
@@ -107,6 +107,7 @@ begin
 
 
   sSQL := 'SELECT '+sLimit+' a.[code_order_item] '+
+          ',a.[code_order]                                 '+
           ',a.[code_item]                                  '+
           ',a.[amount_order_item]                          '+
           ',a.[unitprice_order_item]                       '+
@@ -116,7 +117,7 @@ begin
           'FROM [dbo].[tab_order_item] a                                   '+
           'INNER JOIN [dbo].[tab_item] b ON b.[code_item] = a.[code_item]  '+
           sIDCodeOrder+
-          ' ORDER BY [dbo].[code_item] a ';
+          ' ORDER BY a.[code_item] ';
 
   DMOS.OSOrders_Items.Active   := False;
   DMOS.OSOrders_Items.SQL.Text := sSQL;

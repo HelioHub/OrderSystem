@@ -1,6 +1,6 @@
 //
 // Created by the DataSnap proxy generator.
-// 19/09/2024 10:26:30
+// 19/09/2024 01:09:47
 //
 
 unit ClientClassesOS;
@@ -19,8 +19,6 @@ type
     FGetOrdersCommand_Cache: TDSRestCommand;
     FGetOrders_ItemsCommand: TDSRestCommand;
     FGetOrders_ItemsCommand_Cache: TDSRestCommand;
-    FGetItemsCommand: TDSRestCommand;
-    FGetItemsCommand_Cache: TDSRestCommand;
   public
     constructor Create(ARestConnection: TDSRestConnection); overload;
     constructor Create(ARestConnection: TDSRestConnection; AInstanceOwner: Boolean); overload;
@@ -29,8 +27,6 @@ type
     function GetOrders_Cache(pIDCodeOrder: string; pLimit: string; const ARequestFilter: string = ''): IDSRestCachedTFDJSONDataSets;
     function GetOrders_Items(pIDCodeOrder: string; pLimit: string; const ARequestFilter: string = ''): TFDJSONDataSets;
     function GetOrders_Items_Cache(pIDCodeOrder: string; pLimit: string; const ARequestFilter: string = ''): IDSRestCachedTFDJSONDataSets;
-    function GetItems(pIDCodeItem: string; pLimit: string; const ARequestFilter: string = ''): TFDJSONDataSets;
-    function GetItems_Cache(pIDCodeItem: string; pLimit: string; const ARequestFilter: string = ''): IDSRestCachedTFDJSONDataSets;
   end;
 
   IDSRestCachedTFDJSONDataSets = interface(IDSRestCachedObject<TFDJSONDataSets>)
@@ -64,20 +60,6 @@ const
   TServerMethodsOS_GetOrders_Items_Cache: array [0..2] of TDSRestParameterMetaData =
   (
     (Name: 'pIDCodeOrder'; Direction: 1; DBXType: 26; TypeName: 'string'),
-    (Name: 'pLimit'; Direction: 1; DBXType: 26; TypeName: 'string'),
-    (Name: ''; Direction: 4; DBXType: 26; TypeName: 'String')
-  );
-
-  TServerMethodsOS_GetItems: array [0..2] of TDSRestParameterMetaData =
-  (
-    (Name: 'pIDCodeItem'; Direction: 1; DBXType: 26; TypeName: 'string'),
-    (Name: 'pLimit'; Direction: 1; DBXType: 26; TypeName: 'string'),
-    (Name: ''; Direction: 4; DBXType: 37; TypeName: 'TFDJSONDataSets')
-  );
-
-  TServerMethodsOS_GetItems_Cache: array [0..2] of TDSRestParameterMetaData =
-  (
-    (Name: 'pIDCodeItem'; Direction: 1; DBXType: 26; TypeName: 'string'),
     (Name: 'pLimit'; Direction: 1; DBXType: 26; TypeName: 'string'),
     (Name: ''; Direction: 4; DBXType: 26; TypeName: 'String')
   );
@@ -168,48 +150,6 @@ begin
   Result := TDSRestCachedTFDJSONDataSets.Create(FGetOrders_ItemsCommand_Cache.Parameters[2].Value.GetString);
 end;
 
-function TServerMethodsOSClient.GetItems(pIDCodeItem: string; pLimit: string; const ARequestFilter: string): TFDJSONDataSets;
-begin
-  if FGetItemsCommand = nil then
-  begin
-    FGetItemsCommand := FConnection.CreateCommand;
-    FGetItemsCommand.RequestType := 'GET';
-    FGetItemsCommand.Text := 'TServerMethodsOS.GetItems';
-    FGetItemsCommand.Prepare(TServerMethodsOS_GetItems);
-  end;
-  FGetItemsCommand.Parameters[0].Value.SetWideString(pIDCodeItem);
-  FGetItemsCommand.Parameters[1].Value.SetWideString(pLimit);
-  FGetItemsCommand.Execute(ARequestFilter);
-  if not FGetItemsCommand.Parameters[2].Value.IsNull then
-  begin
-    FUnMarshal := TDSRestCommand(FGetItemsCommand.Parameters[2].ConnectionHandler).GetJSONUnMarshaler;
-    try
-      Result := TFDJSONDataSets(FUnMarshal.UnMarshal(FGetItemsCommand.Parameters[2].Value.GetJSONValue(True)));
-      if FInstanceOwner then
-        FGetItemsCommand.FreeOnExecute(Result);
-    finally
-      FreeAndNil(FUnMarshal)
-    end
-  end
-  else
-    Result := nil;
-end;
-
-function TServerMethodsOSClient.GetItems_Cache(pIDCodeItem: string; pLimit: string; const ARequestFilter: string): IDSRestCachedTFDJSONDataSets;
-begin
-  if FGetItemsCommand_Cache = nil then
-  begin
-    FGetItemsCommand_Cache := FConnection.CreateCommand;
-    FGetItemsCommand_Cache.RequestType := 'GET';
-    FGetItemsCommand_Cache.Text := 'TServerMethodsOS.GetItems';
-    FGetItemsCommand_Cache.Prepare(TServerMethodsOS_GetItems_Cache);
-  end;
-  FGetItemsCommand_Cache.Parameters[0].Value.SetWideString(pIDCodeItem);
-  FGetItemsCommand_Cache.Parameters[1].Value.SetWideString(pLimit);
-  FGetItemsCommand_Cache.ExecuteCache(ARequestFilter);
-  Result := TDSRestCachedTFDJSONDataSets.Create(FGetItemsCommand_Cache.Parameters[2].Value.GetString);
-end;
-
 constructor TServerMethodsOSClient.Create(ARestConnection: TDSRestConnection);
 begin
   inherited Create(ARestConnection);
@@ -226,8 +166,6 @@ begin
   FGetOrdersCommand_Cache.DisposeOf;
   FGetOrders_ItemsCommand.DisposeOf;
   FGetOrders_ItemsCommand_Cache.DisposeOf;
-  FGetItemsCommand.DisposeOf;
-  FGetItemsCommand_Cache.DisposeOf;
   inherited;
 end;
 

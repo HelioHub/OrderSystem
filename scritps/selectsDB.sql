@@ -64,6 +64,24 @@ INNER JOIN [dbo].[tab_item] b ON b.[code_item] = a.[code_item]
 
 
 
+ SELECT TOP (100) a.[code_order_item] 
+ ,a.[code_item]                         
+ ,a.[amount_order_item]   
+ ,a.[unitprice_order_item]       
+ ,a.[amount_order_item] * a.[unitprice_order_item] as value_item 
+ ,b.[name_item]        
+ ,b.[description_item]                                           
+ FROM [dbo].[tab_order_item] a                                   
+ INNER JOIN [dbo].[tab_item] b ON b.[code_item] = a.[code_item]  
+ WHERE a.[code_order] = 31 ORDER BY a.[code_item] 
+
+ SELECT	TOP (100) a.[code_item] 
+				 ,a.[name_item]         
+				 ,a.[description_item]  
+				 ,a.[price_item]        
+ FROM [dbo].[tab_item] a 
+ ORDER BY a.[code_item] 
+
 
 
 

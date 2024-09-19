@@ -1866,29 +1866,71 @@ object DMConnection: TDMConnection
     StoreDefs = True
     Left = 48
     Top = 160
-    object MemTableOrders_Itemscode_order_item: TFDAutoIncField
+    object MemTableOrders_Itemscode_order_item: TAutoIncField
       FieldName = 'code_order_item'
-      ReadOnly = True
+    end
+    object MemTableOrders_Itemscode_order: TIntegerField
+      FieldName = 'code_order'
     end
     object MemTableOrders_Itemscode_item: TIntegerField
+      DisplayLabel = 'Code Item'
       FieldName = 'code_item'
     end
     object MemTableOrders_Itemsamount_order_item: TFMTBCDField
+      DisplayLabel = 'Amount'
       FieldName = 'amount_order_item'
+      DisplayFormat = '###,##0.00'
     end
     object MemTableOrders_Itemsunitprice_order_item: TFMTBCDField
+      DisplayLabel = 'Unit Price '
       FieldName = 'unitprice_order_item'
+      currency = True
     end
     object MemTableOrders_Itemsvalue_item: TFMTBCDField
+      DisplayLabel = 'Value Item'
       FieldName = 'value_item'
+      currency = True
     end
     object MemTableOrders_Itemsname_item: TStringField
+      DisplayLabel = 'Name Item'
       FieldName = 'name_item'
       Size = 100
     end
     object MemTableOrders_Itemsdescription_item: TStringField
+      DisplayLabel = 'Description Item'
       FieldName = 'description_item'
       Size = 250
+    end
+  end
+  object MemTableItems: TFDMemTable
+    FieldDefs = <>
+    CachedUpdates = True
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvPersistent, rvSilentMode]
+    ResourceOptions.Persistent = True
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired]
+    UpdateOptions.CheckRequired = False
+    StoreDefs = True
+    Left = 48
+    Top = 224
+    object MemTableItemscode_item: TFDAutoIncField
+      FieldName = 'code_item'
+      ReadOnly = True
+    end
+    object MemTableItemsname_item: TStringField
+      FieldName = 'name_item'
+      Size = 100
+    end
+    object MemTableItemsdescription_item: TStringField
+      FieldName = 'description_item'
+      Size = 250
+    end
+    object MemTableItemsprice_item: TFMTBCDField
+      FieldName = 'price_item'
+      Size = 0
     end
   end
 end

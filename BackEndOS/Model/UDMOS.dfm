@@ -164,4 +164,39 @@ object DMOS: TDMOS
       Size = 250
     end
   end
+  object OSItems: TFDQuery
+    Connection = OSConnection
+    SQL.Strings = (
+      'SELECT TOP (100) a.[code_item] '
+      #9' ,a.[name_item]         '
+      #9' ,a.[description_item]  '
+      #9' ,a.[price_item]        '
+      'FROM [dbo].[tab_item] a '
+      'ORDER BY a.[code_item] ')
+    Left = 49
+    Top = 195
+    object OSItemscode_item: TFDAutoIncField
+      FieldName = 'code_item'
+      Origin = 'code_item'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object OSItemsname_item: TStringField
+      FieldName = 'name_item'
+      Origin = 'name_item'
+      Required = True
+      Size = 100
+    end
+    object OSItemsdescription_item: TStringField
+      FieldName = 'description_item'
+      Origin = 'description_item'
+      Size = 250
+    end
+    object OSItemsprice_item: TFMTBCDField
+      FieldName = 'price_item'
+      Origin = 'price_item'
+      Precision = 20
+      Size = 4
+    end
+  end
 end
