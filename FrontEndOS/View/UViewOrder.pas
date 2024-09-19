@@ -89,7 +89,7 @@ begin
   End;
 
   Form := TFDataOrder.Create (Application);
-  Form.GAction := 'A';
+  Form.sAction := 'A';
   Form.ShowModal;
 end;
 
@@ -108,7 +108,7 @@ procedure TFViewOrder.cxBIncludeClick(Sender: TObject);
 var Form : TFDataOrder;
 begin
   Form := TFDataOrder.Create (Application);
-  Form.GAction := 'I';
+  Form.sAction := 'I';
   Form.ShowModal;
 end;
 

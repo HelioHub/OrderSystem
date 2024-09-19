@@ -12,8 +12,8 @@ uses
 
 type
   TFDataOrder = class(TForm)
-    cxPageControl1: TcxPageControl;
-    cxTabSheet1: TcxTabSheet;
+    cxPageControlOrder: TcxPageControl;
+    cxTabSheetOrder: TcxTabSheet;
     cxTCrodape: TcxTabControl;
     cxBOK: TcxButton;
     cxBCancel: TcxButton;
@@ -24,7 +24,7 @@ type
     { Private declarations }
   public
     { Public declarations }
-    GAction : String[1];
+    sAction : String[1];
   end;
 
 var
@@ -48,10 +48,10 @@ end;
 
 procedure TFDataOrder.FormShow(Sender: TObject);
 begin
-  If GAction = 'A' Then
-     cxTabSheet1.Caption := 'Alter Order'
+  If sAction = 'A' Then
+     cxTabSheetOrder.Caption := 'Alter Order'
   Else
-     cxTabSheet1.Caption := 'Include Order';
+     cxTabSheetOrder.Caption := 'Include Order';
 end;
 
 end.

@@ -59,6 +59,7 @@ object FViewItems: TFViewItems
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = cxBIncludeClick
     end
     object cxBAlter: TcxButton
       Left = 112
@@ -79,6 +80,7 @@ object FViewItems: TFViewItems
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = cxBAlterClick
     end
     object cxBClose: TcxButton
       Left = 457
@@ -121,6 +123,7 @@ object FViewItems: TFViewItems
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = cxBDeleteClick
     end
     object cxBRefresh: TcxButton
       Left = 332
@@ -180,6 +183,7 @@ object FViewItems: TFViewItems
     Top = 54
     Width = 888
     Height = 444
+    Hint = 'DoubleClick to Consultation...'
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -188,6 +192,7 @@ object FViewItems: TFViewItems
     Font.Style = []
     ParentFont = False
     TabOrder = 1
+    ExplicitTop = 55
     object cxGridItemsDBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.Insert.Visible = False

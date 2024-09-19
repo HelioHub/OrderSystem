@@ -1,6 +1,6 @@
 //
 // Created by the DataSnap proxy generator.
-// 19/09/2024 10:26:30
+// 19/09/2024 18:26:21
 //
 
 unit ClientClassesOS;
@@ -21,6 +21,7 @@ type
     FGetOrders_ItemsCommand_Cache: TDSRestCommand;
     FGetItemsCommand: TDSRestCommand;
     FGetItemsCommand_Cache: TDSRestCommand;
+    FPersistenceItemCommand: TDSRestCommand;
   public
     constructor Create(ARestConnection: TDSRestConnection); overload;
     constructor Create(ARestConnection: TDSRestConnection; AInstanceOwner: Boolean); overload;
@@ -31,6 +32,7 @@ type
     function GetOrders_Items_Cache(pIDCodeOrder: string; pLimit: string; const ARequestFilter: string = ''): IDSRestCachedTFDJSONDataSets;
     function GetItems(pIDCodeItem: string; pLimit: string; const ARequestFilter: string = ''): TFDJSONDataSets;
     function GetItems_Cache(pIDCodeItem: string; pLimit: string; const ARequestFilter: string = ''): IDSRestCachedTFDJSONDataSets;
+    procedure PersistenceItem(jObjectItem: TJSONObject);
   end;
 
   IDSRestCachedTFDJSONDataSets = interface(IDSRestCachedObject<TFDJSONDataSets>)
@@ -80,6 +82,11 @@ const
     (Name: 'pIDCodeItem'; Direction: 1; DBXType: 26; TypeName: 'string'),
     (Name: 'pLimit'; Direction: 1; DBXType: 26; TypeName: 'string'),
     (Name: ''; Direction: 4; DBXType: 26; TypeName: 'String')
+  );
+
+  TServerMethodsOS_PersistenceItem: array [0..0] of TDSRestParameterMetaData =
+  (
+    (Name: 'jObjectItem'; Direction: 1; DBXType: 37; TypeName: 'TJSONObject')
   );
 
 implementation
@@ -210,6 +217,19 @@ begin
   Result := TDSRestCachedTFDJSONDataSets.Create(FGetItemsCommand_Cache.Parameters[2].Value.GetString);
 end;
 
+procedure TServerMethodsOSClient.PersistenceItem(jObjectItem: TJSONObject);
+begin
+  if FPersistenceItemCommand = nil then
+  begin
+    FPersistenceItemCommand := FConnection.CreateCommand;
+    FPersistenceItemCommand.RequestType := 'POST';
+    FPersistenceItemCommand.Text := 'TServerMethodsOS."PersistenceItem"';
+    FPersistenceItemCommand.Prepare(TServerMethodsOS_PersistenceItem);
+  end;
+  FPersistenceItemCommand.Parameters[0].Value.SetJSONValue(jObjectItem, FInstanceOwner);
+  FPersistenceItemCommand.Execute;
+end;
+
 constructor TServerMethodsOSClient.Create(ARestConnection: TDSRestConnection);
 begin
   inherited Create(ARestConnection);
@@ -228,6 +248,7 @@ begin
   FGetOrders_ItemsCommand_Cache.DisposeOf;
   FGetItemsCommand.DisposeOf;
   FGetItemsCommand_Cache.DisposeOf;
+  FPersistenceItemCommand.DisposeOf;
   inherited;
 end;
 

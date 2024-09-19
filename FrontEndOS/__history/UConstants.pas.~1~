@@ -1,0 +1,18 @@
+unit UConstants;
+
+interface
+
+type
+  TAcao = (acIncluir, acAlterar, acExcluir, acConsultar);
+
+const
+  cEOL = #13;
+  cActionAlter = 'Alterar';
+  cAcaoInclude = 'Incluir';
+  cAcaoExcluir = 'Excluir';
+  cEmpty = '';
+  cZero = 0;
+
+implementation
+
+end.

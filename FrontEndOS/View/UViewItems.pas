@@ -10,7 +10,7 @@ uses
   cxDataControllerConditionalFormattingRulesManagerDialog, Data.DB, cxDBData,
   cxGridLevel, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
   cxClasses, cxGridCustomView, cxGrid, cxTextEdit, cxLabel, Vcl.StdCtrls,
-  cxButtons, dxBevel, cxPC;
+  cxButtons, dxBevel, cxPC, UConstants;
 
 type
   TFViewItems = class(TForm)
@@ -35,8 +35,12 @@ type
     procedure cxBRefreshClick(Sender: TObject);
     procedure cxBCloseClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure cxBIncludeClick(Sender: TObject);
+    procedure cxBAlterClick(Sender: TObject);
+    procedure cxBDeleteClick(Sender: TObject);
   private
     { Private declarations }
+    procedure pCRUD(pActoin: TAction);
   public
     { Public declarations }
   end;
@@ -48,11 +52,26 @@ implementation
 
 {$R *.dfm}
 
-uses UDMConnection;
+uses UDMConnection, UDataItems;
+
+procedure TFViewItems.cxBAlterClick(Sender: TObject);
+begin
+  pCRUD(acAlter);
+end;
 
 procedure TFViewItems.cxBCloseClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TFViewItems.cxBDeleteClick(Sender: TObject);
+begin
+  pCRUD(acDelete);
+end;
+
+procedure TFViewItems.cxBIncludeClick(Sender: TObject);
+begin
+  pCRUD(acInclude);
 end;
 
 procedure TFViewItems.cxBRefreshClick(Sender: TObject);
@@ -71,6 +90,31 @@ end;
 procedure TFViewItems.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
    Action := CaFree;
+end;
+
+procedure TFViewItems.pCRUD(pActoin: TAction);
+var Form: TFDataItems;
+begin
+  inherited;
+  if (DSItems.DataSet.FieldByName('code_item').IsNull) and (pActoin <> acInclude) then
+  begin
+    Beep;
+    ShowMessage('Select a valid record '+cEOL+'to perform the desired operation.');
+    Exit;
+  end;
+
+  Form := TFDataItems.Create(Application);
+  if (pActoin <> acInclude) then
+  begin
+    //Item
+    Form.ObjItem.code_item        := DSItems.DataSet.FieldByName('code_item').Asinteger;
+    Form.ObjItem.name_item        := DSItems.DataSet.FieldByName('name_item').AsString;
+    Form.ObjItem.description_item := DSItems.DataSet.FieldByName('description_item').AsString;
+    Form.ObjItem.price_item       := DSItems.DataSet.FieldByName('price_item').AsFloat;
+  end;
+
+  Form.ObjItem.Action := pActoin;
+  Form.ShowModal;
 end;
 
 end.

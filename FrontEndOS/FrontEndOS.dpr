@@ -8,7 +8,9 @@ uses
   ClientClassesOS in 'Controller\ClientClassesOS.pas',
   UOS in 'View\UOS.pas' {FOS},
   UViewItems in 'View\UViewItems.pas' {FViewItems},
-  UDataItems in 'View\UDataItems.pas' {FDataItems};
+  UDataItems in 'View\UDataItems.pas' {FDataItems},
+  UConstants in 'UConstants.pas',
+  UClassItem in 'Model\UClassItem.pas';
 
 {$R *.res}
 

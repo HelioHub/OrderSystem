@@ -8,8 +8,8 @@
     <Transaction>2024/09/18 08:18:26.000.484,D:\HelioMarques\projects\OrderSystem\FrontEndOS\UOS.dfm=C:\Users\helio\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit2.dfm</Transaction>
     <Transaction>2024/09/18 08:18:26.000.484,D:\HelioMarques\projects\OrderSystem\FrontEndOS\UOS.pas=C:\Users\helio\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
     <Transaction>2024/09/18 08:19:00.000.106,D:\HelioMarques\projects\OrderSystem\FrontEndOS\FrontEndOS.dproj=C:\Users\helio\OneDrive\Documentos\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
-    <Transaction>2024/09/18 08:42:56.000.770,D:\HelioMarques\projects\OrderSystem\FrontEndOS\UOS.pas=D:\HelioMarques\projects\OrderSystem\FrontEndOS\View\UOS.pas</Transaction>
     <Transaction>2024/09/18 08:42:56.000.770,D:\HelioMarques\projects\OrderSystem\FrontEndOS\UOS.dfm=D:\HelioMarques\projects\OrderSystem\FrontEndOS\View\UOS.dfm</Transaction>
+    <Transaction>2024/09/18 08:42:56.000.770,D:\HelioMarques\projects\OrderSystem\FrontEndOS\UOS.pas=D:\HelioMarques\projects\OrderSystem\FrontEndOS\View\UOS.pas</Transaction>
     <Transaction>2024/09/18 14:43:25.000.142,=D:\HelioMarques\projects\OrderSystem\FrontEndOS\View\UDataOrder.pas</Transaction>
     <Transaction>2024/09/18 14:43:25.000.164,=D:\HelioMarques\projects\OrderSystem\FrontEndOS\View\UViewOrder.pas</Transaction>
     <Transaction>2024/09/18 14:53:49.000.793,=D:\HelioMarques\projects\OrderSystem\FrontEndOS\Unit2.pas</Transaction>
@@ -23,8 +23,13 @@
     <Transaction>2024/09/19 09:57:56.920,=D:\HelioMarques\projects\OrderSystem\FrontEndOS\Unit2.pas</Transaction>
     <Transaction>2024/09/19 09:59:28.178,D:\HelioMarques\projects\OrderSystem\FrontEndOS\View\UViewItems.pas=D:\HelioMarques\projects\OrderSystem\FrontEndOS\Unit1.pas</Transaction>
     <Transaction>2024/09/19 09:59:28.178,D:\HelioMarques\projects\OrderSystem\FrontEndOS\View\UViewItems.dfm=D:\HelioMarques\projects\OrderSystem\FrontEndOS\Unit1.dfm</Transaction>
-    <Transaction>2024/09/19 10:00:21.601,D:\HelioMarques\projects\OrderSystem\FrontEndOS\View\UDataItems.pas=D:\HelioMarques\projects\OrderSystem\FrontEndOS\Unit2.pas</Transaction>
     <Transaction>2024/09/19 10:00:21.601,D:\HelioMarques\projects\OrderSystem\FrontEndOS\View\UDataItems.dfm=D:\HelioMarques\projects\OrderSystem\FrontEndOS\Unit2.dfm</Transaction>
+    <Transaction>2024/09/19 10:00:21.601,D:\HelioMarques\projects\OrderSystem\FrontEndOS\View\UDataItems.pas=D:\HelioMarques\projects\OrderSystem\FrontEndOS\Unit2.pas</Transaction>
+    <Transaction>2024/09/19 13:57:50.843,=D:\HelioMarques\projects\OrderSystem\FrontEndOS\Unit1.pas</Transaction>
+    <Transaction>2024/09/19 14:12:34.083,D:\HelioMarques\projects\OrderSystem\FrontEndOS\UConst.pas=D:\HelioMarques\projects\OrderSystem\FrontEndOS\Unit1.pas</Transaction>
+    <Transaction>2024/09/19 14:18:02.629,=D:\HelioMarques\projects\OrderSystem\FrontEndOS\Unit1.pas</Transaction>
+    <Transaction>2024/09/19 14:19:49.677,D:\HelioMarques\projects\OrderSystem\FrontEndOS\UConstants.pas=D:\HelioMarques\projects\OrderSystem\FrontEndOS\UConst.pas</Transaction>
+    <Transaction>2024/09/19 15:06:08.489,D:\HelioMarques\projects\OrderSystem\FrontEndOS\Model\UClassItem.pas=D:\HelioMarques\projects\OrderSystem\FrontEndOS\Unit1.pas</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="Controller"/>
@@ -32,6 +37,7 @@
     <File Path="Model"/>
     <File Path="Model\UDMConnection.pas"/>
     <File Path="Model\UDMConnection.dfm"/>
+    <File Path="Model\UClassItem.pas"/>
     <File Path="View"/>
     <File Path="View\UDataOrder.pas"/>
     <File Path="View\UDataOrder.dfm"/>
@@ -43,5 +49,6 @@
     <File Path="View\UViewItems.dfm"/>
     <File Path="View\UDataItems.pas"/>
     <File Path="View\UDataItems.dfm"/>
+    <File Path="UConstants.pas"/>
   </ProjectSortOrder>
 </BorlandProject>

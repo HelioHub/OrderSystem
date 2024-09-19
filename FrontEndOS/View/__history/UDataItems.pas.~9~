@@ -1,0 +1,131 @@
+unit UDataItems;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UClassItem, cxGraphics, cxControls,
+  cxLookAndFeels, cxLookAndFeelPainters, dxBarBuiltInMenu, Vcl.Menus,
+  Vcl.StdCtrls, cxButtons, cxPC, cxContainer, cxEdit, cxCurrencyEdit,
+  cxTextEdit, cxLabel;
+
+type
+  TFDataItems = class(TForm)
+    cxPageControlItem: TcxPageControl;
+    cxTabSheetItem: TcxTabSheet;
+    cxTCrodape: TcxTabControl;
+    cxBOK: TcxButton;
+    cxBCancel: TcxButton;
+    cxLCode: TcxLabel;
+    cxTECode: TcxTextEdit;
+    cxLName: TcxLabel;
+    cxTEName: TcxTextEdit;
+    cxLPrice: TcxLabel;
+    cxCEPrice: TcxCurrencyEdit;
+    cxLDescription: TcxLabel;
+    cxTEDescription: TcxTextEdit;
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+    procedure pEnableControls;
+    procedure pDisableControls;
+
+    destructor Destroy; override;
+  public
+    { Public declarations }
+    ObjItem : TItem;
+  end;
+
+var
+  FDataItems: TFDataItems;
+
+implementation
+
+{$R *.dfm}
+
+uses UConstants;
+
+destructor TFDataItems.Destroy;
+begin
+  FreeAndNil(ObjItem);
+  inherited;
+end;
+
+procedure TFDataItems.FormCreate(Sender: TObject);
+begin
+  ObjItem := TItem.Create;
+end;
+
+procedure TFDataItems.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = cEOL then
+  begin
+    Key := 0;
+    Perform(WM_NETXDLGCTL,0, 0);
+  end;
+
+end;
+
+procedure TFDataItems.FormShow(Sender: TObject);
+begin
+  pEnableControls;
+  if ObjItem.Action = acInclude then
+    Self.Caption := Self.Caption + ' - ' + cAcaoInclude
+  else
+  begin
+    //Pessoa
+    EDocumento.Text    := ObjetoPessoa.dsdocumento;
+    E1Nome.Text        := ObjetoPessoa.nmprimeiro;
+    E2Nome.Text        := ObjetoPessoa.nmsegundo;
+    if ObjetoPessoa.flnatureza = cSexoM then
+      RGSexo.ItemIndex := Integer(TSexo.M)
+    else
+      RGSexo.ItemIndex := Integer(TSexo.F);
+    //CEP
+    ENo.Text           := IntToStr(ObjetoPessoa.CEP.dsnumero);
+    //Endereço
+    ECEP.Text          := ObjetoPessoa.CEP.dscep.dscep;
+    ELogradouro.Text   := ObjetoPessoa.CEP.dscep.nmlogradouro;
+    EBairro.Text       := ObjetoPessoa.CEP.dscep.nmbairro;
+    ECidade.Text       := ObjetoPessoa.CEP.dscep.nmcidade;
+    EComplemento.Text  := ObjetoPessoa.CEP.dscep.dscomplemento;
+    EUF.Text           := ObjetoPessoa.CEP.dscep.dsuf;
+
+    case ObjItem.Action of
+    acDelete: begin
+      pDisableControls;
+      Self.Caption := Self.Caption + ' - ' + cAcaoDelete;
+    end;
+    acAlter: begin
+      pDisableControls;
+      Self.Caption := Self.Caption + ' - ' + cAcaoDelete;
+    end;
+    end;
+    if ObjItem.Action = acDelete then
+    begin
+      pDisableControls;
+      Self.Caption := Self.Caption + ' - ' + cAcaoDelete;
+    end
+    else if ObjItem.Action = acDelete then then
+    begin
+      pDisableControls;
+      Self.Caption := Self.Caption + ' - ' + cActionAlter;
+    end;
+  end;
+
+  cxTEName.SetFocus;
+end;
+
+procedure TFDataItems.pDisableControls;
+begin
+//
+end;
+
+procedure TFDataItems.pEnableControls;
+begin
+//
+end;
+
+end.

@@ -9,7 +9,9 @@ uses
   UServerOS in 'View\UServerOS.pas' {FServerOS},
   ServerMethodsOS in 'Controller\ServerMethodsOS.pas' {ServerMethodsOS: TDataModule},
   ServerContainerOS in 'View\ServerContainerOS.pas' {ServerContainerOS: TDataModule},
-  WebModuleOS in 'View\WebModuleOS.pas' {WebModuleOS: TWebModule};
+  WebModuleOS in 'View\WebModuleOS.pas' {WebModuleOS: TWebModule},
+  UConstants in '..\FrontEndOS\UConstants.pas',
+  UClassItem in '..\FrontEndOS\Model\UClassItem.pas';
 
 {$R *.res}
 

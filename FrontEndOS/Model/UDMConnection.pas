@@ -9,7 +9,7 @@ uses
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.StorageBin, Data.DB, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, FireDAC.Stan.StorageJSON, Data.FireDACJSONReflect, Rest.JSON, System.JSON,
-  ClientClassesOS;
+  ClientClassesOS, UClassItem;
 
 type
   TDMConnection = class(TDataModule)
@@ -56,6 +56,7 @@ public
 
     //Items
     procedure LoadItems(const pIDCodeItem: string; const pLimit: string);
+    procedure PersistItem(pObjItem : TItem);
 
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -118,9 +119,16 @@ var LDataSetList: TFDJSONDataSets;
 begin
   LDataSetList := ServerMethods1Client.GetOrders_Items(pIDCodeOrder, pLimit);
 
-  MemTableOrders.Close;
+  MemTableOrders_Items.Close;
   MemTableOrders_Items.AppendData(TFDJSONDataSetsReader.GetListValue(LDataSetList, 0));
-  MemTableOrders.Open;
+  MemTableOrders_Items.Open;
+end;
+
+procedure TDMConnection.PersistItem(pObjItem: TItem);
+var jObjectPessoa : TJSONObject;
+begin
+  jObjectPessoa := TJson.ObjectToJsonObject(pObjItem);
+  ServerMethods1Client.PersistenceItem(jObjectPessoa);
 end;
 
 end.

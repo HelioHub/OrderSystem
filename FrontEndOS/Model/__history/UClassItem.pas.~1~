@@ -1,0 +1,43 @@
+unit UClassItem;
+
+interface
+
+uses UConstants, System.SysUtils;
+
+type
+  TItem = class
+  private
+    fname_item: String;
+    fcode_item: integer;
+    fprice_item: double;
+    fdescription_item: String;
+
+  protected
+  public
+    constructor Create;
+    destructor Destroy; override;
+
+    property code_item        : integer read fcode_item        write fcode_item;
+    property name_item        : String  read fname_item        write fname_item;
+    property description_item : String  read fdescription_item write fdescription_item;
+    property price_item       : double  read fprice_item       write fprice_item;
+  end;
+
+implementation
+
+{ TEndereco }
+
+{ TItem }
+
+constructor TItem.Create;
+begin
+
+end;
+
+destructor TItem.Destroy;
+begin
+
+  inherited;
+end;
+
+end.

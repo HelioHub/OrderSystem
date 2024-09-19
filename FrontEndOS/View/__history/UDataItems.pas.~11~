@@ -1,0 +1,109 @@
+unit UDataItems;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UClassItem, cxGraphics, cxControls,
+  cxLookAndFeels, cxLookAndFeelPainters, dxBarBuiltInMenu, Vcl.Menus,
+  Vcl.StdCtrls, cxButtons, cxPC, cxContainer, cxEdit, cxCurrencyEdit,
+  cxTextEdit, cxLabel;
+
+type
+  TFDataItems = class(TForm)
+    cxPageControlItem: TcxPageControl;
+    cxTabSheetItem: TcxTabSheet;
+    cxTCrodape: TcxTabControl;
+    cxBOK: TcxButton;
+    cxBCancel: TcxButton;
+    cxLCode: TcxLabel;
+    cxTECode: TcxTextEdit;
+    cxLName: TcxLabel;
+    cxTEName: TcxTextEdit;
+    cxLPrice: TcxLabel;
+    cxCEPrice: TcxCurrencyEdit;
+    cxLDescription: TcxLabel;
+    cxTEDescription: TcxTextEdit;
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+    procedure pEnableControls;
+    procedure pDisableControls;
+
+    destructor Destroy; override;
+  public
+    { Public declarations }
+    ObjItem : TItem;
+  end;
+
+var
+  FDataItems: TFDataItems;
+
+implementation
+
+{$R *.dfm}
+
+uses UConstants;
+
+destructor TFDataItems.Destroy;
+begin
+  FreeAndNil(ObjItem);
+  inherited;
+end;
+
+procedure TFDataItems.FormCreate(Sender: TObject);
+begin
+  ObjItem := TItem.Create;
+end;
+
+procedure TFDataItems.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = cEOL then
+  begin
+    Key := 0;
+    Perform(WM_NETXDLGCTL,0, 0);
+  end;
+
+end;
+
+procedure TFDataItems.FormShow(Sender: TObject);
+begin
+  case ObjItem.Action of
+    acDelete: Self.Caption := Self.Caption + ' - ' + cActionInclude;
+    acAlter : Self.Caption := Self.Caption + ' - ' + cActionAlter;
+    acDelete: Self.Caption := Self.Caption + ' - ' + cActionDelete;
+    else      Self.Caption := Self.Caption + ' - ' + cActionConsult;
+  end;
+
+  if ObjItem.Action <> acInclude then
+  begin
+    //Item
+    cxTECode.Text        := IntToStr(ObjItem.code_item);
+    cxTEName.Text        := ObjItem.name_item;
+    cxTEDescription.Text := ObjItem.description_item;
+    cxCEPrice.Value      := ObjItem.price_item;
+  end;
+
+  case ObjItem.Action of
+    acInclude: pEnableControls;
+    acAlter  : pEnableControls;
+    acDelete : pDisableControls;
+    else       pDisableControls;
+  end;
+
+  cxTEName.SetFocus;
+end;
+
+procedure TFDataItems.pDisableControls;
+begin
+//
+end;
+
+procedure TFDataItems.pEnableControls;
+begin
+//
+end;
+
+end.
