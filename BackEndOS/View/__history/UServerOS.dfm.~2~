@@ -3,7 +3,7 @@ object FServerOS: TFServerOS
   Top = 114
   BorderIcons = [biSystemMenu]
   Caption = 'Server Order System DataSnap REST FireDAC'
-  ClientHeight = 191
+  ClientHeight = 181
   ClientWidth = 300
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET

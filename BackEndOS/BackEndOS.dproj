@@ -116,6 +116,10 @@ $(PostBuildEvent)]]></PostBuildEvent>
         </DCCReference>
         <DCCReference Include="..\FrontEndOS\UConstants.pas"/>
         <DCCReference Include="..\FrontEndOS\Model\UClassItem.pas"/>
+        <DCCReference Include="View\UnitTest.pas">
+            <Form>FUnitTest</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <None Include="js\base64.js"/>
         <None Include="js\ServerFunctionExecutor.js"/>
         <None Include="js\json2.js"/>
@@ -155,6 +159,9 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">False</Platform>
             </Platforms>
+            <UnitTesting>
+                <TestProjectName>D:\HelioMarques\projects\OrderSystem\BackEndOSTests.dproj</TestProjectName>
+            </UnitTesting>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>

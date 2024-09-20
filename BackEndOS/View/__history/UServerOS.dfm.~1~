@@ -3,7 +3,7 @@ object FServerOS: TFServerOS
   Top = 114
   BorderIcons = [biSystemMenu]
   Caption = 'Server Order System DataSnap REST FireDAC'
-  ClientHeight = 191
+  ClientHeight = 181
   ClientWidth = 300
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -70,21 +70,12 @@ object FServerOS: TFServerOS
   end
   object ButtonOpenBrowser: TButton
     Left = 76
-    Top = 130
+    Top = 133
     Width = 154
     Height = 25
     Caption = 'Open Browser'
     TabOrder = 3
     OnClick = ButtonOpenBrowserClick
-  end
-  object Button1: TButton
-    Left = 76
-    Top = 154
-    Width = 154
-    Height = 25
-    Caption = 'Test Unit'
-    TabOrder = 4
-    OnClick = Button1Click
   end
   object ApplicationEvents1: TApplicationEvents
     OnIdle = ApplicationEvents1Idle

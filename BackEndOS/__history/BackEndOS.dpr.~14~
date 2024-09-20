@@ -11,8 +11,7 @@ uses
   ServerContainerOS in 'View\ServerContainerOS.pas' {ServerContainerOS: TDataModule},
   WebModuleOS in 'View\WebModuleOS.pas' {WebModuleOS: TWebModule},
   UConstants in '..\FrontEndOS\UConstants.pas',
-  UClassItem in '..\FrontEndOS\Model\UClassItem.pas',
-  UnitTest in 'View\UnitTest.pas' {FUnitTest};
+  UClassItem in '..\FrontEndOS\Model\UClassItem.pas';
 
 {$R *.res}
 

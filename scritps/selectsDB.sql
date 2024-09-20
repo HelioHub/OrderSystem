@@ -138,3 +138,14 @@ Code Item Name Item                    Amount Item Unit Price Item Value Item
 
 
 DELETE FROM dbo.tab_order_item WHERE code_order_item = 35
+
+USE [ordersystem]
+go
+SET DATEFORMAT dmy; 
+GO
+SELECT a.[code_order]   ,a.[date_order]         ,a.[code_client]        ,b.[name_client]        ,b.[phone_client]       ,b.[email_client]       ,c.[code_item]          ,d.[name_item]          ,c.[amount_order_item]  ,c.[unitprice_order_item] ,(c.[amount_order_item] * c.[unitprice_order_item]) as valueorder  ,dbo.fn_get_total_value_ordered(a.[code_order]) as totalorder      
+FROM [dbo].[tab_orders] a  
+INNER JOIN [dbo].[tab_clients]    b ON b.[code_client]= a.[code_client]  
+INNER JOIN [dbo].[tab_order_item] c ON c.[code_order] = a.[code_order]   INNER JOIN [dbo].[tab_item]       d ON d.[code_item]  = c.[code_item]    
+WHERE a.[date_order] BETWEEN CAST('01/09/2024' AS DATETIME) AND CAST('30/09/2024' AS DATETIME)+1 
+ORDER BY a.[code_order], a.[date_order]  
