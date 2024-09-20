@@ -28,12 +28,12 @@ SELECT TOP (1000) [code_order_item]
 FROM [ordersystem].[dbo].[tab_order_item] a
 INNER JOIN 
 
-  -- Request Function 
-select dbo.fn_get_total_value_ordered(26)
-go
-
+-- Request Function 
 USE [ordersystem]
 go
+select dbo.fn_get_total_value_ordered(31) 
+go
+
 
 SELECT TOP (1000) a.[code_order]
       ,a.[date_order]
