@@ -29,7 +29,6 @@ type
     cxBRefresh: TcxButton;
     cxPageControl1: TcxPageControl;
     cxTabSheet1: TcxTabSheet;
-    cxLdescricao: TcxLabel;
     cxLabel1: TcxLabel;
     cxLabel2: TcxLabel;
     cxLabel3: TcxLabel;
@@ -39,7 +38,6 @@ type
     cxGridOrdersDBTableView1Column_date_order: TcxGridDBColumn;
     cxGridOrdersDBTableView1Column_code_client: TcxGridDBColumn;
     cxGridOrdersDBTableView1Column_valueorder: TcxGridDBColumn;
-    cxDBLabel1: TcxDBLabel;
     cxDBLabel2: TcxDBLabel;
     cxDBLabel3: TcxDBLabel;
     cxDBLabel4: TcxDBLabel;
@@ -56,6 +54,8 @@ type
     dxBevel2: TdxBevel;
     cxBItems: TcxButton;
     cxGridDBTableView1Column7: TcxGridDBColumn;
+    cxBReportOrder: TcxButton;
+    cxGridOrdersDBTableView1Column_name_client: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure cxBCloseClick(Sender: TObject);
     procedure cxBIncludeClick(Sender: TObject);
@@ -63,6 +63,8 @@ type
     procedure cxBDeleteClick(Sender: TObject);
     procedure cxBAlterClick(Sender: TObject);
     procedure cxBItemsClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure cxBReportOrderClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -76,20 +78,12 @@ implementation
 
 {$R *.dfm}
 
-uses UDMConnection, UDataOrder;
+uses UDMConnection, UDataOrder, UConstants, UReportOrders;
 
 procedure TFViewOrder.cxBAlterClick(Sender: TObject);
 var Form : TFDataOrder;
 begin
-  If DSOrders.DataSet.Eof Then
-  Begin
-    Beep;
-    ShowMessage('No registration!');
-    Exit;
-  End;
-
   Form := TFDataOrder.Create (Application);
-  Form.sAction := 'A';
   Form.ShowModal;
 end;
 
@@ -101,14 +95,13 @@ end;
 procedure TFViewOrder.cxBDeleteClick(Sender: TObject);
 begin
   Beep;
-  ShowMessage('Em desenvolvimento!');
+  ShowMessage('In Development!');
 end;
 
 procedure TFViewOrder.cxBIncludeClick(Sender: TObject);
 var Form : TFDataOrder;
 begin
   Form := TFDataOrder.Create (Application);
-  Form.sAction := 'I';
   Form.ShowModal;
 end;
 
@@ -116,7 +109,7 @@ procedure TFViewOrder.cxBItemsClick(Sender: TObject);
 var sNumberRecords : String;
 begin
   Try
-    sNumberRecords := '100';
+    sNumberRecords := cNumberRecords;
   Except
     ShowMessage('Attention! Invalid number of records.');
   End;
@@ -138,9 +131,27 @@ begin
   DMConnection.LoadOrders('', sNumberRecords);
 end;
 
+procedure TFViewOrder.cxBReportOrderClick(Sender: TObject);
+var Form : TFReportOrders;
+begin
+  Form := TFReportOrders.Create (Application);
+  If Form.ShowModal = mrOk Then
+  begin
+    DMConnection.MemTableReportOrders.Close;
+    DMConnection.LoadReportOrders(Trim(Form.cxCECodeClient.Text), Form.cxDEini.Text, Form.cxDEcon.Text);
+    DMConnection.frxReportOrders.ShowReport();
+  end;
+  Form.Destroy;
+end;
+
 procedure TFViewOrder.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := CaFree;
+end;
+
+procedure TFViewOrder.FormShow(Sender: TObject);
+begin
+  cxTENumberRecords.Text := cNumberRecords;
 end;
 
 end.

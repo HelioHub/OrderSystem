@@ -67,7 +67,7 @@ end;
 procedure TFOS.dxBarLargeButton3Click(Sender: TObject);
 begin
   Beep;
-  ShowMessage('Em desenvolvimento!');
+  ShowMessage('In Development!!');
 end;
 
 procedure TFOS.dxBarLargeButton5Click(Sender: TObject);

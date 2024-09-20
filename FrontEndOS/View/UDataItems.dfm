@@ -46,8 +46,6 @@ object FDataItems: TFDataItems
       Font.Style = []
       ImageIndex = 0
       ParentFont = False
-      ExplicitLeft = 4
-      ExplicitTop = 33
       DesignSize = (
         745
         234)
@@ -131,7 +129,7 @@ object FDataItems: TFDataItems
         Style.Font.Name = 'Tahoma'
         Style.Font.Style = []
         Style.IsFontAssigned = True
-        TabOrder = 1
+        TabOrder = 0
         Width = 67
       end
       object cxLName: TcxLabel
@@ -149,7 +147,7 @@ object FDataItems: TFDataItems
       end
       object cxTEName: TcxTextEdit
         Left = 106
-        Top = 58
+        Top = 59
         Anchors = [akTop, akRight]
         ParentFont = False
         Properties.Alignment.Horz = taLeftJustify
@@ -161,7 +159,7 @@ object FDataItems: TFDataItems
         Style.Font.Name = 'Tahoma'
         Style.Font.Style = []
         Style.IsFontAssigned = True
-        TabOrder = 3
+        TabOrder = 2
         Width = 343
       end
       object cxLPrice: TcxLabel
@@ -180,7 +178,7 @@ object FDataItems: TFDataItems
       object cxCEPrice: TcxCurrencyEdit
         Left = 107
         Top = 134
-        TabOrder = 7
+        TabOrder = 6
         Width = 121
       end
       object cxLDescription: TcxLabel
@@ -197,8 +195,8 @@ object FDataItems: TFDataItems
         Style.IsFontAssigned = True
       end
       object cxTEDescription: TcxTextEdit
-        Left = 106
-        Top = 96
+        Left = 107
+        Top = 97
         Anchors = [akTop, akRight]
         ParentFont = False
         Properties.Alignment.Horz = taLeftJustify
@@ -210,8 +208,23 @@ object FDataItems: TFDataItems
         Style.Font.Name = 'Tahoma'
         Style.Font.Style = []
         Style.IsFontAssigned = True
-        TabOrder = 5
+        TabOrder = 4
         Width = 583
+      end
+      object cxLabel1: TcxLabel
+        Left = 175
+        Top = 22
+        Anchors = [akTop, akRight]
+        Caption = '*Auto increment'
+        ParentFont = False
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = 12615680
+        Style.Font.Height = -13
+        Style.Font.Name = 'Tahoma'
+        Style.Font.Style = []
+        Style.IsFontAssigned = True
+        Properties.LineOptions.InnerColor = clBlack
+        Properties.LineOptions.OuterColor = clBlack
       end
     end
   end

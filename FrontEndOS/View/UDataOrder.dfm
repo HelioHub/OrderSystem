@@ -15,7 +15,6 @@ object FDataOrder: TFDataOrder
   OldCreateOrder = False
   Position = poScreenCenter
   OnClose = FormClose
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 19
   object cxPageControlOrder: TcxPageControl

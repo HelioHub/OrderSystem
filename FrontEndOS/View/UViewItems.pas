@@ -38,6 +38,7 @@ type
     procedure cxBIncludeClick(Sender: TObject);
     procedure cxBAlterClick(Sender: TObject);
     procedure cxBDeleteClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
     procedure pCRUD(pActoin: TAction);
@@ -90,6 +91,11 @@ end;
 procedure TFViewItems.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
    Action := CaFree;
+end;
+
+procedure TFViewItems.FormShow(Sender: TObject);
+begin
+  cxTENumberRecords.Text := cNumberRecords;
 end;
 
 procedure TFViewItems.pCRUD(pActoin: TAction);

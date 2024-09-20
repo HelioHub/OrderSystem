@@ -24,6 +24,7 @@ type
     cxCEPrice: TcxCurrencyEdit;
     cxLDescription: TcxLabel;
     cxTEDescription: TcxTextEdit;
+    cxLabel1: TcxLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure cxBCancelClick(Sender: TObject);

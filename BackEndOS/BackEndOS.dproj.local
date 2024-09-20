@@ -52,8 +52,8 @@
     <Transaction>2024/09/19 07:00:51.000.833,=D:\HelioMarques\projects\OrderSystem\BackEndOS\Controller\ServerMethodsOS.pas</Transaction>
     <Transaction>2024/09/19 07:01:08.000.132,=D:\HelioMarques\projects\OrderSystem\BackEndOS\View\WebModuleOS.pas</Transaction>
     <Transaction>2024/09/19 07:01:08.000.076,=D:\HelioMarques\projects\OrderSystem\BackEndOS\View\ServerContainerOS.pas</Transaction>
-    <Transaction>2024/09/19 18:01:41.836,=D:\HelioMarques\projects\OrderSystem\FrontEndOS\UConstants.pas</Transaction>
-    <Transaction>2024/09/19 18:02:14.916,=D:\HelioMarques\projects\OrderSystem\FrontEndOS\Model\UClassItem.pas</Transaction>
+    <Transaction>2024/09/19 18:01:41.000.836,=D:\HelioMarques\projects\OrderSystem\FrontEndOS\UConstants.pas</Transaction>
+    <Transaction>2024/09/19 18:02:14.000.916,=D:\HelioMarques\projects\OrderSystem\FrontEndOS\Model\UClassItem.pas</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="..\..\OrderSystem"/>

@@ -42,6 +42,19 @@ type
     OSItemsname_item: TStringField;
     OSItemsdescription_item: TStringField;
     OSItemsprice_item: TFMTBCDField;
+    OSReportOrders: TFDQuery;
+    OSReportOrderscode_order: TFDAutoIncField;
+    OSReportOrdersdate_order: TSQLTimeStampField;
+    OSReportOrderscode_client: TIntegerField;
+    OSReportOrdersname_client: TStringField;
+    OSReportOrdersphone_client: TStringField;
+    OSReportOrdersemail_client: TStringField;
+    OSReportOrderscode_item: TIntegerField;
+    OSReportOrdersname_item: TStringField;
+    OSReportOrdersamount_order_item: TFMTBCDField;
+    OSReportOrdersunitprice_order_item: TFMTBCDField;
+    OSReportOrdersvalueorder: TFMTBCDField;
+    OSReportOrderstotalorder: TFMTBCDField;
   private
     { Private declarations }
   public

@@ -47,6 +47,10 @@ GO
 INSERT INTO [dbo].[tab_orders] ([date_order],[value_order],[code_client]) VALUES ('2024-09-19', 0, 
             (SELECT TOP (1) [code_client] FROM [ordersystem].[dbo].[tab_clients] WHERE [name_client] = 'ISABEL LEGAL'))
 GO
+INSERT INTO [dbo].[tab_orders] ([date_order],[value_order],[code_client]) VALUES ('2024-09-19', 0, 
+            (SELECT TOP (1) [code_client] FROM [ordersystem].[dbo].[tab_clients] WHERE [name_client] = 'HELIO MARQUES'))
+GO
+
 
 
 /*ORDER_ITEM*/
@@ -104,5 +108,22 @@ INSERT INTO [dbo].[tab_order_item] ([code_order],[code_item],[amount_order_item]
 			(SELECT TOP (1) [price_item]  FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO A'))
 GO
 
+INSERT INTO [dbo].[tab_order_item] ([code_order],[code_item],[amount_order_item],[unitprice_order_item]) VALUES (
+            37,
+			(SELECT TOP (1) [code_item]   FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO A'),
+			2,
+			(SELECT TOP (1) [price_item]  FROM [ordersystem].[dbo].[tab_item]   WHERE [name_item]   = 'PRODUTO A'))
+GO
+
+
+-- TESTS
+USE [ordersystem]
+GO
+
+INSERT INTO [dbo].[tab_item] ([name_item], [description_item], [price_item])  VALUES ('teste', 'teste', 10) 
+GO
+
+INSERT INTO [dbo].[tab_item] ([name_item], [description_item], [price_item])  VALUES ('1111', '1111', 1); 
+GO
 
 

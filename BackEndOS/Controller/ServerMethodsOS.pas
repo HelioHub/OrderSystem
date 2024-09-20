@@ -23,6 +23,9 @@ type
     procedure UpdateItem(const oItem: TItem);
     procedure DeleteItem(const oItem: TItem);
 
+    //ReportOrders
+    procedure PrepareReportOrders(const pIDCodeClient: String=''; pDateI: String=''; pDateF: String='');
+
   public
     { Public declarations }
 
@@ -33,6 +36,9 @@ type
     //Items
     function GetItems(const pIDCodeItem: String; const pLimit: String): TFDJSONDataSets;
     procedure PersistenceItem(const jObjectItem: TJSONObject);
+
+    //ReportOrders
+    function GetReportOrders(const pIDCodeClient: String; pDateI: String; pDateF: String): TFDJSONDataSets;
   end;
 {$METHODINFO OFF}
 
@@ -70,6 +76,15 @@ begin
 
   Result := TFDJSONDataSets.Create;
   TFDJSONDataSetsWriter.ListAdd(Result, DMOS.OSOrders_Items);
+end;
+
+function TServerMethodsOS.GetReportOrders(const pIDCodeClient: String; pDateI,
+  pDateF: String): TFDJSONDataSets;
+begin
+  PrepareReportOrders(pIDCodeClient, pDateI, pDateF);
+
+  Result := TFDJSONDataSets.Create;
+  TFDJSONDataSetsWriter.ListAdd(Result, DMOS.OSReportOrders);
 end;
 
 procedure TServerMethodsOS.PersistenceItem(const jObjectItem: TJSONObject);
@@ -225,6 +240,41 @@ begin
   sSQL := 'DELETE FROM [dbo].[tab_item] '+
           'WHERE [code_item] = '+IntToStr(oItem.code_item);
   DMOS.OSConnection.ExecSQL(sSQL);
+end;
+
+procedure TServerMethodsOS.PrepareReportOrders(const pIDCodeClient: String;
+  pDateI, pDateF: String);
+var sSQL, sIDCodeClient: string;
+begin
+  sIDCodeClient := pIDCodeClient;
+
+  if not sIDCodeClient.IsEmpty then
+     sIDCodeClient := 'AND a.[code_client] = '+sIDCodeClient
+  else
+     sIDCodeClient := '';
+
+  sSQL := 'SELECT a.[code_order]   '+
+          ',a.[date_order]         '+
+          ',a.[code_client]        '+
+          ',b.[name_client]        '+
+          ',b.[phone_client]       '+
+          ',b.[email_client]       '+
+          ',c.[code_item]          '+
+          ',d.[name_item]          '+
+          ',c.[amount_order_item]  '+
+          ',c.[unitprice_order_item] '+
+          ',(c.[amount_order_item] * c.[unitprice_order_item]) as valueorder  '+
+          ',dbo.fn_get_total_value_ordered(a.[code_order]) as totalorder      '+
+          'FROM [dbo].[tab_orders] a  '+
+          'INNER JOIN [dbo].[tab_clients]    b ON b.[code_client]= a.[code_client]  '+
+          'INNER JOIN [dbo].[tab_order_item] c ON c.[code_order] = a.[code_order]   '+
+          'INNER JOIN [dbo].[tab_item]       d ON d.[code_item]  = c.[code_item]    '+
+          'WHERE a.[date_order] BETWEEN CAST('+QuotedStr(pDateI)+' AS DATETIME) AND CAST('+QuotedStr(pDateF)+' AS DATETIME)+1 '+
+          sIDCodeClient+
+          'ORDER BY a.[code_order], a.[date_order]  ';
+
+  DMOS.OSReportOrders.Active   := False;
+  DMOS.OSReportOrders.SQL.Text := sSQL;
 end;
 
 end.

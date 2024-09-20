@@ -11,6 +11,7 @@ const
   cActionInclude = 'Include';
   cActionDelete = 'Delete';
   cActionConsult = 'Consulta';
+  cNumberRecords = '100';
 
 implementation
 

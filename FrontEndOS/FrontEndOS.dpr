@@ -10,7 +10,8 @@ uses
   UViewItems in 'View\UViewItems.pas' {FViewItems},
   UDataItems in 'View\UDataItems.pas' {FDataItems},
   UConstants in 'UConstants.pas',
-  UClassItem in 'Model\UClassItem.pas';
+  UClassItem in 'Model\UClassItem.pas',
+  UReportOrders in 'View\UReportOrders.pas' {FReportOrders};
 
 {$R *.res}
 

@@ -19,12 +19,10 @@ type
     cxBCancel: TcxButton;
     procedure cxBCancelClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
-    sAction : String[1];
   end;
 
 var
@@ -44,14 +42,6 @@ end;
 procedure TFDataOrder.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
    Action := CaFree;
-end;
-
-procedure TFDataOrder.FormShow(Sender: TObject);
-begin
-  If sAction = 'A' Then
-     cxTabSheetOrder.Caption := 'Alter Order'
-  Else
-     cxTabSheetOrder.Caption := 'Include Order';
 end;
 
 end.

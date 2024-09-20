@@ -1,6 +1,6 @@
 //
 // Created by the DataSnap proxy generator.
-// 19/09/2024 18:26:21
+// 20/09/2024 10:45:52
 //
 
 unit ClientClassesOS;
@@ -22,6 +22,8 @@ type
     FGetItemsCommand: TDSRestCommand;
     FGetItemsCommand_Cache: TDSRestCommand;
     FPersistenceItemCommand: TDSRestCommand;
+    FGetReportOrdersCommand: TDSRestCommand;
+    FGetReportOrdersCommand_Cache: TDSRestCommand;
   public
     constructor Create(ARestConnection: TDSRestConnection); overload;
     constructor Create(ARestConnection: TDSRestConnection; AInstanceOwner: Boolean); overload;
@@ -33,6 +35,8 @@ type
     function GetItems(pIDCodeItem: string; pLimit: string; const ARequestFilter: string = ''): TFDJSONDataSets;
     function GetItems_Cache(pIDCodeItem: string; pLimit: string; const ARequestFilter: string = ''): IDSRestCachedTFDJSONDataSets;
     procedure PersistenceItem(jObjectItem: TJSONObject);
+    function GetReportOrders(pIDCodeClient: string; pDateI: string; pDateF: string; const ARequestFilter: string = ''): TFDJSONDataSets;
+    function GetReportOrders_Cache(pIDCodeClient: string; pDateI: string; pDateF: string; const ARequestFilter: string = ''): IDSRestCachedTFDJSONDataSets;
   end;
 
   IDSRestCachedTFDJSONDataSets = interface(IDSRestCachedObject<TFDJSONDataSets>)
@@ -87,6 +91,22 @@ const
   TServerMethodsOS_PersistenceItem: array [0..0] of TDSRestParameterMetaData =
   (
     (Name: 'jObjectItem'; Direction: 1; DBXType: 37; TypeName: 'TJSONObject')
+  );
+
+  TServerMethodsOS_GetReportOrders: array [0..3] of TDSRestParameterMetaData =
+  (
+    (Name: 'pIDCodeClient'; Direction: 1; DBXType: 26; TypeName: 'string'),
+    (Name: 'pDateI'; Direction: 1; DBXType: 26; TypeName: 'string'),
+    (Name: 'pDateF'; Direction: 1; DBXType: 26; TypeName: 'string'),
+    (Name: ''; Direction: 4; DBXType: 37; TypeName: 'TFDJSONDataSets')
+  );
+
+  TServerMethodsOS_GetReportOrders_Cache: array [0..3] of TDSRestParameterMetaData =
+  (
+    (Name: 'pIDCodeClient'; Direction: 1; DBXType: 26; TypeName: 'string'),
+    (Name: 'pDateI'; Direction: 1; DBXType: 26; TypeName: 'string'),
+    (Name: 'pDateF'; Direction: 1; DBXType: 26; TypeName: 'string'),
+    (Name: ''; Direction: 4; DBXType: 26; TypeName: 'String')
   );
 
 implementation
@@ -230,6 +250,50 @@ begin
   FPersistenceItemCommand.Execute;
 end;
 
+function TServerMethodsOSClient.GetReportOrders(pIDCodeClient: string; pDateI: string; pDateF: string; const ARequestFilter: string): TFDJSONDataSets;
+begin
+  if FGetReportOrdersCommand = nil then
+  begin
+    FGetReportOrdersCommand := FConnection.CreateCommand;
+    FGetReportOrdersCommand.RequestType := 'GET';
+    FGetReportOrdersCommand.Text := 'TServerMethodsOS.GetReportOrders';
+    FGetReportOrdersCommand.Prepare(TServerMethodsOS_GetReportOrders);
+  end;
+  FGetReportOrdersCommand.Parameters[0].Value.SetWideString(pIDCodeClient);
+  FGetReportOrdersCommand.Parameters[1].Value.SetWideString(pDateI);
+  FGetReportOrdersCommand.Parameters[2].Value.SetWideString(pDateF);
+  FGetReportOrdersCommand.Execute(ARequestFilter);
+  if not FGetReportOrdersCommand.Parameters[3].Value.IsNull then
+  begin
+    FUnMarshal := TDSRestCommand(FGetReportOrdersCommand.Parameters[3].ConnectionHandler).GetJSONUnMarshaler;
+    try
+      Result := TFDJSONDataSets(FUnMarshal.UnMarshal(FGetReportOrdersCommand.Parameters[3].Value.GetJSONValue(True)));
+      if FInstanceOwner then
+        FGetReportOrdersCommand.FreeOnExecute(Result);
+    finally
+      FreeAndNil(FUnMarshal)
+    end
+  end
+  else
+    Result := nil;
+end;
+
+function TServerMethodsOSClient.GetReportOrders_Cache(pIDCodeClient: string; pDateI: string; pDateF: string; const ARequestFilter: string): IDSRestCachedTFDJSONDataSets;
+begin
+  if FGetReportOrdersCommand_Cache = nil then
+  begin
+    FGetReportOrdersCommand_Cache := FConnection.CreateCommand;
+    FGetReportOrdersCommand_Cache.RequestType := 'GET';
+    FGetReportOrdersCommand_Cache.Text := 'TServerMethodsOS.GetReportOrders';
+    FGetReportOrdersCommand_Cache.Prepare(TServerMethodsOS_GetReportOrders_Cache);
+  end;
+  FGetReportOrdersCommand_Cache.Parameters[0].Value.SetWideString(pIDCodeClient);
+  FGetReportOrdersCommand_Cache.Parameters[1].Value.SetWideString(pDateI);
+  FGetReportOrdersCommand_Cache.Parameters[2].Value.SetWideString(pDateF);
+  FGetReportOrdersCommand_Cache.ExecuteCache(ARequestFilter);
+  Result := TDSRestCachedTFDJSONDataSets.Create(FGetReportOrdersCommand_Cache.Parameters[3].Value.GetString);
+end;
+
 constructor TServerMethodsOSClient.Create(ARestConnection: TDSRestConnection);
 begin
   inherited Create(ARestConnection);
@@ -249,6 +313,8 @@ begin
   FGetItemsCommand.DisposeOf;
   FGetItemsCommand_Cache.DisposeOf;
   FPersistenceItemCommand.DisposeOf;
+  FGetReportOrdersCommand.DisposeOf;
+  FGetReportOrdersCommand_Cache.DisposeOf;
   inherited;
 end;
 

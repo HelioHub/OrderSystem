@@ -104,3 +104,20 @@ POO
 -ABSTRAÇÃO CLASSE -OBJETO
 -HERANÇA
 -POLIMORFISMO 
+
+Cadastro Delphi POO + MVC + DAO - DAO Pattern
+
+clipatecinformatica.com.br
+https://www.clipatecinformatica.com.br › 2018/01 › cada...
+23 de jan. de 2018 — O padrão DAO (Data Access Object), surgiu com a necessidade de separar a regra de negócio da persistência dos dados, que até então, era ...
+
+
+
+FIREDAC ESTUDAR OS COMPONENTES
+
+UNITEST - TESTE UNITÁRIO
+
+PROCURA POR CODE_ORDER E EVITAR O NUMBER RECORDS
+
+
+MemTableItems

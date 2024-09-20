@@ -1,0 +1,17 @@
+unit UConstants;
+
+interface
+
+type
+  TAction = (acInclude, acAlter, acDelete, acConsult);
+
+const
+  cEOL = #13;
+  cActionAlter = 'Alter';
+  cActionInclude = 'Include';
+  cActionDelete = 'Delete';
+  cActionConsult = 'Consulta';
+
+implementation
+
+end.

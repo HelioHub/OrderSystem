@@ -199,4 +199,105 @@ object DMOS: TDMOS
       Size = 4
     end
   end
+  object OSReportOrders: TFDQuery
+    Connection = OSConnection
+    SQL.Strings = (
+      'SELECT TOP (1000) a.[code_order]'
+      '      ,a.[date_order]'
+      '      ,a.[code_client]'
+      '      ,b.[name_client]'
+      '      ,b.[phone_client]'
+      '      ,b.[email_client]'
+      #9'  ,c.[code_item]'
+      #9'  ,d.[name_item]'
+      #9'  ,c.[amount_order_item]'
+      #9'  ,c.[unitprice_order_item]'
+      
+        #9'  ,(c.[amount_order_item] * c.[unitprice_order_item]) as valueo' +
+        'rder'
+      
+        #9'  ,dbo.fn_get_total_value_ordered(a.[code_order]) as totalorder' +
+        ' '
+      'FROM [dbo].[tab_orders] a'
+      
+        'INNER JOIN [dbo].[tab_clients]    b ON b.[code_client]= a.[code_' +
+        'client] '
+      
+        'INNER JOIN [dbo].[tab_order_item] c ON c.[code_order] = a.[code_' +
+        'order] '
+      
+        'INNER JOIN [dbo].[tab_item]       d ON d.[code_item]  = c.[code_' +
+        'item] '
+      'ORDER BY a.[code_order], a.[date_order]')
+    Left = 265
+    Top = 195
+    object OSReportOrderscode_order: TFDAutoIncField
+      FieldName = 'code_order'
+      Origin = 'code_order'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object OSReportOrdersdate_order: TSQLTimeStampField
+      FieldName = 'date_order'
+      Origin = 'date_order'
+      Required = True
+    end
+    object OSReportOrderscode_client: TIntegerField
+      FieldName = 'code_client'
+      Origin = 'code_client'
+      Required = True
+    end
+    object OSReportOrdersname_client: TStringField
+      FieldName = 'name_client'
+      Origin = 'name_client'
+      Required = True
+      Size = 100
+    end
+    object OSReportOrdersphone_client: TStringField
+      FieldName = 'phone_client'
+      Origin = 'phone_client'
+    end
+    object OSReportOrdersemail_client: TStringField
+      FieldName = 'email_client'
+      Origin = 'email_client'
+      Size = 50
+    end
+    object OSReportOrderscode_item: TIntegerField
+      FieldName = 'code_item'
+      Origin = 'code_item'
+      Required = True
+    end
+    object OSReportOrdersname_item: TStringField
+      FieldName = 'name_item'
+      Origin = 'name_item'
+      Required = True
+      Size = 100
+    end
+    object OSReportOrdersamount_order_item: TFMTBCDField
+      FieldName = 'amount_order_item'
+      Origin = 'amount_order_item'
+      Precision = 20
+      Size = 4
+    end
+    object OSReportOrdersunitprice_order_item: TFMTBCDField
+      FieldName = 'unitprice_order_item'
+      Origin = 'unitprice_order_item'
+      Precision = 20
+      Size = 4
+    end
+    object OSReportOrdersvalueorder: TFMTBCDField
+      FieldName = 'valueorder'
+      Origin = 'valueorder'
+      ReadOnly = True
+      Precision = 38
+      Size = 6
+    end
+    object OSReportOrderstotalorder: TFMTBCDField
+      FieldName = 'totalorder'
+      Origin = 'totalorder'
+      ReadOnly = True
+      Precision = 20
+      Size = 4
+    end
+  end
 end
