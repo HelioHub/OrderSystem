@@ -1934,816 +1934,6 @@ object DMConnection: TDMConnection
       Size = 0
     end
   end
-  object frxReportReportOrders: TfrxReport
-    Version = '5.2.3'
-    DataSet = frxDBDatasetReportOrders
-    DataSetName = 'frxDBDatasetReportOrders'
-    DotMatrixReport = False
-    IniFile = '\Software\Fast Reports'
-    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
-    PreviewOptions.Zoom = 1.000000000000000000
-    PrintOptions.Printer = 'Default'
-    PrintOptions.PrintOnSheet = 0
-    ReportOptions.CreateDate = 45555.384043472220000000
-    ReportOptions.LastChange = 45555.515307199070000000
-    ScriptLanguage = 'PascalScript'
-    ScriptText.Strings = (
-      ''
-      'begin'
-      ''
-      'end.')
-    Left = 312
-    Top = 144
-    Datasets = <
-      item
-        DataSet = frxDBDatasetReportOrders
-        DataSetName = 'frxDBDatasetReportOrders'
-      end>
-    Variables = <>
-    Style = <
-      item
-        Name = 'Title'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -16
-        Font.Name = 'Arial'
-        Font.Style = [fsBold]
-        Fill.BackColor = 14211288
-      end
-      item
-        Name = 'Header'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Arial'
-        Font.Style = [fsBold]
-        Fill.BackColor = 15790320
-      end
-      item
-        Name = 'Group header'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Arial'
-        Font.Style = [fsBold]
-        Fill.BackColor = 15790320
-      end
-      item
-        Name = 'Data'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Arial'
-        Font.Style = []
-      end
-      item
-        Name = 'Group footer'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Arial'
-        Font.Style = []
-        Frame.Typ = [ftTop]
-      end
-      item
-        Name = 'Header line'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Arial'
-        Font.Style = []
-        Frame.Width = 2.000000000000000000
-      end>
-    object Data: TfrxDataPage
-      Height = 1000.000000000000000000
-      Width = 1000.000000000000000000
-    end
-    object Page1: TfrxReportPage
-      PaperWidth = 210.000000000000000000
-      PaperHeight = 297.000000000000000000
-      PaperSize = 9
-      LeftMargin = 10.000000000000000000
-      RightMargin = 10.000000000000000000
-      TopMargin = 10.000000000000000000
-      BottomMargin = 10.000000000000000000
-      object ReportTitle1: TfrxReportTitle
-        FillType = ftBrush
-        Height = 83.149660000000000000
-        Top = 18.897650000000000000
-        Width = 718.110700000000000000
-        object Memo1: TfrxMemoView
-          Left = 142.622140000000000000
-          Top = 16.779530000000000000
-          Width = 432.872502050000000000
-          Height = 34.015770000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWhite
-          Font.Height = -21
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Fill.BackColor = clBlack
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'Report Orders'
-            ''
-            '')
-          ParentFont = False
-          Style = 'Header'
-        end
-        object Date: TfrxMemoView
-          Left = 587.268090000000000000
-          Top = 22.897650000000000000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -16
-          Font.Name = 'Arial'
-          Font.Style = []
-          Memo.UTF8W = (
-            '[Date]')
-          ParentFont = False
-        end
-      end
-      object PageHeader1: TfrxPageHeader
-        FillType = ftBrush
-        Height = 75.590600000000000000
-        Top = 124.724490000000000000
-        Width = 718.110700000000000000
-        object Memo6: TfrxMemoView
-          Top = 7.559060000000000000
-          Width = 100.273862050000000000
-          Height = 22.677180000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Fill.BackColor = 15790320
-          Memo.UTF8W = (
-            'Client: All')
-          ParentFont = False
-          Style = 'Header'
-        end
-        object Memo7: TfrxMemoView
-          Top = 34.015770000000000000
-          Width = 277.911772050000000000
-          Height = 22.677180000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Fill.BackColor = 15790320
-          Memo.UTF8W = (
-            'Period : 9999-99-99 a 9999-99-99')
-          ParentFont = False
-          Style = 'Header'
-        end
-        object Line1: TfrxLineView
-          Top = 68.031540000000000000
-          Width = 718.110700000000000000
-          Color = clBlack
-          Diagonal = True
-        end
-        object Line2: TfrxLineView
-          Left = -7.559060000000000000
-          Top = 69.811070000000000000
-          Width = 725.669760000000000000
-          Color = clBlack
-          Diagonal = True
-        end
-      end
-      object GroupHeader1: TfrxGroupHeader
-        FillType = ftBrush
-        Height = 124.724490000000000000
-        Top = 260.787570000000000000
-        Width = 718.110700000000000000
-        Condition = 'frxDBDatasetReportOrders."code_order"'
-        object Memo17: TfrxMemoView
-          Left = 105.047310000000000000
-          Top = 55.133890000000000000
-          Width = 61.748332410000000000
-          Height = 18.897650000000000000
-          DataField = 'name_client'
-          DataSet = frxDBDatasetReportOrders
-          DataSetName = 'frxDBDatasetReportOrders'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Memo.UTF8W = (
-            '[frxDBDatasetReportOrders."name_client"]')
-          ParentFont = False
-          Style = 'Data'
-        end
-        object Memo16: TfrxMemoView
-          Left = 105.047310000000000000
-          Top = 28.456710000000000000
-          Width = 58.699032050000000000
-          Height = 18.897650000000000000
-          DataField = 'code_client'
-          DataSet = frxDBDatasetReportOrders
-          DataSetName = 'frxDBDatasetReportOrders'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Memo.UTF8W = (
-            '[frxDBDatasetReportOrders."code_client"]')
-          ParentFont = False
-          Style = 'Data'
-        end
-        object Memo29: TfrxMemoView
-          Left = 2.000000000000000000
-          Top = 2.779530000000000000
-          Width = 100.273862050000000000
-          Height = 22.677180000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Fill.BackColor = 15790320
-          Memo.UTF8W = (
-            'Code Order:')
-          ParentFont = False
-          Style = 'Header'
-        end
-        object Memo4: TfrxMemoView
-          Left = 2.000000000000000000
-          Top = 26.456710000000000000
-          Width = 100.273862050000000000
-          Height = 22.677180000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Fill.BackColor = 15790320
-          Memo.UTF8W = (
-            'Code Client:')
-          ParentFont = False
-          Style = 'Header'
-        end
-        object Memo33: TfrxMemoView
-          Left = 3.000000000000000000
-          Top = 52.133890000000000000
-          Width = 100.273862050000000000
-          Height = 22.677180000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Fill.BackColor = 15790320
-          Memo.UTF8W = (
-            'Name Client:')
-          ParentFont = False
-          Style = 'Header'
-        end
-        object Memo30: TfrxMemoView
-          Left = 347.716760000000000000
-          Top = 2.000000000000000000
-          Width = 100.273862050000000000
-          Height = 22.677180000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Fill.BackColor = 15790320
-          Memo.UTF8W = (
-            'Data Order:')
-          ParentFont = False
-          Style = 'Header'
-        end
-        object Memo31: TfrxMemoView
-          Left = 347.716760000000000000
-          Top = 25.677180000000000000
-          Width = 100.273862050000000000
-          Height = 22.677180000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Fill.BackColor = 15790320
-          Memo.UTF8W = (
-            'Phone:')
-          ParentFont = False
-          Style = 'Header'
-        end
-        object Memo32: TfrxMemoView
-          Left = 347.716760000000000000
-          Top = 50.133890000000000000
-          Width = 100.273862050000000000
-          Height = 22.677180000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Fill.BackColor = 15790320
-          Memo.UTF8W = (
-            'E-mail:')
-          ParentFont = False
-          Style = 'Header'
-        end
-        object Memo15: TfrxMemoView
-          Left = 453.543600000000000000
-          Width = 55.649731680000000000
-          Height = 18.897650000000000000
-          DataField = 'date_order'
-          DataSet = frxDBDatasetReportOrders
-          DataSetName = 'frxDBDatasetReportOrders'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Memo.UTF8W = (
-            '[frxDBDatasetReportOrders."date_order"]')
-          ParentFont = False
-          Style = 'Data'
-        end
-        object Memo18: TfrxMemoView
-          Left = 453.543600000000000000
-          Top = 26.456710000000000000
-          Width = 65.559957870000000000
-          Height = 18.897650000000000000
-          DataField = 'phone_client'
-          DataSet = frxDBDatasetReportOrders
-          DataSetName = 'frxDBDatasetReportOrders'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Memo.UTF8W = (
-            '[frxDBDatasetReportOrders."phone_client"]')
-          ParentFont = False
-          Style = 'Data'
-        end
-        object Memo19: TfrxMemoView
-          Left = 453.543600000000000000
-          Top = 52.913420000000000000
-          Width = 60.986007320000000000
-          Height = 18.897650000000000000
-          DataField = 'email_client'
-          DataSet = frxDBDatasetReportOrders
-          DataSetName = 'frxDBDatasetReportOrders'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Memo.UTF8W = (
-            '[frxDBDatasetReportOrders."email_client"]')
-          ParentFont = False
-          Style = 'Data'
-        end
-        object Memo3: TfrxMemoView
-          Left = 105.826840000000000000
-          Top = 3.779530000000000000
-          Width = 58.699032050000000000
-          Height = 18.897650000000000000
-          DataField = 'code_item'
-          DataSet = frxDBDatasetReportOrders
-          DataSetName = 'frxDBDatasetReportOrders'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Memo.UTF8W = (
-            '[frxDBDatasetReportOrders."code_item"]')
-          ParentFont = False
-          Style = 'Data'
-        end
-        object Memo8: TfrxMemoView
-          Left = 4.000000000000000000
-          Top = 94.488250000000000000
-          Width = 68.480876410000000000
-          Height = 22.677180000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Fill.BackColor = 15790320
-          Memo.UTF8W = (
-            'Code Item')
-          ParentFont = False
-          Style = 'Header'
-        end
-        object Memo9: TfrxMemoView
-          Left = 77.921816400000000000
-          Top = 94.488250000000000000
-          Width = 78.326911680000000000
-          Height = 22.677180000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Fill.BackColor = 15790320
-          Memo.UTF8W = (
-            'Name Item')
-          ParentFont = False
-          Style = 'Header'
-        end
-        object Memo10: TfrxMemoView
-          Left = 411.374888090000000000
-          Top = 94.488250000000000000
-          Width = 97.577611720000000000
-          Height = 22.677180000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Fill.BackColor = 15790320
-          HAlign = haRight
-          Memo.UTF8W = (
-            'Amount')
-          ParentFont = False
-          Style = 'Header'
-        end
-        object Memo11: TfrxMemoView
-          Left = 519.291089800000000000
-          Top = 94.488250000000000000
-          Width = 103.676212450000000000
-          Height = 22.677180000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Fill.BackColor = 15790320
-          HAlign = haRight
-          Memo.UTF8W = (
-            'Unit Price')
-          ParentFont = False
-          Style = 'Header'
-        end
-        object Memo12: TfrxMemoView
-          Left = 630.526362250000000000
-          Top = 94.488250000000000000
-          Width = 81.344116590000000000
-          Height = 22.677180000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Fill.BackColor = 15790320
-          HAlign = haRight
-          Memo.UTF8W = (
-            'Value Item')
-          ParentFont = False
-          Style = 'Header'
-        end
-        object Shape1: TfrxShapeView
-          Left = 3.338590000000000000
-          Top = 89.708720000000000000
-          Width = 710.551640000000000000
-          Height = 30.236240000000000000
-          Shape = skRoundRectangle
-        end
-      end
-      object MasterData1: TfrxMasterData
-        FillType = ftBrush
-        Height = 22.677180000000000000
-        Top = 408.189240000000000000
-        Width = 718.110700000000000000
-        DataSet = frxDBDatasetReportOrders
-        DataSetName = 'frxDBDatasetReportOrders'
-        RowCount = 0
-        object Memo20: TfrxMemoView
-          Left = 5.501131340000000000
-          Width = 68.480876410000000000
-          Height = 18.897650000000000000
-          DataField = 'code_item'
-          DataSet = frxDBDatasetReportOrders
-          DataSetName = 'frxDBDatasetReportOrders'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Memo.UTF8W = (
-            '[frxDBDatasetReportOrders."code_item"]')
-          ParentFont = False
-          Style = 'Data'
-        end
-        object Memo21: TfrxMemoView
-          Left = 76.320597740000000000
-          Width = 237.067171680000000000
-          Height = 18.897650000000000000
-          DataField = 'name_item'
-          DataSet = frxDBDatasetReportOrders
-          DataSetName = 'frxDBDatasetReportOrders'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Memo.UTF8W = (
-            '[frxDBDatasetReportOrders."name_item"]')
-          ParentFont = False
-          Style = 'Data'
-        end
-        object Memo22: TfrxMemoView
-          Left = 411.655549430000000000
-          Width = 97.577611720000000000
-          Height = 18.897650000000000000
-          DataField = 'amount_order_item'
-          DataSet = frxDBDatasetReportOrders
-          DataSetName = 'frxDBDatasetReportOrders'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Memo.UTF8W = (
-            '[frxDBDatasetReportOrders."amount_order_item"]')
-          ParentFont = False
-          Style = 'Data'
-        end
-        object Memo23: TfrxMemoView
-          Left = 518.571751140000000000
-          Width = 103.676212450000000000
-          Height = 18.897650000000000000
-          DataField = 'unitprice_order_item'
-          DataSet = frxDBDatasetReportOrders
-          DataSetName = 'frxDBDatasetReportOrders'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Memo.UTF8W = (
-            '[frxDBDatasetReportOrders."unitprice_order_item"]')
-          ParentFont = False
-          Style = 'Data'
-        end
-        object Memo24: TfrxMemoView
-          Left = 625.027493590000000000
-          Width = 88.903176590000000000
-          Height = 18.897650000000000000
-          DataField = 'valueorder'
-          DataSet = frxDBDatasetReportOrders
-          DataSetName = 'frxDBDatasetReportOrders'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Memo.UTF8W = (
-            '[frxDBDatasetReportOrders."valueorder"]')
-          ParentFont = False
-          Style = 'Data'
-        end
-      end
-      object GroupFooter1: TfrxGroupFooter
-        FillType = ftBrush
-        Height = 37.795300000000000000
-        Top = 453.543600000000000000
-        Width = 718.110700000000000000
-        object Memo5: TfrxMemoView
-          Left = 430.866420000000000000
-          Width = 183.423522050000000000
-          Height = 22.677180000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Fill.BackColor = 15790320
-          HAlign = haRight
-          Memo.UTF8W = (
-            'Total Order:')
-          ParentFont = False
-          Style = 'Header'
-        end
-        object Line3: TfrxLineView
-          Left = -3.779530000000000000
-          Top = 29.456710000000000000
-          Width = 725.669760000000000000
-          Color = clBlack
-          Diagonal = True
-        end
-        object Line4: TfrxLineView
-          Left = -3.779530000000000000
-          Top = 30.236240000000000000
-          Width = 725.669760000000000000
-          Color = clBlack
-          Diagonal = True
-        end
-      end
-      object PageFooter1: TfrxPageFooter
-        FillType = ftBrush
-        Height = 26.456710000000000000
-        Top = 551.811380000000000000
-        Width = 718.110700000000000000
-        object Memo26: TfrxMemoView
-          Align = baWidth
-          Width = 718.110700000000000000
-          Frame.Typ = [ftTop]
-          Frame.Width = 2.000000000000000000
-        end
-        object Memo27: TfrxMemoView
-          Top = 1.000000000000000000
-          Height = 22.677180000000000000
-          AutoWidth = True
-          Memo.UTF8W = (
-            '[Date] [Time]')
-        end
-        object Memo28: TfrxMemoView
-          Align = baRight
-          Left = 642.520100000000000000
-          Top = 1.000000000000000000
-          Width = 75.590600000000000000
-          Height = 22.677180000000000000
-          HAlign = haRight
-          Memo.UTF8W = (
-            'Page [Page#]')
-        end
-      end
-      object Picture1: TfrxPictureView
-        Left = 0.440940000000000000
-        Top = 18.677180000000000000
-        Width = 136.063080000000000000
-        Height = 68.031540000000000000
-        Picture.Data = {
-          0B546478504E47496D61676589504E470D0A1A0A0000000D4948445200000089
-          000000410806000000E59F8710000000017352474200AECE1CE9000000046741
-          4D410000B18F0BFC6105000000097048597300000EC300000EC301C76FA86400
-          00133649444154785EED5D895B544712DFBF279BCD1ED96CB2BB46736C3C5044
-          10414105F140503C30226AE2ADC40B6F052F44BC8D71E391440DA27810D46834
-          1E60E2199D7B6006E60066A0B6AA5FF79B37C79B190E5930EFF77DFD0D767557
-          F7EBFE757555F79BF10FA04143046824D110111A4934448446120D11A1914443
-          446824D11011BD82245EAF17FEF87E0CFCA9DF60C899BF98E76AE82EF40A9210
-          4144FAFB270970F7412D9768E80EF4789258EAEAFD48F2B7FFC443C5E52A2ED5
-          D01DE81596E46D24061184B69B94C9B9603499B9444377A05790E4F4B90A9836
-          77112C5EBD016A7FF995E76AE82EF40A92105A5B5BC1DDD4C4FFA5A13BD16192
-          DCBE57031B77EC85A23D07E15CC5259E0B30E3B365F0D607B1F0469F41F067FC
-          4C9A381DF4660B974A6869F1C07B0313D91642E5FEF6711C8C9D3A1B5A3C1E5E
-          22185487D0D4DCCC3E95686B6B0323B6E174B9E085DEC073019EFDF612E62E5B
-          03FFE83F1CDE418737764C269C3C5BCEA5D161EEB2B5D8BF61F0970F87B23E27
-          644C85CBD537B8541D776B1EC2B3173AB883E32440443F76EA0C248ECFC1B12B
-          E5B900D76EDDC1F17CC0F4D2DFD1A0FCD25578A93742796515D31B081C12F8EE
-          7C25CEC7727817FBFDCF4149109F9E0D078E9D60D1A2C04B8311EBB7419DCDCE
-          7382D16192289DC9BC452BA1AEDE068F9F3EF7CBA74424787FE828DC261EF19A
-          FE7595E983B8D1A0339878291F68B04599ACD98B822C4AECE84C26A3B6B2F316
-          400DB64565441DFF341826CC98C76BAA237FE9EA1075A5F466DFC11037763298
-          02C82F70E0AB9372D9A4F1D3E0871BB758BE52C79C25ABC0E39126EB2F1F0D95
-          F3FB0C49867B11A2B7DA5F9FB0B2F4BC034766C0D3E7BF7189841FEFDC6332A1
-          33300D18318E2DAC1367CAE5BC49B9F3D9220B852E2149F69C452CAFDFB054F8
-          EB4771F0E70F254BA22C93923983952116BFD56F085B9D646994E5E8EFF49C39
-          AC9C1277EED7C86542916459E156B93E11E0260ED2A69D656C32C9D9157545FA
-          13E6AF2D2EE1B58391989123EBA33EBED33F0157E3703699A2BFF43968E47870
-          BADDBC960F47BEFE566E6BF8B8A970E1EA35A842A2883C4A449296961656FE29
-          5A3C914F63B37A5331CB5703595E2AFB66DF18F87CC55A3F4BF2E0E123591725
-          EA278D013D87328FDA51967BE524193A6632C48C9C00F30BD6C1D113DFC2CE7D
-          87213E2DCBAF0C452885DB763306AFDBB60BBE3A7D0636EF2C657595E5DEC3C9
-          B87BFF016F4582D96295E5A148B279571993D1C3C7A2BE81C919301457FADCA5
-          1B6145E12E988A4EEFBF6292FD2678C8E849606B68E01A7CD8B27B9F5CA61F5A
-          B60DDB4BD112DC66D6A0E4C051189C3A51D6432967EE125ED387F24B55B23C36
-          75128C9C3403091607039232D8DFF169D950B0A1082D89B485D236ABECDBF08C
-          29D01C625B253C7BE123D47B038643D5B51FB90498151632D243674AE9D3F361
-          D5C6227CAE32B4F805CC8AD0E211E5447A2524112B943AF32E767633EEB16EB7
-          6FF29A9A9AD936A3ECC887F1A970E2BB72BF3DD166B7C3FBB1BE726FF61D0427
-          BEF98E4B25381C4E591E8A2445A507994CF4656AFE22DCFA9EC92B8C3E2F555D
-          975720251AC09BB77F6672012A27E46F7F120F5F7E7DDAAFAF041AC8BE71A972
-          B9F76292A0E6A17FC4A5B41A7D868C8241A326C01AB40ED4278BB50E5EEAF4A0
-          D3EBD9821148CBC993EB50DB672B2AB9C41FC58A674DCDCA0587D3C925BE854B
-          321AD3B223C7A15EE16B507BBF3E7E82967F4110515E0949685B110D0C1E3591
-          398981A0C9A40E5319FA4CC9CC874647B0797EF848DA63452A39708C4B244422
-          C9AEFD47994C0CCE0FD76E72893F2E5CA996F590F9FD12AD9E12854525B29CB6
-          2DA733F4A0DDAFFD452E478BA5A8641F9748A8FDF5B12C7FAB5F2C2C5CB91E5C
-          2A132040E327EAD004E62D5EC525FE10E349DB05593681C7CF7E93EBD376BF63
-          DFA120822B9188D64A94A7F44A48A264E2E4599FA17994F6D7408887A2F2F396
-          6FE6B9FE6845860B5D9476941DE61209ED21494A662E12D1B7BA9468461F40E8
-          61837CF04B2E912064A467E682152CE20805DA2644594AB3177EE16715EED5F8
-          48F4AFC149507DDDB725848372E10D4C1EC7AC8E12F45C24A3FE7D9430169E20
-          310416AFDE24D78D4999082F5E062F5A2568BE44794AAFDC2799A3C27A822009
-          ADB8559B77F0DC6028F5B59724DBB13CC9A8ADA9F9EA1780CAED84FAB35BB112
-          0942467A68C2FE895B0939B134D19F8C4867833F6DDE52F830618C5C96120DB0
-          B24F17ABAEC9320ABB293C8F06DF575E95EB51C84DDB8512A959B3988CFA371F
-          1D562531858C12F9498163140AC3147EE32B27C98282F53C37184A92ACDEBC93
-          E70643A9AFBD24292E3DC464D4169D0BA8810655E809248952D6DE9481CEA153
-          E11B5CC46846C892264CC7C10FDE62434149627A964CB4D062CB50AEFCB7FF33
-          0CAA6FF86FA94ACB9EBF6CB5EC8F8543F15EC9BFA1F4DA9364DB9E034C466DCD
-          EC2049683284EC8DF7074142FA1446B868D24EECAF7252AA6FDE96752523495C
-          51928490317D9E5CB70FFA573F61F84F50FA1C4913A6051D2A0A19A5ECBC4572
-          781D0E87FF7B5AAE33627C0E0B22424123890242467A96ACDDCC1C570F92C7E5
-          76B336293551C209B2DB1B989C6481E1EA8FB7EFCABA1849429CA5A8C1813AC5
-          9891DFB48E9FCCDE7DF090E5D1D9C84EB4008178EB03DFB9C747C3C7C22F8F1F
-          73893A46F0F3204A740E74F3CE5D2EF18746120594269BF66BB5E84620D4E930
-          A112C36DA1A7BD968440D70854979EE7E3E16970527132DA77684AD0092BA160
-          C336B90C916B114654E14096862C92A8F3477CF6C26DBBB8D41FBD82240D8D0E
-          59168A245B4BBA8624744F23E4B432C30DF4EA2D3BE11F031260EBEEFD3CC787
-          B3172ECB7A8824D1FA240297AA6FC8F5E999C418D2E79CA5A1FD0DB3A54E2E47
-          E9ED8FE360295A43350C1C391E36EDD80B2B3614C975E89ECD1DC2EAF50A92D8
-          D0B40B592892D04523C9A8ADCE90A4D1E1609793A20C9D718CCA9CC9482A403A
-          284A13EDBD8344A9A8BCC2A512BEBFE88B523A42125AE5D43FA143243AB53E5F
-          E9BB300C0485C5CAF2A4A36F5C0ADCF8E96766CDE812AFF4F057ACDF096953E0
-          2A925184D594DE1D9008D76FFEC4B5F9D02B48626F689465A14842AB9A649D25
-          09E1D3452B99B916E544A23CDA8EC4F388BCECD90B416F34F2DA1294D18D4492
-          F0DB5628CC5B5128EB1029099D4B25610341A7DCFF1EECBB7E089726CC980B06
-          9399F95722EF8D3E317EB7D3025D4292CFBB9A247BDB6749C6CF9022026A8BA2
-          0D35443A271128585FCCCE4844D9A08483D967C84858B6B138E83508C2998A4B
-          72592289DAE15E2428279B2E258B4BF631A28703DDEDD0BD15950F240BFD9B88
-          4DF747E45C0B281705DD1B29AF57081D26C9BAA21296D617EF8173172FF3DC60
-          AC2BE6E5B6EF81CB3FA8BF8721F451F96BFC6A5D80DE2511F2E3DF9C0F3A6EBE
-          72ED47A90DECCBA9B3E7796E306880851E2A7BE3A6FABB1BB730F4FC62D376B6
-          DDF41F918E0EE41876413776CA6C58BB7527DCC24840BCE312087A5541B443EF
-          6F888BBCF6822E17859EAD25FBE185C1DF62A981CE54F61C3E061372E7B1CB4E
-          D1775A4C25078FA1E5F37FFD932E65453BDB4A0FB245A944874942A0418FC4EC
-          68CA10A2D1A3FC0C846827921E42B4E5085E6F2B33F1166B3D1B3CF217A239A8
-          6A4F7FA24147F4501DD6F7BA7A76D1477D8FA42794BC5324D1F0FB8046120D11
-          A1914443447439499A31266FD85D067674EE5C57AA79EEEB0BAFA50E3CA6E86E
-          797B2BBA8C24ADE82019060E077DFF78D00F48003DFE6DCE97DE7D7D5DE1C568
-          C380CF6AC8C8067798B7CD7B3BBA8C243458BA984430E5E441DDC622A8DFB203
-          1A8E7ECDA5AF273C2F7532495CF5369EFBFAA14B4862CD5BC0AC8779E10AF0D6
-          D7F3DCD71F1E9D5EB324D182B619436C3238CA2FF29CDF073492448BB6363650
-          FAB851E00C38297DDDA191A41D60241996020D177F5F3F09A1F449DC9A4F120C
-          5B5109D877EE85A6AAEB124968CB19972D09BD5E687E500BF5DB76415BC03D4B
-          20AC9F2F071DD6D7F51F06BA4F86813E762418B372A149E52DA970A03ABAC123
-          981EA68F2670640658E9A5616FE4A374253CCF7E03DD9064491725D2953201EC
-          87BFE225FC2D4924C7B5F95E0DEA4BF2F56D108E57EA44B0AED948378FBC54CF
-          448749C2425D9ED8406152E6B1FCE471E0B158790D7F1851C6CA51D88C936140
-          72D027231BE9C24FE3944FA1350A334E65E4F6634620D1500F25FA9BFA41B2F8
-          54A8DF7B80D70803DC3E59082FFA467A8662DFE893FE4DFAD2B2A0CDE305AFDE
-          203D3B91A44EC56117FAA86EC218308CCD04C3E849B83DA7F8F48D9E089E10DF
-          5BEA29E830492CCBD78065E92A308CC187A641C00931CFFE4CCA5F21A5BAF55B
-          C1DBD8C86BF820268006C7B47213349C3A038E8ACBE0F8E62CD4AF5ACF748A89
-          22EBE4ADF3FFFE8912ADB882993E9C44D38C7C68D8B39F39D0CE8A4A68387014
-          CC799FA30C2719CBE80625A275537F5D81C09E8512F6C152B8051ACF9483E36A
-          3538CE568065DD5636C9D4775DFC686669229184E9C3BE59F0B91AAFDF02E7D3
-          E7D0F2E831345DA906D302B4A23189D2738E9F0AADED7817B63BD1299FA4B5A5
-          055C57AF4903352C155C376F73893A4CB48A062041A6CD01E7AD9F5147F0357A
-          F3CFF7C094B7509A2C4C46249F9A4966931F8FFED0FE238C3081F03A5D60DF77
-          0857F168A96C6C12B8AFFCC0A5FEA0B6744800F3ACF9E0BEFB005A436C95AEFB
-          35609A8DC42392D37353522149C38E52A6D33C7F2978545E1632CF5F22F50BC9
-          623B7E82E7F62C74DE71E5D14D34246979F0505A351953C081931009C6C933E5
-          95683BE5FF954C8211CD374DEACBAD3BC08B840D07D7C52BCC9250FBA6A99F42
-          5B00E9DA9C4EA96FE3A64053ADEF6732D4609C343D22490CE81F1199C8370B07
-          7D723A238BBBAA675E63749A246D1E4FD42461138EDB52FD9E034193A406B16F
-          1B172E67845482E9C32DABC9E0FBE19A7030CDCC97EAA03FD014F0D54B76A580
-          246ADC5D86CD44F7EE06950F4712EA3759120392BDE5E9339E1B0C0FCAD42C4D
-          4F40E72D094E76BB4882ABDF1EE2655B35581716B07AC68939E0567C37D6825B
-          02E553E4122DDA9A5BA42D05934DF9154A6E0DC9CF686E4754555750283DBB0A
-          49C84762CF4C65D0C7715547F79DE09E866E238988400C6993C1F9227A4FDE55
-          7E411AE8A474687CF182E722E130E2A07C5B59F01795C2815926ACA7DC029A6F
-          DF95FBD682616DB4F00B814390A4CDE5665B0923092666590627B1B0DC3C3D1F
-          DCB858DA545E81EC49E83692B8BE9726DB88D18A5B252C0E859607B592FEC4B1
-          6057986CE138D6EF3BC273A2834C92CDDB790E80FB5295D437F4959A4CA1BF70
-          150A5EB345EA1B92C4AD7267D5AC338269D53A8C8A28EC1D256F9F548F910623
-          24E39459E03146DF6E77A3FB4872BE521A185C59EE27C1DF4053031DCA31FDB8
-          CA1D8A554EBE0DE5D76D0CFFD351812082D044D9155F957463382AFAE67DF294
-          E74686172796D51B351EC9A0E3B9A141E720CE4B57A1AE743F5897AE668414A1
-          394BA8A3E9B9CF52F624741B49DADC6E564E87E6B6FEF4399E1B198D478FB341
-          A4F38E1687CFB9338C4897DACD9CC99CE7A840075BA88BFAD050E10B83E9A496
-          4D3646510DDF46DF373A4595F5E1B6182D5AB1BF5E93199C18B119D2B3241DD8
-          7EDD1785BC44CF42B73AAE3410B492E99C21305251031B401675ECF58B3AACCB
-          D73019996BDB77DFF3DCF06873BA581DE67B04FCAAB4D8864C790B70D947473A
-          2B1DAED1492CEA34A3131B88B6E6663066E7426B986FF079F446C9BAD1B364CD
-          8A3AEAEB4E749E245E6FD424314D9B235B13EBC6229EAB8E86DDFBA4491D9705
-          2D4F9EF35C0E248C38ADD4A765812784E318082AAB1B301C4370FF9FAF229826
-          E74AD6044957BF5DFD971905ECBBCA700BBD00A69CD9D2F3A74E643E8A0C3E2E
-          B4A5349E0C3EE351821D30D2736034146DF8DD9DE8564B42977DE480B201C1C9
-          B0E42F86D6802F02099867CE9326352E056CC7BF093978F6B243B275A2CB37C7
-          E9335C12006C97AD564C268C2ABC2A8E334D282331F68D8ECCD5220F13FA0FCC
-          0FE1FE0BEB27FA484E2519705CC4E11D11C8A972CA4B60F5B15D5BC06FAFF514
-          742B490874E46E484C93884289CC358684A6697960CEC9F373E6E8DCC2B6EF30
-          7803BE76A88499DE8AE311031D6EE9E2C7B068A36EF5460C33511FBFE4D30D44
-          82601B41164901DBA12F65A230520D1DC5B626FB9EFDECC4D6347906CBA7DB5C
-          F3A622F9AE855D4C621B96252BD9BF051A0E1F63B7BDAC6FF89CA6AC5CE6C0B6
-          3535B123011642635D1DCA8D9933C01B8535FC7FA0D324A1032A1A34C3883470
-          FD14DD4F5E3B6B6AC1943B0F7474BB8A03C448C6131BD02123D984BACE95432B
-          EA8F84FAADBB706567B0D5A8D44589F274F42375B8BD79A3389F71FEF714461E
-          D93E2BC0F5D0DFCC6A8D9EC82C58ABCD774F442F7CD318E8C74C024FC05731AD
-          DBF6B045A047922AFB25EBC431203FC871BFE7FE1F3E9DB7240867E51570A139
-          F5B6F3C51B57E565B0E2FE6F59548003BD102C0B56407D7109345FBCC4B6A1F6
-          ECCF4D4800C7F193ECFD0CF3BC25609EBB04ADC92668387E029A7F79845B4764
-          B20934DBED603B550ED6C22D60994FBA168375E57AB01D39C6B698C07764E89B
-          02CECAABE0BA8A6310E2D5060F86B6F643C7A00EFBC6F4E1B35A97AC02EB8E52
-          306158DC1AE2A6BC27A14B48D259D06DAB0727912EE9A2F99E6D24901E0F4616
-          DE0E7E515B090A57BB4A17915ED9B7AE78D6EE408F2089869E0D8D241A224223
-          898688D048A2212234926888088D241A22422389860800F81FED1ACA3ECFB6C6
-          AE0000000049454E44AE426082}
-        Stretched = False
-        HightQuality = False
-        Transparent = False
-        TransparentColor = clWhite
-      end
-    end
-  end
   object frxDBDatasetReportOrders: TfrxDBDataset
     UserName = 'frxDBDatasetReportOrders'
     CloseDataSource = False
@@ -2773,7 +1963,7 @@ object DMConnection: TDMConnection
     UpdateOptions.AssignedValues = [uvCheckRequired]
     UpdateOptions.CheckRequired = False
     Left = 312
-    Top = 264
+    Top = 254
     object MemTableReportOrderscode_order: TFDAutoIncField
       FieldName = 'code_order'
       ReadOnly = True
@@ -2804,15 +1994,890 @@ object DMConnection: TDMConnection
     end
     object MemTableReportOrdersamount_order_item: TFMTBCDField
       FieldName = 'amount_order_item'
+      currency = True
     end
     object MemTableReportOrdersunitprice_order_item: TFMTBCDField
       FieldName = 'unitprice_order_item'
+      currency = True
     end
     object MemTableReportOrdersvalueorder: TFMTBCDField
       FieldName = 'valueorder'
+      currency = True
     end
     object MemTableReportOrderstotalorder: TFMTBCDField
       FieldName = 'totalorder'
+      currency = True
+    end
+  end
+  object frxReportOrders: TfrxReport
+    Version = '5.2.3'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 45555.541802453710000000
+    ReportOptions.LastChange = 45556.251886030090000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      ''
+      'begin'
+      ''
+      'end.')
+    Left = 312
+    Top = 149
+    Datasets = <
+      item
+        DataSet = frxDBDatasetReportOrders
+        DataSetName = 'frxDBDatasetReportOrders'
+      end>
+    Variables = <>
+    Style = <
+      item
+        Name = 'Title'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        Fill.BackColor = clBlack
+      end
+      item
+        Name = 'Header'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        Fill.BackColor = clBlack
+      end
+      item
+        Name = 'Group header'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        Fill.BackColor = 52479
+      end
+      item
+        Name = 'Data'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = []
+      end
+      item
+        Name = 'Group footer'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+      end
+      item
+        Name = 'Header line'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = []
+        Frame.Width = 2.000000000000000000
+      end>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 297.000000000000000000
+      PaperSize = 9
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
+        Height = 41.574830000000000000
+        Top = 18.897650000000000000
+        Width = 718.110700000000000000
+        object Memo1: TfrxMemoView
+          Align = baWidth
+          Width = 578.268090000000000000
+          Height = 37.795300000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Fill.BackColor = clBlack
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Report Orders - Minerva Foods')
+          ParentFont = False
+          Style = 'Title'
+          VAlign = vaCenter
+        end
+        object Picture1: TfrxPictureView
+          Left = 578.268090000000000000
+          Top = 22.677180000000000000
+          Width = 139.842610000000000000
+          Height = 56.692950000000000000
+          Picture.Data = {
+            0A54504E474F626A65637489504E470D0A1A0A0000000D494844520000008900
+            0000410806000000E59F8710000000017352474200AECE1CE90000000467414D
+            410000B18F0BFC6105000000097048597300000EC300000EC301C76FA8640000
+            18EA4944415478DAED5D095C94D5FA7E66831918F655715F510454142D37DC42
+            4154445C12040437D40434F78D54C0DD5C2A97D24CEB56FE6F37BBD5CDDBAAA6
+            6566A6292EB9E602B2088820DBCCFF3D6798710606661444BCCDD38FFAE65BCE
+            BCE73DCF79B773BE49A024C00413AA81C04412130CC14412130CC24412130CC2
+            4412130CC24412130CE2B92049595919BCFB0E855028805F4F5F6C5AB1E4598B
+            F4B7C27341920EBD0335C732A914BB3725C3C3BDCDB316EB6F837A4F92AC7B39
+            E8336C9CE6B3B9B939D62D9B03BF1EDD9FB5687F1BD47B9230741938020F8B8A
+            B8BBF16CD7161B5E9B0F6727C7672DD6DF06CF0549BEF8FA7B7CF5ED0F70B0B7
+            C398E18168D3AAE5B316E96F85E782240C0A8502C525259092BB31A16EF1C424
+            397DEE027E387A1C6612095A366D84017E3DF9F9F8C52BF1ED919F515A5A0A89
+            588CB6AD5BE0F5A4C5707574D03C5B52528ADE43C7E2FE8302B0AF979A9BA143
+            BB36D8B921893FA30FEC1989448CA2E262989B99E95C636D646465436E69817B
+            B979707375E1E76FDCBC8DB7DEFD00DF1C3AC6EF717575C2A4F0511832B09FD1
+            FD5CB0723DBEFAEE30272993B3614357244C8E440F5F9F6A9F3B7BE112ACE472
+            E4923C9EEDDBF273AC8D7F7DF9353EF8E4DFE8DDBD0B66C48CE7E77F397586FA
+            24C1FDFC0730A3BE75EDE86950AE6F8F1C833B59D4F397AE507CE64BAE585841
+            27C0C1EF0FE33FDF1EC6B113BF412810C2D5C511A14183306A5800442211BFEF
+            76FA5DB83A3921F7FE7DD8D958D72E49B4338EC0FE7D306FE664E4904282C2A7
+            541A40077B5BEC5CB782DC448B4ACF6AC3C9DE1EEF6F5B8F062E4E3AE76FDCBA
+            8380B131FCB877775FAC5F3E4FC7A20CA5EFBC72FD2FFE5D7E2F76C52B1323D0
+            B4B11B8F65F474192FF87863C78695D5F66FFE8AB5F8ECE077FA952610A065B3
+            C6D8417D72D222BF1A8C042B37BCC98F3DDAB442C2D42874F3E9A8D3EF2103FD
+            B0627E02C462113AF51FC62701839D8D15B6AD790DEDABC9DE2E5EBE861151D3
+            787F9B346A80B75627527F1B69AE9F3C730EE1B1B3B99CFAD08826D1971FBE8D
+            7FFFF73BEAE73A7EAE47D74ED8B062212C64B2CAFDAD0D92F479D1175B5396C2
+            2F380C7979F9502815BCD3DA427AB76F837D6F6DE0358FCEFD879372C4FCB8A4
+            F4D17D4C14DF4E5ED8B52945E7BBCEA45EC0D8C9095592840D081B18F6FC8B5D
+            3A2176C238FC78FC24B6EDF90758D30A856E1785743272DC48244C8AD4DBB7D0
+            E857907AE9326F8F5936339AE52C682E2A2E4131FD3179D9B5A68D1A62FFAE2D
+            B0A0B45C1B1F1FF80F12D76EE6C7EE3431664C1CCF2D454CFC421D922C9F1747
+            D65182EB64F1025F9EC8CF8BC822848F0CC2ECE993AAD4BDCF80E15C16D6B7E0
+            41FDB16C6E9CC69230CB32327A86E65E26A74824E496A494F4AD3E27264B5246
+            964D8DA74E9296CD9AA09448D1C9DB031D3DDC919B9787CFFFFB3D2E5EB9AEB9
+            870DEAB89020C491A97E7DDB2E346DD208B7EFA4E1E00FC770F9DA0DCD7D5696
+            32EC5CBF021EEDDC35E732C995F80587574992ADEFECC59BBB3FE09D6FD9BC29
+            4AC82599916BF068DD9EDAB3C4ED8CBF70F2F754E4905CEA016E419660EF1B6B
+            616365A5D3AF3776EDA3BFF7F93D4E0E0E18113810DD3A77A42B0AA45EFC13FB
+            3F3F88ABD76F6A88DDAF67776C2277AA8D6F8FFC8457162CE7C72DA89F96E406
+            CFFF79152E6475EC6CAD5154540CDFCE5E981D1BCD270B9B281DFB0ED5C8D6AE
+            4D0BBCFFE67AEE7A2AE2C6ADDB64555584B2B29061C3F205E8DEB533FF7C273D
+            0303432335446003DE812667FB96CD6029B7C4F51B37F1FBD98BB8452EA6E2B0
+            3F159278F90DE133943D6E454A081F3914D161A32195AA068F2962E0A84864DF
+            CBD53CE3EC6887F8C9131030A08FC627324205854D41768EEA3E814089A47933
+            1134D85FF3DC038A5DBA0D0EAD9224CC626CDEF99E4696AE9D3C9130258A9B60
+            36C3582C70942CCBCC452BF80C646045B9ED6B13D1C9AB83A61D769F975F908A
+            D4D48FF9D363303CD05F232B4341612106D3206565DF530D94951CBB372651EC
+            F528E3FAE9D7531AAB61676343F758A23FB9C111140F5813298B289D671C7375
+            71D1902DF295B93871EA0FCD77272F88C740BF5E95F4BE9DFABAA9BCAF9D3CDB
+            61DBDAE5B0B4B0E0D7D41397BB783B5B55FCF5523FD896C71AECFC956BD7B19E
+            26E9A163BFEA10E5A99084B90C966D30346BE48637562F23FFD850E71E56DBF0
+            1910AC99211D3DBCB16DDD520A3075CDF3A52BD7101C394DF379F6D468448E7D
+            144F1822C93BEFEFC7FAB7766994B366F1ABE8469DAE0816684F9B97C88F99B9
+            5D9C108B101A3835366CDB8DB7F77DCC8F5FA018E2F5958B6061515969CCA284
+            C6CCE4C7CC0D4D8B1C8BC9918F0A7E172F5FA598613A3F160945080EE88FB933
+            2641A66700D460417640B9CB61FA0AA0386FD592572BDDE7D12B805F676E297E
+            7204E969243F7F95AC4450D86455DF28CE991E3D0E516346EA105C1BA1D1D3C9
+            A55E7DBA24F1EC3344C3C45EBE9D298359C27D77559D627F43FD0763E5826995
+            EE51503B5ED49E1A719322101336EA8948D2D18366D7BAE53CD3A908466A466E
+            D5E09192A74422724C88E6BAF64CF4EFD70B91A383E1D5DEBD523B2C73EBD86F
+            98E67340BFDE58B5748EC62A9CBBF027464D5491C8C65A8E0DCBE6C2B74B6783
+            3AD59E788D1BBA903B5CC76B436AE4931EBA931E78A6E6EC84B729F86ED64415
+            B0BEB6760B3E3AF0253F6641FBF635CBE0D6B06195DFC562ABCE03863F5D92E8
+            44EA03FC90A287F50C6A92B019171E3A1CAF4E8B31D8DEE39264C7DE8FF0FAF6
+            77B9F2588CB03959FF02A0B63B61F2C4537C14553E13B56560EDB0349B997D96
+            4EDF4E4FE7269D0599AD28FE3A73FE22EE6664E92898A5F96A990EFDF40B62E7
+            2CE3C72CF6D9B97E25B95A0718C237878F61E6C215FC9805CCB3282B0A0B7D34
+            906194B19CFA2395CB171C308002DF780D31D5D718980E5613690DD594822363
+            C98A5FD7F4E1A9922424E02524CE9BA9F73E6D928C0F0DC6EC69D106DB7B5C92
+            6CDFF321F9E93D5C792FF9F5E4C19C3EB0EB9EE516AB2249B4AF3D2EBA5110BA
+            994862511E1B1C3A462499BB4CD5FFB6AD79B66621931A6C479BC44C9E5EDD7C
+            B075D532EE32B4673EABD7BC91B204BE3E8F5CAAB6650FF2EF8B95945E57AC9D
+            54C4F6F728BED9F11E3FFE9F27092B986D797BAFCA4D1049D63F0149D4DB11F8
+            7DF48F7BCB169562AC2A75D1B615A25E1EA91994E3BF9DC68499F3CBAFA94822
+            3382240CD1710BF1F3C953FCD8CED6065B562D8577BBB63A3187077DDF9EAD6B
+            748A8A3A2589177CB171C5026EF9AAC3479F7E81D7D66DE5C7EDDBB4C40ECA2A
+            6DAC2B17D44C24A9C2DD8C090EC4AC2913782A5D5252A231EBFCDF745CF4B088
+            A7AF02A12A88D44E574F9E3E8BF1D3E7A8DA6424D99CC2B32963F0A0A010BEFE
+            219AE0342A2C147131E371F6FC258C9E14C7B3A2B8987044878FD179CEBB6F10
+            115D55F7707176C4368A495A356F5EED778D8A7E05E72E5DE6C7724B19DE5C4D
+            D99EA747A5FB4C24D12289B6C96EDDA229F651E0A82FBB5183D5252A5687190E
+            FF740253E72C55F5EB312D094337FF917840A93693A5818B33E9633CE6955746
+            59F6B667CB2A9D0A2B43CAA6B7B077FF67FC98916B04C52C4BE7CCACF23B18F1
+            591C7396826C0E1AA368CA28E3696254C4734112B6A6F14280EAB33E92B0421A
+            2BA8D594246C9DE6C057DFA8142D22450FAE5AD16BDF781B1F1FF88232A0104C
+            8D7A59E7DA7F7FF811F18B9354FD2292BC63644CA2C691E3BF62CAEC251A9955
+            63A82A2304F9F743D282CAF14666D63DF4193E4E63F1A494690E0F18884509D3
+            F47EC7E0B1317C39E57E4101F6ED3FA01A2BF7D67897649556B07ACF054972F3
+            EEA3C7109579D5471256486305B59A9224FFC103FA9EB13C3E6160350E0FF756
+            BC606525B7D4B4C108F2EE879FF0634B32D3AB17CE825FAF1735EDB0054556B8
+            7B5292B059EE3330B8D27202EBF39A25C9E8DBABADDEE7FA8744203D2353F399
+            F591C535EB13E753CCD10A0F8B8BF1194D82559B77F0986B766C143C3DDAF1B4
+            9A414E81F796E445E8D2C9FBF92349DEFD7CBC1838BA4A92B041DBFD8F7FD698
+            240CAF26AEC6C1EF0EEBAC6B303013CEEA392C0351CF5676AEA7AF0F16CF8E85
+            ABB3B3E65EEDEC46459264BD5943755898BC019F7EF9B5AE2E29B8DCB9315943
+            D88A6055EEFE21E3F94A78558B7B6AB045CE156491583596153C55FA01A6448C
+            D6AC4EAB512B2419412479AD3649329148126EBC25612570560A3794021BAA93
+            A891F2FA761C38F80D27A75E28C1D76006BDD497FC7888CE36088683DF1F4102
+            CD78DE2F22C9CE8D497A8B7B86A0D61D9797FE3B3D6A2C2646BC5C2D01D8DACE
+            8C05CB71F5DA5F9CE8DAF7AA17F6DA5376C4EA559DBD5441AA37E9443D29DC5B
+            37C7DEADEB34CB2B0C4F4C928DDB76AB1A202198491ED0BB87FEFBB6EFE64A65
+            594017AF0EE8D1CDA7DAF658FAD0C3A723BAFA74D45C632BCA2CE66068D6A429
+            825EEAAD536E3EFACB491C3F799ACBD2AA7913040EECAB7F6CA9ABACE8A696BB
+            67D7CEF0E9A47FEFC6A9D40BF8EA9B43F8FD8F54BE4E53A62823054BE0E2E400
+            6F8FB6BC60E5E1DE96EF71A9880B7F5EC197F42C03BB3F74E8609E093D2E36ED
+            D8C389CD604E59D6508A91DC5C9C0D3EC76A2A1FFCEB331CF9F957DCBC958692
+            D2122E7BA386AEE849FA1FD4AF3759BE47DB3FF77FF61FDCBC9DC68FA5E416C7
+            0E0FA454F8D1C2678D76A669075535B9477D9FA176D4C19BBEFBB4BB61CC7719
+            731F034B2BD9A21E533C5B1361B10523A8A142D5E3C8630C0CE9A7AA6758299F
+            95FA996BB4A44C8DA7ED46E8591BCFCDF645139E1D4C2431C1204C2431C1206A
+            9D24C5BFFF81A29394693C2C82C4DB13B2177D9F751F9F2ACAB2EE4149C1A5D8
+            C9F02AEFF38A5A238922FF01324223B8C2F80203FD893B7AC23179E9B3EEE353
+            4359FA5D64464C05DC5C61B33E19D22A769B3FEFA83592A40F0A81422484B865
+            0B885BB78080320091B333AC460E7DD67D7C6A28BD7D075913A6739258AF4B82
+            CCD6E6598BF454502B24C99EBB94BB1971F72EB08B9B0A91ADEDB3EE579DA0F4
+            4E1AB2A2A6992C8931481F3C926DA5823C2E1696FD7A3FEB3ED5194C243116F4
+            382389526A0EEBC57360A15529FD5F8789248F01168F28655258C6CF8055EFBF
+            CF4F4268C724361493484D31892E72B7ED86402C82B9473BE42C4B8692ED886F
+            E0029777B6B25A368A2F5D46C1F7476033318207B155217B49128A8EFF4A1649
+            A15AE3914A216CD410365327C05CCF2EA9EA5074E62CB2E727B26DF1AA2D6402
+            218476B6907879C06E4E1CC92134BAADD21B3791316D365B5A559D10525B0EF6
+            900D0B80F528D5AAA9B6253114B8169FBB80ACB94BA8BD62956CACB46F6F0F49
+            274FD8C74FE3EDD7573C3149D2FC1FBD17A3FD9AA64EE334400E5BD7424CCAAD
+            88BB632640712F47A59CF2F504FE3C7BED93FECB48276CD91C8E2B174368C08C
+            2B72F390313A4AF53C5B485393816DE72B7F8D54692183343810B6E163ABEF18
+            B591C6622CD616938D2DE0B1FEB1CFEC7D5DB6B2DAC015CE3B3743919989CCC8
+            581549D6AE84CCCEB6EAF6581B161610C82DD83B2450B215664640D69EB3231C
+            9297416CE49EDABAC61393242B691DEF60E9C5CB34E21950D2CC107BB4858065
+            36E5EB4342528A7574384472B9CEB39C60340002477B083DBD20F56803A1A525
+            505880923FCE9145488592DA640A16B83580E3BA1510D9D9E9954391938BBB44
+            10989B4144A49276F484B07123BEEA5C76271D45A74EA334F5121F1026A36CE8
+            20D84E89AEB25FDC75B20367279AE55E6429DD21B022F9F30BF0F06C2A4A7FFB
+            9D64CB24F72A63CBD310B2F764AA21096FCF4C0249AF1760DEB70F844E0E9094
+            9542919681BCAFBE46E989DF20282D83A0B11B9CB6AC81D0C8BDB075891AC524
+            0A5250D18953C84B4C014869D64BE640468AAD0E19E1935196910541DB56B08A
+            0A2382B8435861B9BD988892FBDE4728FBFD0CFF2CF46A0FE79444BD2699114E
+            6929837CE4705806BC046105935F565088079F1C40C13FFFCDB69E41692E81DD
+            BC04485FEC56B92D36A034E32524939C6433736F0D61055759987A01F9BBF6A1
+            ECCC396EF138AA20C9FD9D7BF060FFA71077E904DB79F110EBD92C94B968394A
+            7FF90D4AB6C23C713C6C8607D5FA20D714B596DD18439292F3979035732E0464
+            56E509D361E9E15E6DD377A7264079F53A9F89B2C991B0091CA47B3D643C91A0
+            004AB20E2E31111055F30A41E1A1A3C849D90001C54BA2362DE1F8FA2AB2368F
+            48A7A476D283C3C87235A4014D80799B16D5CB36390ECAEB7FA93E544192F421
+            A3A0249727A538C656CF066335D2C64441DCAA05E443FC21ED5EFF96316A4C12
+            25F9FCBB43461B45126E7A69664A29F0B3091FAD3348552A901190DC9AF0852E
+            705E3A5FE5DBB5DB23F36DB77639CC5D5C0CB69591301F8A7317295D97C26ED1
+            2C986BBD7AC9D3786A5B1E3A0C9691E38CDABB9116100A015B86A88224DCADB2
+            80BE7953D8B39F9968DA446F3BA5D76F000E0E7A2D4D7D40CD2D0929299D9465
+            344928F6B0A001B2AEB0D9B62A642F4B41C94FBF40D0C40DD6E472A4E5EFC666
+            CD5E84D23F5221E9D303F6F3138C6A4B49594FFAD0313CE6B0A058C946FD0A65
+            B93554500CE590380F66466655F7C83215530657154932E28994A917F9F70928
+            C6B19E3E09325FC3EF04D737D41949D419085C9D6145198B859B71917CE1B73F
+            206FF5262829C391AF5F01B99B1B3F9F3E6C2C4F27A561A1B0091B63545B0CEA
+            CC453A3C50E3028A4F9FC5BD394BB86CF6C94B21A1ECC518E8A4C07A48A22C7C
+            88F4A8A9404E1E8FE5B9AAC925B24058E4E20C79C4189877F08040F2F85B1BEB
+            12754692C26F68B0D76C82A0212974CD7248F5A4C5FA5072FE22B2E3C8CD9062
+            65E456ACCB4D361B6C16389A878F81EDB850A3C5D5902488B29C69AA9F7A7878
+            E427E4AE58C333299B94A530777232AAADB2CC2C64864D2A2FA6AD8454CF9A55
+            F19DBBC8DDFB3E14EC45EFDCFBAA3A49F90665AE7A3333089B3682FD92B9103B
+            1BF7BD758DBA23C9778791B76A2394B6D6B04D2192346B6454F3C544927B8C24
+            34CBE534CB2DCB67795AE0281E849A05FAC36EC624A3DAE2CF91CB637182C5CB
+            23615DFEAAE4C3A3C791FBDA2A2E9B53CA32889A3535AAAD324AD333C74F8192
+            5CA0FDBAE5306BD0A0CA7B4B6FDE46F1B5EB28BA7215CA1BB7517AF51A14EC97
+            09D4C53A9A3476AB1261DED8AD46C3F134506724513E7C88BBC3C74121164316
+            3B11B601038C6A3E7FFFBF90BF630FC41D3BC086669BC45215DCA58F22D79597
+            07D0803A6F590D8131BBD159618BC54564F2E5B31360E5A74A8359A536E7D525
+            3C8BB28C8D81D520E3646355D46C8A3B787B09B1B0EAD7C7389551B0AFBC9783
+            A2E327707FFF01286FA7F1A059DAB727ECE6C6D768389E06EA3470BD4303C42B
+            D25E1E70A259036332085607A18CC82A7428651D619AAC233B691D8A7FF8919B
+            6BD9F489B0F1EF6FB02D654121A5B9E3F8F2813DB93C89D6AF4AABDD90C8BB03
+            9C28668211A4CBDEF8264A286652920B11F7ED05C779BA03AC2C2EE6C1AB23C5
+            2BC22ADEE02B4DBB8BCCC8A9AA8A6ECB16706184AF6725FA9A93844C7E3A997E
+            63489231731E14172E716B62EEDF0FF6332657DBF4FD5DFBF0E01FFF47B1822B
+            F9ECF990346BFCE822897D67C8285EAD04B920C70D4910DB55BF8F85134E2084
+            6C6C306C23C6E95CCB983A0B0A7201CC2A485955766264B56DE5BDB31792E68D
+            91FFC9E750B0AAB3A3031C372643A47E51AB5C2F4A22B17C5204E4430655D916
+            2F30B20A73FBB670599F542BAF60D426EAD4922849716CCD4699779F5B004987
+            F6B09B1F0FA1B555A57B331316A2F46C2A2F7F5B9005B11E36A892F2F2F67E88
+            077B3F52ADE5914F975300CBAAAE9540DFCB621806917B1BD82F7E15223D8173
+            DAD0B110D0EC571051C49DBDE0B8688EDECC23E3E518B0B785ED9316C38CDC1D
+            271F119F2D4A5AA8C9407AB93364348F9B0464B1AC62A361A1A7CACBBF979397
+            E2A431236013390EF50D754A12065672BF97B89A8892A73A616E06509C217276
+            2461C8FCB29FEB2C0FE6784D252408F290611049F5FFB453E6DCA528A51496C9
+            C15656955219847656306BE78EB29B3751CA7E3C8EC5004201C46D5AC1367EBA
+            AE45D242EE87FF87C27DFB3951B852CCCD21B0B3818C5C89A47933E47FF031CA
+            AEDE206B23868459C29808BED692163486BD360749CFEE70583C47D3DEFD8FFE
+            89FCDDEF135114AAB5A5466EB05B300B222707BE515C515080AC497150D0B3A2
+            E64DE14081B9C8AEFEEDEAAB79C5B5B804692161E47389240B6741E66DF827AF
+            0B2E5CC483EDEFA2F4CF2B103C2CAAF4BE2ACCCC216AD104F2207F98F7EE05A1
+            59F5BFD893F3E63B7878F84728B37350D19BF397246D6D60D6A31B6C47044164
+            A03E53F0E9E7C83FF005CA2875E556406B859B6F87A001B6A0F8474E29B4D046
+            B54E94393F912F4CB2556F478A75C45AAF6266BFF52EC54E8748C81C3E097474
+            C7DA24F28BC9BA599005B16C573FFF1F3EB5B2E9A8E0F051BE67C4ACBD3B448F
+            B1F1A69006B6F0FC2555744FD98F8091C3AD012CDC5B5136E3CD8B4EC6FAE7A2
+            5B9456FE72124597AF42416461A64044A9A9B855535EB092346D4CAE4362545B
+            C564E50A0F9F40D9C5F350666541A950F2854311C520B2AE3E90B05566AD853F
+            F6A6C0C3DF4E538625241DB483A8C2D686D2BF6EA1E0E8CF64D96EF1ED11CCED
+            0A2D284BA300BACCBD351CD8CA758595F2FA847AF172968294C67FD2810964C4
+            7BB686505652A27AA795DA113DC18BDA3AB291ABE2B2D5425B4C269EFE96CBC6
+            FE6ADAD7BA40BD208909F51B2692986010269298601026929860102692986010
+            26929860102692986010FF0F7A3C4CE3DE1AF4690000000049454E44AE426082}
+          HightQuality = False
+          Transparent = False
+          TransparentColor = clWhite
+        end
+      end
+      object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
+        Height = 52.913420000000000000
+        Top = 83.149660000000000000
+        Width = 718.110700000000000000
+        object Memo13: TfrxMemoView
+          Left = 7.559060000000000000
+          Width = 52.913420000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            'Client:')
+          ParentFont = False
+        end
+        object Memo31: TfrxMemoView
+          Left = 8.338590000000000000
+          Top = 24.456710000000000000
+          Width = 52.913420000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            'Period:')
+          ParentFont = False
+        end
+        object MemoCodeClient: TfrxMemoView
+          Left = 69.944960000000000000
+          Width = 71.811070000000000000
+          Height = 18.897650000000000000
+          Memo.UTF8W = (
+            'All')
+        end
+        object MemoI: TfrxMemoView
+          Left = 69.944960000000000000
+          Top = 23.677180000000000000
+          Width = 71.811070000000000000
+          Height = 18.897650000000000000
+          Memo.UTF8W = (
+            '01/09/2024')
+        end
+        object MemoF: TfrxMemoView
+          Left = 151.181200000000000000
+          Top = 23.677180000000000000
+          Width = 71.811070000000000000
+          Height = 18.897650000000000000
+          Memo.UTF8W = (
+            '30/09/2024')
+        end
+      end
+      object GroupHeader1: TfrxGroupHeader
+        FillType = ftBrush
+        Height = 113.385900000000000000
+        Top = 196.535560000000000000
+        Width = 718.110700000000000000
+        Condition = 'frxDBDatasetReportOrders."code_order"'
+        object Shape1: TfrxShapeView
+          Left = 2.118120000000000000
+          Top = 3.779530000000000000
+          Width = 718.110700000000000000
+          Height = 79.370130000000000000
+          Fill.BackColor = 14671871
+        end
+        object Memo5: TfrxMemoView
+          Left = 3.220470000000000000
+          Top = 56.472480000000000000
+          Width = 84.425512410000000000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Fill.BackColor = clBlack
+          Memo.UTF8W = (
+            'Name Client')
+          ParentFont = False
+          Style = 'Header'
+        end
+        object Memo6: TfrxMemoView
+          Left = 362.834880000000000000
+          Top = 32.236240000000000000
+          Width = 84.457607870000000000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Fill.BackColor = clBlack
+          Memo.UTF8W = (
+            'Phone')
+          ParentFont = False
+          Style = 'Header'
+        end
+        object Memo7: TfrxMemoView
+          Left = 362.834880000000000000
+          Top = 56.913420000000000000
+          Width = 83.663187320000000000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Fill.BackColor = clBlack
+          Memo.UTF8W = (
+            'E-mail')
+          ParentFont = False
+          Style = 'Header'
+        end
+        object Memo4: TfrxMemoView
+          Left = 3.000000000000000000
+          Top = 32.236240000000000000
+          Width = 85.155742050000000000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Fill.BackColor = clBlack
+          Memo.UTF8W = (
+            'Code Client')
+          ParentFont = False
+          Style = 'Header'
+        end
+        object Memo14: TfrxMemoView
+          Left = 3.000000000000000000
+          Top = 7.559060000000000000
+          Width = 84.457607870000000000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Fill.BackColor = clBlack
+          Memo.UTF8W = (
+            'Code Order')
+          ParentFont = False
+          Style = 'Header'
+        end
+        object Memo3: TfrxMemoView
+          Left = 362.834880000000000000
+          Top = 7.559060000000000000
+          Width = 82.106441680000000000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Fill.BackColor = clBlack
+          Memo.UTF8W = (
+            'Date Order')
+          ParentFont = False
+          Style = 'Header'
+        end
+        object Memo15: TfrxMemoView
+          Left = 447.543600000000000000
+          Top = 8.338590000000000000
+          Width = 206.830931680000000000
+          Height = 18.897650000000000000
+          DataField = 'date_order'
+          DataSet = frxDBDatasetReportOrders
+          DataSetName = 'frxDBDatasetReportOrders'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxDBDatasetReportOrders."date_order"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Memo29: TfrxMemoView
+          Left = 90.708720000000000000
+          Top = 9.338590000000000000
+          Width = 206.830931680000000000
+          Height = 18.897650000000000000
+          DataField = 'code_order'
+          DataSet = frxDBDatasetReportOrders
+          DataSetName = 'frxDBDatasetReportOrders'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxDBDatasetReportOrders."code_order"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Memo16: TfrxMemoView
+          Left = 90.708720000000000000
+          Top = 34.015770000000000000
+          Width = 206.100702050000000000
+          Height = 18.897650000000000000
+          DataField = 'code_client'
+          DataSet = frxDBDatasetReportOrders
+          DataSetName = 'frxDBDatasetReportOrders'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxDBDatasetReportOrders."code_client"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Memo17: TfrxMemoView
+          Left = 90.708720000000000000
+          Top = 57.692950000000000000
+          Width = 205.370472410000000000
+          Height = 18.897650000000000000
+          DataField = 'name_client'
+          DataSet = frxDBDatasetReportOrders
+          DataSetName = 'frxDBDatasetReportOrders'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxDBDatasetReportOrders."name_client"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Memo18: TfrxMemoView
+          Left = 446.984540000000000000
+          Top = 34.015770000000000000
+          Width = 209.182097870000000000
+          Height = 18.897650000000000000
+          DataField = 'phone_client'
+          DataSet = frxDBDatasetReportOrders
+          DataSetName = 'frxDBDatasetReportOrders'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxDBDatasetReportOrders."phone_client"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Memo19: TfrxMemoView
+          Left = 446.984540000000000000
+          Top = 57.692950000000000000
+          Width = 208.387677320000000000
+          Height = 18.897650000000000000
+          DataField = 'email_client'
+          DataSet = frxDBDatasetReportOrders
+          DataSetName = 'frxDBDatasetReportOrders'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxDBDatasetReportOrders."email_client"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Line1: TfrxLineView
+          Left = -3.220470000000000000
+          Top = 111.283550000000000000
+          Width = 721.890230000000000000
+          Color = clBlack
+          Diagonal = True
+        end
+        object Memo8: TfrxMemoView
+          Left = 6.779530000000000000
+          Top = 86.504020000000000000
+          Width = 72.260406410000000000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Fill.BackColor = clBlack
+          Memo.UTF8W = (
+            'Code Item')
+          ParentFont = False
+          Style = 'Header'
+        end
+        object Memo9: TfrxMemoView
+          Left = 87.031540000000000000
+          Top = 86.504020000000000000
+          Width = 244.626231680000000000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Fill.BackColor = clBlack
+          Memo.UTF8W = (
+            'Name Item')
+          ParentFont = False
+          Style = 'Header'
+        end
+        object Memo10: TfrxMemoView
+          Left = 346.598640000000000000
+          Top = 86.504020000000000000
+          Width = 97.577611720000000000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Fill.BackColor = clBlack
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Amount')
+          ParentFont = False
+          Style = 'Header'
+        end
+        object Memo11: TfrxMemoView
+          Left = 452.425480000000000000
+          Top = 86.504020000000000000
+          Width = 103.676212450000000000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Fill.BackColor = clBlack
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Unit Price')
+          ParentFont = False
+          Style = 'Header'
+        end
+        object Memo12: TfrxMemoView
+          Left = 581.268090000000000000
+          Top = 86.504020000000000000
+          Width = 119.139416590000000000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Fill.BackColor = clBlack
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Value Item')
+          ParentFont = False
+          Style = 'Header'
+        end
+      end
+      object MasterData1: TfrxMasterData
+        FillType = ftBrush
+        Height = 18.897650000000000000
+        Top = 332.598640000000000000
+        Width = 718.110700000000000000
+        DataSet = frxDBDatasetReportOrders
+        DataSetName = 'frxDBDatasetReportOrders'
+        RowCount = 0
+        object Memo20: TfrxMemoView
+          Left = 4.060191340000000000
+          Width = 72.260406410000000000
+          Height = 18.897650000000000000
+          DataField = 'code_item'
+          DataSet = frxDBDatasetReportOrders
+          DataSetName = 'frxDBDatasetReportOrders'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxDBDatasetReportOrders."code_item"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Memo21: TfrxMemoView
+          Left = 87.659187740000000000
+          Width = 240.846701680000000000
+          Height = 18.897650000000000000
+          DataField = 'name_item'
+          DataSet = frxDBDatasetReportOrders
+          DataSetName = 'frxDBDatasetReportOrders'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxDBDatasetReportOrders."name_item"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Memo22: TfrxMemoView
+          Left = 347.403539430000000000
+          Width = 97.577611720000000000
+          Height = 18.897650000000000000
+          DataField = 'amount_order_item'
+          DataSet = frxDBDatasetReportOrders
+          DataSetName = 'frxDBDatasetReportOrders'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxDBDatasetReportOrders."amount_order_item"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Memo23: TfrxMemoView
+          Left = 451.540211140000000000
+          Width = 107.455742450000000000
+          Height = 18.897650000000000000
+          DataField = 'unitprice_order_item'
+          DataSet = frxDBDatasetReportOrders
+          DataSetName = 'frxDBDatasetReportOrders'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxDBDatasetReportOrders."unitprice_order_item"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Memo24: TfrxMemoView
+          Left = 578.893603590000000000
+          Width = 119.139416590000000000
+          Height = 18.897650000000000000
+          DataField = 'valueorder'
+          DataSet = frxDBDatasetReportOrders
+          DataSetName = 'frxDBDatasetReportOrders'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxDBDatasetReportOrders."valueorder"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+      end
+      object GroupFooter1: TfrxGroupFooter
+        FillType = ftBrush
+        Height = 34.015770000000000000
+        Top = 374.173470000000000000
+        Width = 718.110700000000000000
+        object Line2: TfrxLineView
+          Left = -1.779530000000000000
+          Top = 28.795300000000000000
+          Width = 721.890230000000000000
+          Color = clBlack
+          Diagonal = True
+        end
+        object Line3: TfrxLineView
+          Left = -3.559060000000000000
+          Top = 27.354360000000000000
+          Width = 721.890230000000000000
+          Color = clBlack
+          Diagonal = True
+        end
+        object Memo25: TfrxMemoView
+          Left = 567.370440000000000000
+          Width = 129.683586040000000000
+          Height = 18.897650000000000000
+          DataField = 'totalorder'
+          DataSet = frxDBDatasetReportOrders
+          DataSetName = 'frxDBDatasetReportOrders'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxDBDatasetReportOrders."totalorder"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Memo30: TfrxMemoView
+          Left = 455.661720000000000000
+          Width = 99.543632410000000000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Fill.BackColor = clBlack
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Total Order')
+          ParentFont = False
+          Style = 'Header'
+        end
+      end
+      object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
+        Height = 26.456710000000000000
+        Top = 468.661720000000000000
+        Width = 718.110700000000000000
+        object Memo26: TfrxMemoView
+          Align = baWidth
+          Width = 718.110700000000000000
+          Frame.Typ = [ftTop]
+          Frame.Width = 2.000000000000000000
+        end
+        object Memo27: TfrxMemoView
+          Top = 1.000000000000000000
+          Height = 22.677180000000000000
+          AutoWidth = True
+          Memo.UTF8W = (
+            '[Date] [Time]')
+        end
+        object Memo28: TfrxMemoView
+          Align = baRight
+          Left = 619.842920000000000000
+          Top = 1.000000000000000000
+          Width = 98.267780000000000000
+          Height = 22.677180000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Page [Page#]')
+        end
+      end
     end
   end
 end

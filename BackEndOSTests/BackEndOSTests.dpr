@@ -15,8 +15,8 @@ program BackEndOSTests;
 {$ENDIF}
 
 uses
-  TestUnitTest in 'BackEndOSTests\TestUnitTest.pas',
-  UnitTest in 'BackEndOS\View\UnitTest.pas';
+  TestUnitTest in 'TestUnitTest.pas',
+  UnitTest in '..\BackEndOS\View\UnitTest.pas';
 
 ususes
   DUnitTestRunner,

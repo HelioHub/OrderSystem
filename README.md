@@ -555,6 +555,18 @@ Develop Customer Order Management System for candidate evaluation -  Hélio Marq
 	
 ![## Diagrama de Entidade e Relacionamento Lógico OrderSystem](https://github.com/HelioHub/OrderSystem/blob/main/images/Test.png)
 
+### Variabels Fast Report
+
+	````
+	passing parameters to FAST REPORT
+	````
+	
+![## Diagrama de Entidade e Relacionamento Lógico OrderSystem](https://github.com/HelioHub/OrderSystem/blob/main/images/ReportOrder2.png)
+
+
+
+
+
 
 
 

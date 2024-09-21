@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<BorlandProject>
-  <Transactions>
-    <Transaction>2024/09/20 15:55:24.678,=D:\HelioMarques\projects\OrderSystem\TestUnitTest.pas</Transaction>
-    <Transaction>2024/09/20 15:55:26.774,=D:\HelioMarques\projects\OrderSystem\BackEndOS\View\UnitTest.pas</Transaction>
-    <Transaction>2024/09/20 15:58:22.442,D:\HelioMarques\projects\OrderSystem\BackEndOSTests\TestUnitTest.pas=D:\HelioMarques\projects\OrderSystem\TestUnitTest.pas</Transaction>
-  </Transactions>
-</BorlandProject>

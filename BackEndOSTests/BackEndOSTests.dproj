@@ -45,6 +45,7 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
+        <SanitizedProjectName>BackEndOSTests</SanitizedProjectName>
         <DCC_UnitSearchPath>$(BDS)\Source\DUnit\src;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
         <DCC_Define>_CONSOLE_TESTRUNNER;$(DCC_Define)</DCC_Define>
@@ -77,6 +78,8 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <Manifest_File>None</Manifest_File>
+        <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
@@ -89,8 +92,8 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="BackEndOSTests\TestUnitTest.pas"/>
-        <DCCReference Include="BackEndOS\View\UnitTest.pas">
+        <DCCReference Include="TestUnitTest.pas"/>
+        <DCCReference Include="..\BackEndOS\View\UnitTest.pas">
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
@@ -113,6 +116,10 @@
                 <Source>
                     <Source Name="MainSource">BackEndOSTests.dpr</Source>
                 </Source>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k200.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp200.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                </Excluded_Packages>
             </Delphi.Personality>
             <Deployment/>
             <Platforms>
@@ -124,6 +131,7 @@
                 <TestFramework>DUnit / Delphi Win32</TestFramework>
                 <TestRunner>GUI</TestRunner>
                 <SourceProjectName>D:\HelioMarques\projects\OrderSystem\BackEndOS\BackEndOS.dproj</SourceProjectName>
+                <TestProjectName/>
             </UnitTesting>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>

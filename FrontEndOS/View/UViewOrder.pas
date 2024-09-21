@@ -139,6 +139,8 @@ begin
   begin
     DMConnection.MemTableReportOrders.Close;
     DMConnection.LoadReportOrders(Trim(Form.cxCECodeClient.Text), Form.cxDEini.Text, Form.cxDEcon.Text);
+    DMConnection.frxReportOrders.Variables['ClientX'] := QuotedStr(Trim(Form.cxCECodeClient.Text));
+    DMConnection.frxReportOrders.Variables['PeriodX'] := QuotedStr(Form.cxDEini.Text+' - '+Form.cxDEcon.Text);
     DMConnection.frxReportOrders.ShowReport();
   end;
   Form.Destroy;

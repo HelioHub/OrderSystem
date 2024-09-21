@@ -9,7 +9,7 @@
         <Projects Include="FrontEndOS\FrontEndOS.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="BackEndOSTests.dproj">
+        <Projects Include="BackEndOSTests\BackEndOSTests.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -39,13 +39,13 @@
         <MSBuild Projects="FrontEndOS\FrontEndOS.dproj" Targets="Make"/>
     </Target>
     <Target Name="BackEndOSTests">
-        <MSBuild Projects="BackEndOSTests.dproj"/>
+        <MSBuild Projects="BackEndOSTests\BackEndOSTests.dproj"/>
     </Target>
     <Target Name="BackEndOSTests:Clean">
-        <MSBuild Projects="BackEndOSTests.dproj" Targets="Clean"/>
+        <MSBuild Projects="BackEndOSTests\BackEndOSTests.dproj" Targets="Clean"/>
     </Target>
     <Target Name="BackEndOSTests:Make">
-        <MSBuild Projects="BackEndOSTests.dproj" Targets="Make"/>
+        <MSBuild Projects="BackEndOSTests\BackEndOSTests.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
         <CallTarget Targets="BackEndOS;FrontEndOS;BackEndOSTests"/>
