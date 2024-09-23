@@ -151,8 +151,7 @@ object FReportOrders: TFReportOrders
         Hint = 'Blank all customers...'
         ParentFont = False
         ParentShowHint = False
-        Properties.AssignedValues.DisplayFormat = True
-        Properties.DecimalPlaces = 0
+        Properties.DisplayFormat = '0000000'
         ShowHint = True
         Style.Font.Charset = DEFAULT_CHARSET
         Style.Font.Color = clWindowText
@@ -161,7 +160,7 @@ object FReportOrders: TFReportOrders
         Style.Font.Style = []
         Style.IsFontAssigned = True
         TabOrder = 0
-        Width = 83
+        Width = 121
       end
     end
   end

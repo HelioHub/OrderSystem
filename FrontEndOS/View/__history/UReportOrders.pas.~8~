@@ -47,7 +47,7 @@ procedure TFReportOrders.cxBReportClick(Sender: TObject);
 var sData : String;
 begin
   sData := cxDEini.Text;
-  if Trim(sData).IsEmpty then
+  if Trim(sData) = ''  then
   begin
     Beep;
     ShowMessage('Enter the start date!');
@@ -56,7 +56,7 @@ begin
   end;
 
   sData := cxDEcon.Text;
-  if Trim(sData).IsEmpty then
+  if Trim(sData) = ''  then
   begin
     Beep;
     ShowMessage('Enter the end date!');

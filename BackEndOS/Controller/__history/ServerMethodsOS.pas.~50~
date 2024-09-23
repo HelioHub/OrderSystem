@@ -23,8 +23,8 @@ type
     procedure UpdateItem(const oItem: TItem);
     procedure DeleteItem(const oItem: TItem);
 
-    //Orders
-    procedure PrepareReportOrders(pIDCodeClient, pDateI, pDateF: String);
+    //ReportOrders
+    procedure PrepareReportOrders(const pIDCodeClient: String=''; pDateI: String=''; pDateF: String='');
 
   public
     { Public declarations }
@@ -36,6 +36,9 @@ type
     //Items
     function GetItems(const pIDCodeItem: String; const pLimit: String): TFDJSONDataSets;
     procedure PersistenceItem(const jObjectItem: TJSONObject);
+
+    //ReportOrders
+    function GetReportOrders(const pIDCodeClient: String; pDateI: String; pDateF: String): TFDJSONDataSets;
   end;
 {$METHODINFO OFF}
 
@@ -73,6 +76,15 @@ begin
 
   Result := TFDJSONDataSets.Create;
   TFDJSONDataSetsWriter.ListAdd(Result, DMOS.OSOrders_Items);
+end;
+
+function TServerMethodsOS.GetReportOrders(const pIDCodeClient: String; pDateI,
+  pDateF: String): TFDJSONDataSets;
+begin
+  PrepareReportOrders(pIDCodeClient, pDateI, pDateF);
+
+  Result := TFDJSONDataSets.Create;
+  TFDJSONDataSetsWriter.ListAdd(Result, DMOS.OSReportOrders);
 end;
 
 procedure TServerMethodsOS.PersistenceItem(const jObjectItem: TJSONObject);
@@ -230,7 +242,6 @@ begin
   DMOS.OSConnection.ExecSQL(sSQL);
 end;
 
-{
 procedure TServerMethodsOS.PrepareReportOrders(const pIDCodeClient: String;
   pDateI, pDateF: String);
 var sSQL, sIDCodeClient: string;
@@ -265,7 +276,6 @@ begin
   DMOS.OSReportOrders.Active   := False;
   DMOS.OSReportOrders.SQL.Text := sSQL;
 end;
-}
 
 end.
 

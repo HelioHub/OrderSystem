@@ -9,7 +9,7 @@ uses
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.StorageBin, Data.DB, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, FireDAC.Stan.StorageJSON, Data.FireDACJSONReflect, Rest.JSON, System.JSON,
-  ClientClassesOS;
+  ClientClassesOS, UClassItem, frxClass, frxDBSet;
 
 type
   TDMConnection = class(TDataModule)
@@ -42,6 +42,21 @@ type
     MemTableItemsname_item: TStringField;
     MemTableItemsdescription_item: TStringField;
     MemTableItemsprice_item: TFMTBCDField;
+    frxDBDatasetReportOrders: TfrxDBDataset;
+    MemTableReportOrders: TFDMemTable;
+    MemTableReportOrderscode_order: TFDAutoIncField;
+    MemTableReportOrdersdate_order: TSQLTimeStampField;
+    MemTableReportOrderscode_client: TIntegerField;
+    MemTableReportOrdersname_client: TStringField;
+    MemTableReportOrdersphone_client: TStringField;
+    MemTableReportOrdersemail_client: TStringField;
+    MemTableReportOrderscode_item: TIntegerField;
+    MemTableReportOrdersname_item: TStringField;
+    MemTableReportOrdersamount_order_item: TFMTBCDField;
+    MemTableReportOrdersunitprice_order_item: TFMTBCDField;
+    MemTableReportOrdersvalueorder: TFMTBCDField;
+    MemTableReportOrderstotalorder: TFMTBCDField;
+    frxReportOrders: TfrxReport;
   private
     { Private declarations }
 
@@ -56,6 +71,10 @@ public
 
     //Items
     procedure LoadItems(const pIDCodeItem: string; const pLimit: string);
+    procedure PersistItem(pObjItem : TItem);
+
+    //ReportOrders
+    procedure LoadReportOrders(const pIDCodeClient: string; pDateI: string; pDateF: string);
 
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -118,9 +137,27 @@ var LDataSetList: TFDJSONDataSets;
 begin
   LDataSetList := ServerMethods1Client.GetOrders_Items(pIDCodeOrder, pLimit);
 
-  MemTableOrders.Close;
+  MemTableOrders_Items.Close;
   MemTableOrders_Items.AppendData(TFDJSONDataSetsReader.GetListValue(LDataSetList, 0));
-  MemTableOrders.Open;
+  MemTableOrders_Items.Open;
+end;
+
+procedure TDMConnection.LoadReportOrders(const pIDCodeClient: string; pDateI,
+  pDateF: string);
+var LDataSetList: TFDJSONDataSets;
+begin
+  LDataSetList := ServerMethods1Client.GetReportOrders(pIDCodeClient, pDateI, pDateF);
+
+  MemTableReportOrders.Close;
+  MemTableReportOrders.AppendData(TFDJSONDataSetsReader.GetListValue(LDataSetList, 0));
+  MemTableReportOrders.Open;
+end;
+
+procedure TDMConnection.PersistItem(pObjItem: TItem);
+var jObjectPessoa : TJSONObject;
+begin
+  jObjectPessoa := TJson.ObjectToJsonObject(pObjItem);
+  ServerMethods1Client.PersistenceItem(jObjectPessoa);
 end;
 
 end.

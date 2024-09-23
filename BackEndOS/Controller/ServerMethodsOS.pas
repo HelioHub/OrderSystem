@@ -14,7 +14,7 @@ type
   private
     { Private declarations }
     //Orders
-    procedure PrepareOrders(const pIDCodeOrder: String=''; const pLimit: String='');
+    procedure PrepareOrders(const pIDCodeOrder: String=''; const pLimit: String=''; pDateI: String = ''; pDateF: String = '');
     procedure PrepareOrders_Items(const pIDCodeOrder: String=''; const pLimit: String='');
 
     //Items
@@ -30,7 +30,7 @@ type
     { Public declarations }
 
     //Orders
-    function GetOrders(const pIDCodeOrder: String; const pLimit: String): TFDJSONDataSets;
+    function GetOrders(const pIDCodeOrder: String; const pLimit: String; pDateI: String; pDateF: String): TFDJSONDataSets;
     function GetOrders_Items(const pIDCodeOrder: String; const pLimit: String): TFDJSONDataSets;
 
     //Items
@@ -60,9 +60,9 @@ begin
 end;
 
 function TServerMethodsOS.GetOrders(const pIDCodeOrder: String;
-  const pLimit: String): TFDJSONDataSets;
+  const pLimit: String; pDateI: String; pDateF: String): TFDJSONDataSets;
 begin
-  PrepareOrders(pIDCodeOrder, pLimit);
+  PrepareOrders(pIDCodeOrder, pLimit, pDateI, pDateF);
 
   Result := TFDJSONDataSets.Create;
   TFDJSONDataSetsWriter.ListAdd(Result, DMOS.OSOrders);
@@ -122,9 +122,7 @@ begin
   sIDCodeItem := pIDCodeItem;
 
   if not sLimit.IsEmpty then
-     sLimit := 'TOP ('+sLimit+')'
-  else
-     sLimit := '';
+     sLimit := 'TOP ('+sLimit+')';
 
   if not sIDCodeItem.IsEmpty then
      sIDCodeItem := 'WHERE a.[code_item] = '+sIDCodeItem
@@ -144,22 +142,28 @@ begin
   DMOS.OSItems.SQL.Text := sSQL;
 end;
 
-procedure TServerMethodsOS.PrepareOrders(const pIDCodeOrder, pLimit: String);
-var sSQL, sLimit, sIDCodeOrder: string;
+procedure TServerMethodsOS.PrepareOrders(const pIDCodeOrder, pLimit: String; pDateI: String; pDateF: String);
+var sSQL, sLimit, sIDCodeOrder, sPeriod: string;
 begin
-  sLimit := pLimit;
+  sLimit  := pLimit;
+  sPeriod := '';
   sIDCodeOrder := pIDCodeOrder;
 
   if not sLimit.IsEmpty then
-     sLimit := 'TOP ('+sLimit+')'
-  else
-     sLimit := '';
+     sLimit := 'TOP ('+sLimit+')';
 
   if not sIDCodeOrder.IsEmpty then
-     sIDCodeOrder := 'WHERE a.[code_order] = '+sIDCodeOrder
+  begin
+     sIDCodeOrder := 'WHERE a.[code_order] = '+sIDCodeOrder;
+     if (not pDateI.IsEmpty) and (not pDateF.IsEmpty) then
+        sPeriod := ' AND a.[date_order] BETWEEN CAST('+QuotedStr(pDateI)+' AS DATETIME) AND CAST('+QuotedStr(pDateF)+' AS DATETIME) ';
+  end
   else
+  begin
      sIDCodeOrder := '';
-
+     if (not pDateI.IsEmpty) and (not pDateF.IsEmpty) then
+        sPeriod := 'WHERE a.[date_order] BETWEEN CAST('+QuotedStr(pDateI)+' AS DATETIME) AND CAST('+QuotedStr(pDateF)+' AS DATETIME) ';
+  end;
 
   sSQL := 'SELECT '+sLimit+' a.[code_order] '+
           ' ,a.[date_order]      '+
@@ -173,6 +177,7 @@ begin
           'FROM [dbo].[tab_orders] a '+
           'INNER JOIN [dbo].[tab_clients] b ON b.code_client = a.code_client '+
           sIDCodeOrder+
+          sPeriod+
           ' ORDER BY a.[code_order] ';
 
   DMOS.OSOrders.Active   := False;
@@ -186,9 +191,7 @@ begin
   sIDCodeOrder := pIDCodeOrder;
 
   if not sLimit.IsEmpty then
-     sLimit := 'TOP ('+sLimit+')'
-  else
-     sLimit := '';
+     sLimit := 'TOP ('+sLimit+')';
 
   if not sIDCodeOrder.IsEmpty then
      sIDCodeOrder := 'WHERE a.[code_order] = '+sIDCodeOrder
@@ -269,7 +272,7 @@ begin
           'INNER JOIN [dbo].[tab_clients]    b ON b.[code_client]= a.[code_client]  '+
           'INNER JOIN [dbo].[tab_order_item] c ON c.[code_order] = a.[code_order]   '+
           'INNER JOIN [dbo].[tab_item]       d ON d.[code_item]  = c.[code_item]    '+
-          'WHERE a.[date_order] BETWEEN CAST('+QuotedStr(pDateI)+' AS DATETIME) AND CAST('+QuotedStr(pDateF)+' AS DATETIME)+1 '+
+          'WHERE a.[date_order] BETWEEN CAST('+QuotedStr(pDateI)+' AS DATETIME) AND CAST('+QuotedStr(pDateF)+' AS DATETIME) '+
           sIDCodeClient+
           'ORDER BY a.[code_order], a.[date_order]  ';
 

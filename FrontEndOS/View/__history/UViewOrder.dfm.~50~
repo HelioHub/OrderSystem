@@ -14,6 +14,7 @@ object FViewOrder: TFViewOrder
   Font.Style = []
   OldCreateOrder = False
   OnClose = FormClose
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object cxTabControl1: TcxTabControl
@@ -32,7 +33,7 @@ object FViewOrder: TFViewOrder
     ClientRectRight = 1082
     ClientRectTop = 2
     object dxBevel1: TdxBevel
-      Left = 567
+      Left = 677
       Top = 2
       Width = 15
       Height = 47
@@ -92,7 +93,7 @@ object FViewOrder: TFViewOrder
       OnClick = cxBAlterClick
     end
     object cxBClose: TcxButton
-      Left = 582
+      Left = 692
       Top = 2
       Width = 110
       Height = 47
@@ -207,12 +208,33 @@ object FViewOrder: TFViewOrder
       ParentFont = False
       OnClick = cxBItemsClick
     end
+    object cxBReportOrder: TcxButton
+      Left = 567
+      Top = 2
+      Width = 110
+      Height = 47
+      Hint = 'Click to access Order Report...'
+      Align = alLeft
+      Caption = 'Report'
+      OptionsImage.ImageIndex = 7
+      OptionsImage.Images = DMConnection.cxILImageBig
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 8
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      OnClick = cxBReportOrderClick
+    end
   end
   object cxGridOrders: TcxGrid
     Left = 0
     Top = 54
     Width = 1087
-    Height = 269
+    Height = 303
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -246,28 +268,30 @@ object FViewOrder: TFViewOrder
       OptionsView.ColumnAutoWidth = True
       OptionsView.Indicator = True
       object cxGridOrdersDBTableView1Column_code_order: TcxGridDBColumn
-        Caption = 'Code Order'
         DataBinding.FieldName = 'code_order'
         MinWidth = 5
-        Width = 114
+        Width = 90
       end
       object cxGridOrdersDBTableView1Column_date_order: TcxGridDBColumn
         Caption = 'Date'
         DataBinding.FieldName = 'date_order'
         HeaderAlignmentHorz = taCenter
         MinWidth = 10
-        Width = 224
+        Width = 162
       end
       object cxGridOrdersDBTableView1Column_code_client: TcxGridDBColumn
-        Caption = 'Code Client'
         DataBinding.FieldName = 'code_client'
-        Width = 148
+        Width = 105
+      end
+      object cxGridOrdersDBTableView1Column_name_client: TcxGridDBColumn
+        Caption = 'Name Client'
+        DataBinding.FieldName = 'name_client'
+        Width = 490
       end
       object cxGridOrdersDBTableView1Column_valueorder: TcxGridDBColumn
-        Caption = 'Value Order'
         DataBinding.FieldName = 'valueorder'
         HeaderAlignmentHorz = taRightJustify
-        Width = 420
+        Width = 226
       end
     end
     object cxGridOrdersLevel1: TcxGridLevel
@@ -276,35 +300,23 @@ object FViewOrder: TFViewOrder
   end
   object cxPageControl1: TcxPageControl
     Left = 0
-    Top = 525
+    Top = 549
     Width = 1087
-    Height = 129
+    Height = 105
     Align = alBottom
     TabOrder = 2
     Properties.ActivePage = cxTabSheet1
     Properties.CustomButtons.Buttons = <>
-    ClientRectBottom = 124
+    ClientRectBottom = 100
     ClientRectLeft = 2
     ClientRectRight = 1082
     ClientRectTop = 25
     object cxTabSheet1: TcxTabSheet
       Caption = 'Data Client'
       ImageIndex = 0
-      object cxLdescricao: TcxLabel
-        Left = 9
-        Top = 2
-        Caption = 'Name:'
-        ParentFont = False
-        Style.Font.Charset = DEFAULT_CHARSET
-        Style.Font.Color = clWindowText
-        Style.Font.Height = -16
-        Style.Font.Name = 'Tahoma'
-        Style.Font.Style = []
-        Style.IsFontAssigned = True
-      end
       object cxLabel1: TcxLabel
         Left = 9
-        Top = 25
+        Top = 2
         Caption = 'Address:'
         ParentFont = False
         Style.Font.Charset = DEFAULT_CHARSET
@@ -316,7 +328,7 @@ object FViewOrder: TFViewOrder
       end
       object cxLabel2: TcxLabel
         Left = 9
-        Top = 48
+        Top = 25
         Caption = 'Phone:'
         ParentFont = False
         Style.Font.Charset = DEFAULT_CHARSET
@@ -328,7 +340,7 @@ object FViewOrder: TFViewOrder
       end
       object cxLabel3: TcxLabel
         Left = 9
-        Top = 72
+        Top = 49
         Caption = 'E-mail:'
         ParentFont = False
         Style.Font.Charset = DEFAULT_CHARSET
@@ -338,62 +350,62 @@ object FViewOrder: TFViewOrder
         Style.Font.Style = []
         Style.IsFontAssigned = True
       end
-      object cxDBLabel1: TcxDBLabel
-        Left = 99
-        Top = 3
-        DataBinding.DataField = 'name_client'
-        DataBinding.DataSource = DSOrders
-        ParentFont = False
-        Style.Font.Charset = DEFAULT_CHARSET
-        Style.Font.Color = clWindowText
-        Style.Font.Height = -16
-        Style.Font.Name = 'Tahoma'
-        Style.Font.Style = []
-        Style.IsFontAssigned = True
-        Height = 21
-        Width = 510
-      end
       object cxDBLabel2: TcxDBLabel
         Left = 99
-        Top = 26
+        Top = 3
         DataBinding.DataField = 'address_client'
         DataBinding.DataSource = DSOrders
         ParentFont = False
+        Style.BorderColor = clWhite
+        Style.BorderStyle = ebsOffice11
         Style.Font.Charset = DEFAULT_CHARSET
-        Style.Font.Color = clWindowText
+        Style.Font.Color = 8404992
         Style.Font.Height = -16
         Style.Font.Name = 'Tahoma'
         Style.Font.Style = []
+        Style.Shadow = False
+        Style.TextStyle = []
+        Style.TransparentBorder = True
         Style.IsFontAssigned = True
         Height = 21
         Width = 614
       end
       object cxDBLabel3: TcxDBLabel
         Left = 99
-        Top = 49
+        Top = 26
         DataBinding.DataField = 'phone_client'
         DataBinding.DataSource = DSOrders
         ParentFont = False
+        Style.BorderColor = clWhite
+        Style.BorderStyle = ebsOffice11
         Style.Font.Charset = DEFAULT_CHARSET
-        Style.Font.Color = clWindowText
+        Style.Font.Color = 8404992
         Style.Font.Height = -16
         Style.Font.Name = 'Tahoma'
         Style.Font.Style = []
+        Style.Shadow = False
+        Style.TextStyle = []
+        Style.TransparentBorder = True
         Style.IsFontAssigned = True
         Height = 21
         Width = 231
       end
       object cxDBLabel4: TcxDBLabel
         Left = 99
-        Top = 73
+        Top = 50
         DataBinding.DataField = 'email_client'
         DataBinding.DataSource = DSOrders
         ParentFont = False
+        Style.BorderColor = clWhite
+        Style.BorderStyle = ebsOffice11
         Style.Font.Charset = DEFAULT_CHARSET
-        Style.Font.Color = clWindowText
+        Style.Font.Color = 8404992
         Style.Font.Height = -16
         Style.Font.Name = 'Tahoma'
         Style.Font.Style = []
+        Style.Shadow = False
+        Style.TextStyle = []
+        Style.TransparentBorder = True
         Style.IsFontAssigned = True
         Height = 21
         Width = 510
@@ -402,9 +414,9 @@ object FViewOrder: TFViewOrder
   end
   object cxGridOrderItems: TcxGrid
     Left = 0
-    Top = 323
+    Top = 357
     Width = 1087
-    Height = 202
+    Height = 192
     Align = alBottom
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -440,40 +452,38 @@ object FViewOrder: TFViewOrder
       object cxGridDBTableView1Column7: TcxGridDBColumn
         Caption = 'Code Order'
         DataBinding.FieldName = 'code_order'
-        Width = 100
+        Width = 92
       end
       object cxGridDBTableView1Column1: TcxGridDBColumn
-        Caption = 'Code Item'
         DataBinding.FieldName = 'code_item'
-        Width = 89
+        Width = 84
       end
       object cxGridDBTableView1Column2: TcxGridDBColumn
-        Caption = 'Name Item'
         DataBinding.FieldName = 'name_item'
-        Width = 189
+        Width = 175
       end
       object cxGridDBTableView1Column3: TcxGridDBColumn
         Caption = 'Amount '
         DataBinding.FieldName = 'amount_order_item'
         HeaderAlignmentHorz = taRightJustify
-        Width = 88
+        Width = 75
       end
       object cxGridDBTableView1Column4: TcxGridDBColumn
         Caption = 'Unit Price'
         DataBinding.FieldName = 'unitprice_order_item'
         HeaderAlignmentHorz = taRightJustify
-        Width = 97
+        Width = 86
       end
       object cxGridDBTableView1Column5: TcxGridDBColumn
         Caption = 'Value'
         DataBinding.FieldName = 'value_item'
         HeaderAlignmentHorz = taRightJustify
-        Width = 83
+        Width = 107
       end
       object cxGridDBTableView1Column6: TcxGridDBColumn
         Caption = 'Description'
         DataBinding.FieldName = 'description_item'
-        Width = 427
+        Width = 454
       end
     end
     object cxGridLevel1: TcxGridLevel

@@ -11,7 +11,8 @@ uses
   cxGridTableView, cxGridDBTableView, cxGrid, Vcl.StdCtrls, cxButtons, cxPC,
   cxTL, dxSkinBlue, dxSkinsCore, dxSkinscxPCPainter, cxLocalization,
   dxBarBuiltInMenu, cxDataControllerConditionalFormattingRulesManagerDialog,
-  cxContainer, cxTextEdit, cxLabel, cxDBLabel;
+  cxContainer, cxTextEdit, cxLabel, cxDBLabel, Vcl.ComCtrls, dxCore,
+  cxDateUtils, cxCurrencyEdit, cxMaskEdit, cxDropDownEdit, cxCalendar;
 
 type
   TFViewOrder = class(TForm)
@@ -29,7 +30,6 @@ type
     cxBRefresh: TcxButton;
     cxPageControl1: TcxPageControl;
     cxTabSheet1: TcxTabSheet;
-    cxLdescricao: TcxLabel;
     cxLabel1: TcxLabel;
     cxLabel2: TcxLabel;
     cxLabel3: TcxLabel;
@@ -39,7 +39,6 @@ type
     cxGridOrdersDBTableView1Column_date_order: TcxGridDBColumn;
     cxGridOrdersDBTableView1Column_code_client: TcxGridDBColumn;
     cxGridOrdersDBTableView1Column_valueorder: TcxGridDBColumn;
-    cxDBLabel1: TcxDBLabel;
     cxDBLabel2: TcxDBLabel;
     cxDBLabel3: TcxDBLabel;
     cxDBLabel4: TcxDBLabel;
@@ -57,6 +56,15 @@ type
     cxBItems: TcxButton;
     cxGridDBTableView1Column7: TcxGridDBColumn;
     cxBReportOrder: TcxButton;
+    cxGridOrdersDBTableView1Column_name_client: TcxGridDBColumn;
+    cxPageControl2: TcxPageControl;
+    cxTabSheet2: TcxTabSheet;
+    cxLPeriod: TcxLabel;
+    cxDEini: TcxDateEdit;
+    cxLa: TcxLabel;
+    cxDEcon: TcxDateEdit;
+    cxLCodeClient: TcxLabel;
+    cxCECodeOrder: TcxCurrencyEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure cxBCloseClick(Sender: TObject);
     procedure cxBIncludeClick(Sender: TObject);
@@ -134,11 +142,22 @@ end;
 
 procedure TFViewOrder.cxBReportOrderClick(Sender: TObject);
 var Form : TFReportOrders;
+    sCodeClient : String;
 begin
   Form := TFReportOrders.Create (Application);
   If Form.ShowModal = mrOk Then
   begin
-    ShowMessage('In Development!');
+    sCodeClient := Trim(Form.cxCECodeClient.Text);
+
+    DMConnection.MemTableReportOrders.Close;
+    DMConnection.LoadReportOrders(sCodeClient, Form.cxDEini.Text, Form.cxDEcon.Text);
+
+    if sCodeClient.IsEmpty then
+      DMConnection.frxReportOrders.Variables['ClientX'] := QuotedStr('All')
+    else
+      DMConnection.frxReportOrders.Variables['ClientX'] := QuotedStr(sCodeClient);
+    DMConnection.frxReportOrders.Variables['PeriodX']   := QuotedStr(Form.cxDEini.Text+' - '+Form.cxDEcon.Text);
+    DMConnection.frxReportOrders.ShowReport();
   end;
   Form.Destroy;
 end;

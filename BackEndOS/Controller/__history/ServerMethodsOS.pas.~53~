@@ -14,7 +14,7 @@ type
   private
     { Private declarations }
     //Orders
-    procedure PrepareOrders(const pIDCodeOrder: String=''; const pLimit: String='');
+    procedure PrepareOrders(const pIDCodeOrder: String=''; const pLimit: String=''; pDateI: String = ''; pDateF: String = '');
     procedure PrepareOrders_Items(const pIDCodeOrder: String=''; const pLimit: String='');
 
     //Items
@@ -23,19 +23,22 @@ type
     procedure UpdateItem(const oItem: TItem);
     procedure DeleteItem(const oItem: TItem);
 
-    //Orders
-    procedure PrepareReportOrders(const pIDCodeClient, pDateI, pDateF: String = '');
+    //ReportOrders
+    procedure PrepareReportOrders(const pIDCodeClient: String=''; pDateI: String=''; pDateF: String='');
 
   public
     { Public declarations }
 
     //Orders
-    function GetOrders(const pIDCodeOrder: String; const pLimit: String): TFDJSONDataSets;
+    function GetOrders(const pIDCodeOrder: String; const pLimit: String; pDateI: String; pDateF: String): TFDJSONDataSets;
     function GetOrders_Items(const pIDCodeOrder: String; const pLimit: String): TFDJSONDataSets;
 
     //Items
     function GetItems(const pIDCodeItem: String; const pLimit: String): TFDJSONDataSets;
     procedure PersistenceItem(const jObjectItem: TJSONObject);
+
+    //ReportOrders
+    function GetReportOrders(const pIDCodeClient: String; pDateI: String; pDateF: String): TFDJSONDataSets;
   end;
 {$METHODINFO OFF}
 
@@ -57,9 +60,9 @@ begin
 end;
 
 function TServerMethodsOS.GetOrders(const pIDCodeOrder: String;
-  const pLimit: String): TFDJSONDataSets;
+  const pLimit: String; pDateI: String; pDateF: String): TFDJSONDataSets;
 begin
-  PrepareOrders(pIDCodeOrder, pLimit);
+  PrepareOrders(pIDCodeOrder, pLimit, pDateI, pDateF);
 
   Result := TFDJSONDataSets.Create;
   TFDJSONDataSetsWriter.ListAdd(Result, DMOS.OSOrders);
@@ -73,6 +76,15 @@ begin
 
   Result := TFDJSONDataSets.Create;
   TFDJSONDataSetsWriter.ListAdd(Result, DMOS.OSOrders_Items);
+end;
+
+function TServerMethodsOS.GetReportOrders(const pIDCodeClient: String; pDateI,
+  pDateF: String): TFDJSONDataSets;
+begin
+  PrepareReportOrders(pIDCodeClient, pDateI, pDateF);
+
+  Result := TFDJSONDataSets.Create;
+  TFDJSONDataSetsWriter.ListAdd(Result, DMOS.OSReportOrders);
 end;
 
 procedure TServerMethodsOS.PersistenceItem(const jObjectItem: TJSONObject);
@@ -110,9 +122,7 @@ begin
   sIDCodeItem := pIDCodeItem;
 
   if not sLimit.IsEmpty then
-     sLimit := 'TOP ('+sLimit+')'
-  else
-     sLimit := '';
+     sLimit := 'TOP ('+sLimit+')';
 
   if not sIDCodeItem.IsEmpty then
      sIDCodeItem := 'WHERE a.[code_item] = '+sIDCodeItem
@@ -132,22 +142,28 @@ begin
   DMOS.OSItems.SQL.Text := sSQL;
 end;
 
-procedure TServerMethodsOS.PrepareOrders(const pIDCodeOrder, pLimit: String);
-var sSQL, sLimit, sIDCodeOrder: string;
+procedure TServerMethodsOS.PrepareOrders(const pIDCodeOrder, pLimit: String; pDateI: String; pDateF: String);
+var sSQL, sLimit, sIDCodeOrder, sPeriod: string;
 begin
-  sLimit := pLimit;
+  sLimit  := pLimit;
+  sPeriod := '';
   sIDCodeOrder := pIDCodeOrder;
 
   if not sLimit.IsEmpty then
-     sLimit := 'TOP ('+sLimit+')'
-  else
-     sLimit := '';
+     sLimit := 'TOP ('+sLimit+')';
 
   if not sIDCodeOrder.IsEmpty then
-     sIDCodeOrder := 'WHERE a.[code_order] = '+sIDCodeOrder
+  begin
+     sIDCodeOrder := 'WHERE a.[code_order] = '+sIDCodeOrder;
+     if (not pDateI.IsEmpty) and (not pDateF.IsEmpty) then
+        sPeriod := ' AND a.[date_order] BETWEEN CAST('+QuotedStr(pDateI)+' AS DATETIME) AND CAST('+QuotedStr(pDateF)+' AS DATETIME)+1 ';
+  end
   else
+  begin
      sIDCodeOrder := '';
-
+     if (not pDateI.IsEmpty) and (not pDateF.IsEmpty) then
+        sPeriod := 'WHERE a.[date_order] BETWEEN CAST('+QuotedStr(pDateI)+' AS DATETIME) AND CAST('+QuotedStr(pDateF)+' AS DATETIME)+1 ';
+  end;
 
   sSQL := 'SELECT '+sLimit+' a.[code_order] '+
           ' ,a.[date_order]      '+
@@ -161,6 +177,7 @@ begin
           'FROM [dbo].[tab_orders] a '+
           'INNER JOIN [dbo].[tab_clients] b ON b.code_client = a.code_client '+
           sIDCodeOrder+
+          sPeriod+
           ' ORDER BY a.[code_order] ';
 
   DMOS.OSOrders.Active   := False;
@@ -174,9 +191,7 @@ begin
   sIDCodeOrder := pIDCodeOrder;
 
   if not sLimit.IsEmpty then
-     sLimit := 'TOP ('+sLimit+')'
-  else
-     sLimit := '';
+     sLimit := 'TOP ('+sLimit+')';
 
   if not sIDCodeOrder.IsEmpty then
      sIDCodeOrder := 'WHERE a.[code_order] = '+sIDCodeOrder
@@ -230,8 +245,8 @@ begin
   DMOS.OSConnection.ExecSQL(sSQL);
 end;
 
-procedure TServerMethodsOS.PrepareReportOrders(const pIDCodeClient, pDateI,
-  pDateF: String);
+procedure TServerMethodsOS.PrepareReportOrders(const pIDCodeClient: String;
+  pDateI, pDateF: String);
 var sSQL, sIDCodeClient: string;
 begin
   sIDCodeClient := pIDCodeClient;
@@ -264,7 +279,6 @@ begin
   DMOS.OSReportOrders.Active   := False;
   DMOS.OSReportOrders.SQL.Text := sSQL;
 end;
-
 
 end.
 

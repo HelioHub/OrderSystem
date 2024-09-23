@@ -10,7 +10,7 @@ uses
   cxDataControllerConditionalFormattingRulesManagerDialog, Data.DB, cxDBData,
   cxGridLevel, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
   cxClasses, cxGridCustomView, cxGrid, cxTextEdit, cxLabel, Vcl.StdCtrls,
-  cxButtons, dxBevel, cxPC, UConstants;
+  cxButtons, dxBevel, cxPC, UConstants, cxCurrencyEdit;
 
 type
   TFViewItems = class(TForm)
@@ -22,7 +22,6 @@ type
     cxBDelete: TcxButton;
     cxBRefresh: TcxButton;
     cxLabel4: TcxLabel;
-    cxTENumberRecords: TcxTextEdit;
     DSItems: TDataSource;
     cxGridItems: TcxGrid;
     cxGridItemsDBTableView1: TcxGridDBTableView;
@@ -32,6 +31,7 @@ type
     cxGridItemsDBTableView1Column_price_item: TcxGridDBColumn;
     cxGridItemsLevel1: TcxGridLevel;
     cxLookAndFeelController1: TcxLookAndFeelController;
+    cxTENumberRecords: TcxCurrencyEdit;
     procedure cxBRefreshClick(Sender: TObject);
     procedure cxBCloseClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -76,16 +76,9 @@ begin
 end;
 
 procedure TFViewItems.cxBRefreshClick(Sender: TObject);
-var sNumberRecords : String;
 begin
-  Try
-    sNumberRecords := IntToStr(StrToInt(Trim(cxTENumberRecords.Text)));
-  Except
-    ShowMessage('Attention! Invalid number of records.');
-  End;
-
   DSItems.DataSet.Close;
-  DMConnection.LoadItems('', sNumberRecords);
+  DMConnection.LoadItems('', Trim(cxTENumberRecords.Text));
 end;
 
 procedure TFViewItems.FormClose(Sender: TObject; var Action: TCloseAction);

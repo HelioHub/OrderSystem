@@ -160,14 +160,15 @@ object FViewItems: TFViewItems
       Style.Font.Style = []
       Style.IsFontAssigned = True
     end
-    object cxTENumberRecords: TcxTextEdit
-      Left = 811
+    object cxTENumberRecords: TcxCurrencyEdit
+      Left = 810
       Top = 12
       Anchors = [akTop, akRight]
+      EditValue = 100.000000000000000000
       ParentFont = False
       Properties.Alignment.Horz = taRightJustify
-      Properties.MaxLength = 100
-      Properties.ReadOnly = False
+      Properties.AssignedValues.DisplayFormat = True
+      Properties.DecimalPlaces = 0
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -16
@@ -175,8 +176,7 @@ object FViewItems: TFViewItems
       Style.Font.Style = []
       Style.IsFontAssigned = True
       TabOrder = 6
-      Text = '100'
-      Width = 67
+      Width = 66
     end
   end
   object cxGridItems: TcxGrid

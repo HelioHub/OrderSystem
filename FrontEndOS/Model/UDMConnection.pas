@@ -66,7 +66,7 @@ type
 public
     { Public declarations }
     //Orders
-    procedure LoadOrders(const pIDCodeOrder: string; const pLimit: string);
+    procedure LoadOrders(const pIDCodeOrder: string; const pLimit: string; pDateI: String; pDateF: String);
     procedure LoadOrders_Items(const pIDCodeOrder: string; const pLimit: string);
 
     //Items
@@ -122,10 +122,10 @@ begin
   MemTableItems.Open;
 end;
 
-procedure TDMConnection.LoadOrders(const pIDCodeOrder, pLimit: string);
+procedure TDMConnection.LoadOrders(const pIDCodeOrder, pLimit: string; pDateI: String; pDateF: String);
 var LDataSetList: TFDJSONDataSets;
 begin
-  LDataSetList := ServerMethods1Client.GetOrders(pIDCodeOrder, pLimit);
+  LDataSetList := ServerMethods1Client.GetOrders(pIDCodeOrder, pLimit, pDateI, pDateF);
 
   MemTableOrders.Close;
   MemTableOrders.AppendData(TFDJSONDataSetsReader.GetListValue(LDataSetList, 0));

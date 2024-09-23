@@ -14,6 +14,7 @@ object FViewItems: TFViewItems
   Font.Style = []
   OldCreateOrder = False
   OnClose = FormClose
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object cxTabControl1: TcxTabControl
@@ -59,6 +60,7 @@ object FViewItems: TFViewItems
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = cxBIncludeClick
     end
     object cxBAlter: TcxButton
       Left = 112
@@ -79,6 +81,7 @@ object FViewItems: TFViewItems
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = cxBAlterClick
     end
     object cxBClose: TcxButton
       Left = 457
@@ -121,6 +124,7 @@ object FViewItems: TFViewItems
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = cxBDeleteClick
     end
     object cxBRefresh: TcxButton
       Left = 332
@@ -156,14 +160,15 @@ object FViewItems: TFViewItems
       Style.Font.Style = []
       Style.IsFontAssigned = True
     end
-    object cxTENumberRecords: TcxTextEdit
-      Left = 811
-      Top = 12
+    object cxTENumberRecords: TcxCurrencyEdit
+      Left = 810
+      Top = 10
       Anchors = [akTop, akRight]
+      EditValue = 100.000000000000000000
       ParentFont = False
       Properties.Alignment.Horz = taRightJustify
-      Properties.MaxLength = 100
-      Properties.ReadOnly = False
+      Properties.AssignedValues.DisplayFormat = True
+      Properties.DecimalPlaces = 0
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -16
@@ -171,8 +176,7 @@ object FViewItems: TFViewItems
       Style.Font.Style = []
       Style.IsFontAssigned = True
       TabOrder = 6
-      Text = '100'
-      Width = 67
+      Width = 66
     end
   end
   object cxGridItems: TcxGrid
@@ -180,6 +184,7 @@ object FViewItems: TFViewItems
     Top = 54
     Width = 888
     Height = 444
+    Hint = 'DoubleClick to Consultation...'
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -245,5 +250,11 @@ object FViewItems: TFViewItems
     DataSet = DMConnection.MemTableItems
     Left = 392
     Top = 200
+  end
+  object cxLookAndFeelController1: TcxLookAndFeelController
+    NativeStyle = False
+    SkinName = 'Blue'
+    Left = 392
+    Top = 248
   end
 end

@@ -24,6 +24,8 @@ object FReportOrders: TFReportOrders
     TabOrder = 0
     Properties.ActivePage = cxTabSheetOrder
     Properties.CustomButtons.Buttons = <>
+    ExplicitWidth = 555
+    ExplicitHeight = 186
     ClientRectBottom = 191
     ClientRectLeft = 2
     ClientRectRight = 560
@@ -31,6 +33,8 @@ object FReportOrders: TFReportOrders
     object cxTabSheetOrder: TcxTabSheet
       Caption = 'Settings'
       ImageIndex = 0
+      ExplicitWidth = 548
+      ExplicitHeight = 156
       object cxTCrodape: TcxTabControl
         Left = 0
         Top = 112
@@ -39,6 +43,8 @@ object FReportOrders: TFReportOrders
         Align = alBottom
         TabOrder = 6
         Properties.CustomButtons.Buttons = <>
+        ExplicitTop = 102
+        ExplicitWidth = 548
         ClientRectBottom = 49
         ClientRectLeft = 2
         ClientRectRight = 553
@@ -62,6 +68,7 @@ object FReportOrders: TFReportOrders
           Font.Style = [fsBold]
           ParentFont = False
           OnClick = cxBReportClick
+          ExplicitLeft = 323
         end
         object cxBCancel: TcxButton
           Left = 443
@@ -81,6 +88,7 @@ object FReportOrders: TFReportOrders
           Font.Style = [fsBold]
           ParentFont = False
           OnClick = cxBCancelClick
+          ExplicitLeft = 433
         end
       end
       object cxLPeriod: TcxLabel
@@ -105,13 +113,13 @@ object FReportOrders: TFReportOrders
         Style.Font.Name = 'Tahoma'
         Style.Font.Style = []
         Style.IsFontAssigned = True
-        TabOrder = 2
+        TabOrder = 3
         Width = 194
       end
       object cxLa: TcxLabel
         Left = 316
         Top = 57
-        Caption = '/'
+        Caption = 'a'
         ParentFont = False
         Style.Font.Charset = DEFAULT_CHARSET
         Style.Font.Color = clWindowText
@@ -121,7 +129,7 @@ object FReportOrders: TFReportOrders
         Style.IsFontAssigned = True
       end
       object cxDEcon: TcxDateEdit
-        Left = 331
+        Left = 334
         Top = 55
         ParentFont = False
         Style.Font.Charset = DEFAULT_CHARSET
@@ -130,12 +138,12 @@ object FReportOrders: TFReportOrders
         Style.Font.Name = 'Tahoma'
         Style.Font.Style = []
         Style.IsFontAssigned = True
-        TabOrder = 4
+        TabOrder = 5
         Width = 194
       end
       object cxLCodeClient: TcxLabel
         Left = 12
-        Top = 24
+        Top = 23
         Caption = 'Code Client:'
         ParentFont = False
         Style.Font.Charset = DEFAULT_CHARSET
@@ -151,8 +159,7 @@ object FReportOrders: TFReportOrders
         Hint = 'Blank all customers...'
         ParentFont = False
         ParentShowHint = False
-        Properties.AssignedValues.DisplayFormat = True
-        Properties.DecimalPlaces = 0
+        Properties.DisplayFormat = '0000000'
         ShowHint = True
         Style.Font.Charset = DEFAULT_CHARSET
         Style.Font.Color = clWindowText
@@ -160,8 +167,8 @@ object FReportOrders: TFReportOrders
         Style.Font.Name = 'Tahoma'
         Style.Font.Style = []
         Style.IsFontAssigned = True
-        TabOrder = 0
-        Width = 83
+        TabOrder = 1
+        Width = 121
       end
     end
   end

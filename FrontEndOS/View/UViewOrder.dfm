@@ -2,10 +2,9 @@ object FViewOrder: TFViewOrder
   Left = 70
   Top = 178
   BorderIcons = [biSystemMenu]
-  BorderStyle = bsSingle
   Caption = 'Orders'
-  ClientHeight = 654
-  ClientWidth = 1087
+  ClientHeight = 688
+  ClientWidth = 1077
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,17 +19,18 @@ object FViewOrder: TFViewOrder
   object cxTabControl1: TcxTabControl
     Left = 0
     Top = 0
-    Width = 1087
+    Width = 1077
     Height = 54
     Align = alTop
     TabOrder = 0
     Properties.CustomButtons.Buttons = <>
+    ExplicitWidth = 1087
     DesignSize = (
-      1087
+      1077
       54)
     ClientRectBottom = 49
     ClientRectLeft = 2
-    ClientRectRight = 1082
+    ClientRectRight = 1072
     ClientRectTop = 2
     object dxBevel1: TdxBevel
       Left = 677
@@ -157,7 +157,7 @@ object FViewOrder: TFViewOrder
       OnClick = cxBRefreshClick
     end
     object cxLabel4: TcxLabel
-      Left = 864
+      Left = 854
       Top = 14
       Anchors = [akTop, akRight]
       Caption = 'Number of records:'
@@ -168,24 +168,7 @@ object FViewOrder: TFViewOrder
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
       Style.IsFontAssigned = True
-    end
-    object cxTENumberRecords: TcxTextEdit
-      Left = 1010
-      Top = 12
-      Anchors = [akTop, akRight]
-      ParentFont = False
-      Properties.Alignment.Horz = taRightJustify
-      Properties.MaxLength = 100
-      Properties.ReadOnly = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -16
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.IsFontAssigned = True
-      TabOrder = 6
-      Text = '100'
-      Width = 67
+      ExplicitLeft = 864
     end
     object cxBItems: TcxButton
       Left = 457
@@ -199,7 +182,7 @@ object FViewOrder: TFViewOrder
       OptionsImage.Images = DMConnection.cxILImageBig
       ParentShowHint = False
       ShowHint = True
-      TabOrder = 7
+      TabOrder = 6
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -220,7 +203,7 @@ object FViewOrder: TFViewOrder
       OptionsImage.Images = DMConnection.cxILImageBig
       ParentShowHint = False
       ShowHint = True
-      TabOrder = 8
+      TabOrder = 7
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -229,12 +212,31 @@ object FViewOrder: TFViewOrder
       ParentFont = False
       OnClick = cxBReportOrderClick
     end
+    object cxTENumberRecords: TcxCurrencyEdit
+      Left = 1000
+      Top = 13
+      Anchors = [akTop, akRight]
+      EditValue = 100.000000000000000000
+      ParentFont = False
+      Properties.Alignment.Horz = taRightJustify
+      Properties.AssignedValues.DisplayFormat = True
+      Properties.DecimalPlaces = 0
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -16
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
+      TabOrder = 8
+      ExplicitLeft = 1010
+      Width = 66
+    end
   end
   object cxGridOrders: TcxGrid
     Left = 0
-    Top = 54
-    Width = 1087
-    Height = 303
+    Top = 143
+    Width = 1077
+    Height = 280
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -243,6 +245,8 @@ object FViewOrder: TFViewOrder
     Font.Style = []
     ParentFont = False
     TabOrder = 1
+    ExplicitWidth = 1087
+    ExplicitHeight = 246
     object cxGridOrdersDBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.Insert.Visible = False
@@ -300,20 +304,23 @@ object FViewOrder: TFViewOrder
   end
   object cxPageControl1: TcxPageControl
     Left = 0
-    Top = 549
-    Width = 1087
+    Top = 583
+    Width = 1077
     Height = 105
     Align = alBottom
     TabOrder = 2
     Properties.ActivePage = cxTabSheet1
     Properties.CustomButtons.Buttons = <>
+    ExplicitTop = 549
+    ExplicitWidth = 1087
     ClientRectBottom = 100
     ClientRectLeft = 2
-    ClientRectRight = 1082
+    ClientRectRight = 1072
     ClientRectTop = 25
     object cxTabSheet1: TcxTabSheet
       Caption = 'Data Client'
       ImageIndex = 0
+      ExplicitWidth = 1080
       object cxLabel1: TcxLabel
         Left = 9
         Top = 2
@@ -414,9 +421,9 @@ object FViewOrder: TFViewOrder
   end
   object cxGridOrderItems: TcxGrid
     Left = 0
-    Top = 357
-    Width = 1087
-    Height = 192
+    Top = 423
+    Width = 1077
+    Height = 160
     Align = alBottom
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -425,6 +432,7 @@ object FViewOrder: TFViewOrder
     Font.Style = []
     ParentFont = False
     TabOrder = 3
+    ExplicitTop = 373
     object cxGridDBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.Insert.Visible = False
@@ -488,6 +496,106 @@ object FViewOrder: TFViewOrder
     end
     object cxGridLevel1: TcxGridLevel
       GridView = cxGridDBTableView1
+    end
+  end
+  object cxPageControl2: TcxPageControl
+    Left = 0
+    Top = 54
+    Width = 1077
+    Height = 89
+    Align = alTop
+    TabOrder = 4
+    Properties.ActivePage = cxTabSheet2
+    Properties.CustomButtons.Buttons = <>
+    ExplicitWidth = 1087
+    ClientRectBottom = 84
+    ClientRectLeft = 2
+    ClientRectRight = 1072
+    ClientRectTop = 25
+    object cxTabSheet2: TcxTabSheet
+      Caption = 'Filter Order'
+      ImageIndex = 0
+      ExplicitWidth = 1080
+      object cxLPeriod: TcxLabel
+        Left = 4
+        Top = 33
+        Caption = 'Order Period:'
+        ParentFont = False
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindowText
+        Style.Font.Height = -16
+        Style.Font.Name = 'Tahoma'
+        Style.Font.Style = []
+        Style.IsFontAssigned = True
+      end
+      object cxDEini: TcxDateEdit
+        Left = 110
+        Top = 30
+        ParentFont = False
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindowText
+        Style.Font.Height = -16
+        Style.Font.Name = 'Tahoma'
+        Style.Font.Style = []
+        Style.IsFontAssigned = True
+        TabOrder = 1
+        Width = 194
+      end
+      object cxLa: TcxLabel
+        Left = 308
+        Top = 33
+        Caption = '/'
+        ParentFont = False
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindowText
+        Style.Font.Height = -16
+        Style.Font.Name = 'Tahoma'
+        Style.Font.Style = []
+        Style.IsFontAssigned = True
+      end
+      object cxDEcon: TcxDateEdit
+        Left = 323
+        Top = 30
+        ParentFont = False
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindowText
+        Style.Font.Height = -16
+        Style.Font.Name = 'Tahoma'
+        Style.Font.Style = []
+        Style.IsFontAssigned = True
+        TabOrder = 3
+        Width = 194
+      end
+      object cxLCodeClient: TcxLabel
+        Left = 4
+        Top = 5
+        Caption = 'Code Order:'
+        ParentFont = False
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindowText
+        Style.Font.Height = -16
+        Style.Font.Name = 'Tahoma'
+        Style.Font.Style = []
+        Style.IsFontAssigned = True
+      end
+      object cxCECodeOrder: TcxCurrencyEdit
+        Left = 110
+        Top = 3
+        Hint = 'Blank all orders..'
+        ParentFont = False
+        ParentShowHint = False
+        Properties.AssignedValues.DisplayFormat = True
+        Properties.DecimalPlaces = 0
+        ShowHint = True
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindowText
+        Style.Font.Height = -16
+        Style.Font.Name = 'Tahoma'
+        Style.Font.Style = []
+        Style.IsFontAssigned = True
+        TabOrder = 5
+        Width = 91
+      end
     end
   end
   object DSOrders: TDataSource
