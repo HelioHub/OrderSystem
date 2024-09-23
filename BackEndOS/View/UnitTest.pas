@@ -36,6 +36,7 @@ type
     Button3: TButton;
     Button4: TButton;
     Button5: TButton;
+    FDQueryOrderTotalValue: TFDQuery;
     procedure Button1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
@@ -52,6 +53,8 @@ implementation
 
 {$R *.dfm}
 
+uses UDMOS;
+
 procedure TFUnitTest.Button1Click(Sender: TObject);
 begin
   if fCalcValueTotalOrder(Edit1.Text) = cxCurrencyEdit1.Value then
@@ -65,7 +68,11 @@ end;
 
 function TFUnitTest.fCalcValueTotalOrder(pIDCodeOrder: String): Double;
 begin
+  FDQueryTeste.Close;
+  FDQueryTeste.Params[0].AsString := pIDCodeOrder;
+  FDQueryTeste.Open;
 
+  Result := FDQueryTeste.FieldByName('valuetotal').AsFloat;
 end;
 
 procedure TFUnitTest.FormClose(Sender: TObject; var Action: TCloseAction);

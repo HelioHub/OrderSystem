@@ -160,7 +160,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 <Platform value="Win64">False</Platform>
             </Platforms>
             <UnitTesting>
-                <TestProjectName>D:\HelioMarques\projects\OrderSystem\BackEndOSTests.dproj</TestProjectName>
+                <TestProjectName>D:\HelioMarques\projects\OrderSystem\BackEndOSTests\BackEndOSTests.dproj</TestProjectName>
             </UnitTesting>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>

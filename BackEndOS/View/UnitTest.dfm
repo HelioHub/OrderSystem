@@ -184,8 +184,31 @@ object FUnitTest: TFUnitTest
   object FDQueryTeste: TFDQuery
     Connection = DMOS.OSConnection
     SQL.Strings = (
-      'SELECT dbo.fn_get_total_value_ordered(:PCodeOrder) ')
+      
+        'SELECT top 1 dbo.fn_get_total_value_ordered(:PCodeOrder) as valu' +
+        'etotal '
+      'FROM tab_clients')
     Left = 536
     Top = 64
+    ParamData = <
+      item
+        Name = 'PCODEORDER'
+        DataType = ftString
+        ParamType = ptInput
+      end>
+  end
+  object FDQueryOrderTotalValue: TFDQuery
+    Connection = DMOS.OSConnection
+    SQL.Strings = (
+      
+        'SELECT top 5 a.code_order, ISNULL(SUM(b.amount_order_item * b.un' +
+        'itprice_order_item), 0) as totalvalue'
+      'FROM tab_orders a WITH (NOLOCK)'
+      
+        'INNER JOIN tab_order_item b WITH(NOLOCK) ON b.code_order = a.cod' +
+        'e_order '
+      'GROUP BY a.code_order')
+    Left = 536
+    Top = 124
   end
 end

@@ -16,13 +16,11 @@ program BackEndOSTests;
 
 uses
   TestUnitTest in 'TestUnitTest.pas',
-  UnitTest in '..\BackEndOS\View\UnitTest.pas';
-
-ususes
+  UnitTest in '..\BackEndOS\View\UnitTest.pas',
   DUnitTestRunner,
-  TestUnitTest in 'TestUnitTest.pas';
+  UDMOS in '..\BackEndOS\Model\UDMOS.pas' {DMOS: TDataModule};
 
-R *.RES}
+{*.RES}
 
 begin
   DUnitTestRunner.RunRegisteredTests;

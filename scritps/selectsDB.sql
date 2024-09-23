@@ -149,3 +149,13 @@ INNER JOIN [dbo].[tab_clients]    b ON b.[code_client]= a.[code_client]
 INNER JOIN [dbo].[tab_order_item] c ON c.[code_order] = a.[code_order]   INNER JOIN [dbo].[tab_item]       d ON d.[code_item]  = c.[code_item]    
 WHERE a.[date_order] BETWEEN CAST('01/09/2024' AS DATETIME) AND CAST('30/09/2024' AS DATETIME)+1 
 ORDER BY a.[code_order], a.[date_order]  
+
+
+
+
+SELECT top 5 a.code_order, ISNULL(SUM(b.amount_order_item * b.unitprice_order_item), 0) as totalvalue
+FROM tab_orders a WITH (NOLOCK)
+INNER JOIN tab_order_item b WITH(NOLOCK) ON b.code_order = a.code_order 
+GROUP BY a.code_order
+
+

@@ -37,7 +37,7 @@ implementation
 
 procedure TestTFUnitTest.SetUp;
 begin
-  FFUnitTest := TFUnitTest.Create;
+  FFUnitTest := TFUnitTest.Create(Application);
 end;
 
 procedure TestTFUnitTest.TearDown;
@@ -52,7 +52,9 @@ var
   pIDCodeOrder: string;
 begin
   // TODO: Setup method call parameters
+  pIDCodeOrder := '51';
   ReturnValue := FFUnitTest.fCalcValueTotalOrder(pIDCodeOrder);
+  CheckEquals(55,ReturnValue, 'Function failed Bank x Function');
   // TODO: Validate method results
 end;
 
