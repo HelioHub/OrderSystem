@@ -133,14 +133,21 @@ end;
 
 procedure TFViewOrder.cxBReportOrderClick(Sender: TObject);
 var Form : TFReportOrders;
+    sCodeClient : String;
 begin
   Form := TFReportOrders.Create (Application);
   If Form.ShowModal = mrOk Then
   begin
+    sCodeClient := Trim(Form.cxCECodeClient.Text);
+
     DMConnection.MemTableReportOrders.Close;
-    DMConnection.LoadReportOrders(Trim(Form.cxCECodeClient.Text), Form.cxDEini.Text, Form.cxDEcon.Text);
-    DMConnection.frxReportOrders.Variables['ClientX'] := QuotedStr(Trim(Form.cxCECodeClient.Text));
-    DMConnection.frxReportOrders.Variables['PeriodX'] := QuotedStr(Form.cxDEini.Text+' - '+Form.cxDEcon.Text);
+    DMConnection.LoadReportOrders(sCodeClient, Form.cxDEini.Text, Form.cxDEcon.Text);
+
+    if sCodeClient.IsEmpty then
+      DMConnection.frxReportOrders.Variables['ClientX'] := QuotedStr('All')
+    else
+      DMConnection.frxReportOrders.Variables['ClientX'] := QuotedStr(sCodeClient);
+    DMConnection.frxReportOrders.Variables['PeriodX']   := QuotedStr(Form.cxDEini.Text+' - '+Form.cxDEcon.Text);
     DMConnection.frxReportOrders.ShowReport();
   end;
   Form.Destroy;

@@ -2,6 +2,6 @@
 <BorlandProject>
 	<Transactions/>
 	<Default.Personality>
-		<Projects ActiveProject="D:\HelioMarques\projects\OrderSystem\BackEndOSTests\BackEndOSTests.dproj"/>
+		<Projects ActiveProject="D:\HelioMarques\projects\OrderSystem\FrontEndOS\FrontEndOS.dproj"/>
 	</Default.Personality>
 </BorlandProject>
