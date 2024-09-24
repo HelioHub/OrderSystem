@@ -509,16 +509,20 @@ object FViewOrder: TFViewOrder
       Caption = 'Filter Order'
       ImageIndex = 0
       object cxLPeriod: TcxLabel
-        Left = 4
-        Top = 33
-        Caption = 'Order Period:'
+        Left = 3
+        Top = 35
+        Hint = 'Clear Period Order '
+        Caption = 'Period Order :'
         ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
         Style.Font.Charset = DEFAULT_CHARSET
         Style.Font.Color = clWindowText
         Style.Font.Height = -16
         Style.Font.Name = 'Tahoma'
         Style.Font.Style = []
         Style.IsFontAssigned = True
+        OnClick = cxLPeriodClick
       end
       object cxDEini: TcxDateEdit
         Left = 110
@@ -559,16 +563,20 @@ object FViewOrder: TFViewOrder
         Width = 194
       end
       object cxLCodeClient: TcxLabel
-        Left = 4
-        Top = 5
+        Left = 3
+        Top = 4
+        Hint = 'Clear Code Order'
         Caption = 'Code Order:'
         ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
         Style.Font.Charset = DEFAULT_CHARSET
         Style.Font.Color = clWindowText
         Style.Font.Height = -16
         Style.Font.Name = 'Tahoma'
         Style.Font.Style = []
         Style.IsFontAssigned = True
+        OnClick = cxLCodeClientClick
       end
       object cxCECodeOrder: TcxCurrencyEdit
         Left = 110

@@ -57,7 +57,7 @@ uses UDMConnection, UDataItems;
 
 procedure TFViewItems.cxBAlterClick(Sender: TObject);
 begin
-  pCRUD(acAlter);
+  Self.pCRUD(acAlter);
 end;
 
 procedure TFViewItems.cxBCloseClick(Sender: TObject);
@@ -67,12 +67,12 @@ end;
 
 procedure TFViewItems.cxBDeleteClick(Sender: TObject);
 begin
-  pCRUD(acDelete);
+  Self.pCRUD(acDelete);
 end;
 
 procedure TFViewItems.cxBIncludeClick(Sender: TObject);
 begin
-  pCRUD(acInclude);
+  Self.pCRUD(acInclude);
 end;
 
 procedure TFViewItems.cxBRefreshClick(Sender: TObject);
@@ -83,7 +83,7 @@ end;
 
 procedure TFViewItems.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-   Action := CaFree;
+  Action := CaFree;
 end;
 
 procedure TFViewItems.FormShow(Sender: TObject);
@@ -92,7 +92,8 @@ begin
 end;
 
 procedure TFViewItems.pCRUD(pActoin: TAction);
-var Form: TFDataItems;
+var
+  Form: TFDataItems;
 begin
   inherited;
   if (DSItems.DataSet.FieldByName('code_item').IsNull) and (pActoin <> acInclude) then

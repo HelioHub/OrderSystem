@@ -1779,6 +1779,7 @@ object DMConnection: TDMConnection
     Host = 'localhost'
     Port = 9090
     LoginPrompt = False
+    PreserveSessionID = False
     Left = 48
     Top = 40
     UniqueId = '{A5B5996F-46DA-4AAD-95F2-DCABF7627727}'

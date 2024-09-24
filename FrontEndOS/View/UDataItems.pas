@@ -78,7 +78,7 @@ end;
 
 procedure TFDataItems.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-   Action := CaFree;
+  Action := CaFree;
 end;
 
 procedure TFDataItems.FormCreate(Sender: TObject);
@@ -105,10 +105,10 @@ begin
   end;
 
   case ObjItem.Action of
-    acInclude: pEnableControls;
-    acAlter  : pEnableControls;
-    acDelete : pDisableControls;
-    else       pDisableControls;
+    acInclude: Self.pEnableControls;
+    acAlter  : Self.pEnableControls;
+    acDelete : Self.pDisableControls;
+    else       Self.pDisableControls;
   end;
 
   if (ObjItem.Action <> acDelete) then

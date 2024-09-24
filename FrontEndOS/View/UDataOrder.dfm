@@ -27,8 +27,6 @@ object FDataOrder: TFDataOrder
     TabOrder = 0
     Properties.ActivePage = cxTabSheetOrder
     Properties.CustomButtons.Buttons = <>
-    ExplicitWidth = 674
-    ExplicitHeight = 364
     ClientRectBottom = 266
     ClientRectLeft = 2
     ClientRectRight = 714
@@ -36,8 +34,6 @@ object FDataOrder: TFDataOrder
     object cxTabSheetOrder: TcxTabSheet
       Caption = 'Order'
       ImageIndex = 0
-      ExplicitWidth = 667
-      ExplicitHeight = 328
       DesignSize = (
         712
         235)
@@ -49,8 +45,6 @@ object FDataOrder: TFDataOrder
         Align = alBottom
         TabOrder = 9
         Properties.CustomButtons.Buttons = <>
-        ExplicitTop = 274
-        ExplicitWidth = 667
         ClientRectBottom = 49
         ClientRectLeft = 2
         ClientRectRight = 707
@@ -73,7 +67,6 @@ object FDataOrder: TFDataOrder
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
-          ExplicitLeft = 442
         end
         object cxBCancel: TcxButton
           Left = 597
@@ -93,7 +86,6 @@ object FDataOrder: TFDataOrder
           Font.Style = [fsBold]
           ParentFont = False
           OnClick = cxBCancelClick
-          ExplicitLeft = 552
         end
       end
       object cxLCode: TcxLabel
@@ -173,6 +165,7 @@ object FDataOrder: TFDataOrder
       object cxCEPrice: TcxCurrencyEdit
         Left = 110
         Top = 134
+        Properties.Alignment.Horz = taRightJustify
         TabOrder = 8
         Width = 121
       end

@@ -10,7 +10,7 @@ const
   cActionAlter = 'Alter';
   cActionInclude = 'Include';
   cActionDelete = 'Delete';
-  cActionConsult = 'Consulta';
+  cActionConsult = 'Consult';
   cNumberRecords = '100';
 
 implementation

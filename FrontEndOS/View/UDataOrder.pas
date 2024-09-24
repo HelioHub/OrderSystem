@@ -82,10 +82,10 @@ begin
   end;
 
   case cAction of
-    acInclude: pEnableControls;
-    acAlter  : pEnableControls;
-    acDelete : pDisableControls;
-    else       pDisableControls;
+    acInclude: Self.pEnableControls;
+    acAlter  : Self.pEnableControls;
+    acDelete : Self.pDisableControls;
+    else       Self.pDisableControls;
   end;
 
   if (cAction <> acDelete) and (cAction <> acConsult) then
