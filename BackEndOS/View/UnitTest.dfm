@@ -1,9 +1,11 @@
 object FUnitTest: TFUnitTest
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
   Caption = 'Unit Test'
-  ClientHeight = 244
-  ClientWidth = 635
+  ClientHeight = 526
+  ClientWidth = 510
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -59,11 +61,12 @@ object FUnitTest: TFUnitTest
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 635
+    Width = 510
     Height = 41
     Align = alTop
     Caption = 'Functions Tests - UnitTest'
     TabOrder = 0
+    ExplicitWidth = 702
   end
   object Edit1: TEdit
     Left = 120
@@ -156,6 +159,7 @@ object FUnitTest: TFUnitTest
     Height = 25
     Caption = 'Test 2'
     TabOrder = 12
+    OnClick = Button2Click
   end
   object Button3: TButton
     Left = 408
@@ -164,6 +168,7 @@ object FUnitTest: TFUnitTest
     Height = 25
     Caption = 'Test 3'
     TabOrder = 13
+    OnClick = Button3Click
   end
   object Button4: TButton
     Left = 408
@@ -172,6 +177,7 @@ object FUnitTest: TFUnitTest
     Height = 25
     Caption = 'Test 4'
     TabOrder = 14
+    OnClick = Button4Click
   end
   object Button5: TButton
     Left = 408
@@ -180,9 +186,28 @@ object FUnitTest: TFUnitTest
     Height = 25
     Caption = 'Test 5'
     TabOrder = 15
+    OnClick = Button5Click
+  end
+  object BAllTest: TButton
+    Left = 408
+    Top = 225
+    Width = 75
+    Height = 25
+    Caption = 'Test All'
+    TabOrder = 16
+    OnClick = BAllTestClick
+  end
+  object MemoTest: TMemo
+    Left = 32
+    Top = 296
+    Width = 451
+    Height = 193
+    Lines.Strings = (
+      'MemoTest')
+    TabOrder = 17
   end
   object FDQueryTeste: TFDQuery
-    Connection = DMOS.OSConnection
+    Connection = OSConnection
     SQL.Strings = (
       
         'SELECT top 1 dbo.fn_get_total_value_ordered(:PCodeOrder) as valu' +
@@ -198,7 +223,7 @@ object FUnitTest: TFUnitTest
       end>
   end
   object FDQueryOrderTotalValue: TFDQuery
-    Connection = DMOS.OSConnection
+    Connection = OSConnection
     SQL.Strings = (
       
         'SELECT top 5 a.code_order, ISNULL(SUM(b.amount_order_item * b.un' +
@@ -210,5 +235,33 @@ object FUnitTest: TFUnitTest
       'GROUP BY a.code_order')
     Left = 536
     Top = 124
+  end
+  object OSConnection: TFDConnection
+    Params.Strings = (
+      'Database=ordersystem'
+      'User_Name=sa'
+      'Password=197382'
+      'Server=HELIOLENOVO\SQLEXPRESS'
+      'DriverID=MSSQL')
+    LoginPrompt = False
+    Left = 633
+    Top = 64
+  end
+  object FDGUIxWaitCursor1: TFDGUIxWaitCursor
+    Provider = 'Console'
+    Left = 744
+    Top = 64
+  end
+  object FDPhysIBDriverLink1: TFDPhysIBDriverLink
+    Left = 848
+    Top = 64
+  end
+  object FDStanStorageJSONLink1: TFDStanStorageJSONLink
+    Left = 856
+    Top = 120
+  end
+  object FDStanStorageBinLink1: TFDStanStorageBinLink
+    Left = 848
+    Top = 168
   end
 end

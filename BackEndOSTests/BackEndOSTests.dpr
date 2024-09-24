@@ -17,8 +17,7 @@ program BackEndOSTests;
 uses
   TestUnitTest in 'TestUnitTest.pas',
   UnitTest in '..\BackEndOS\View\UnitTest.pas',
-  DUnitTestRunner,
-  UDMOS in '..\BackEndOS\Model\UDMOS.pas' {DMOS: TDataModule};
+  DUnitTestRunner;
 
 {*.RES}
 

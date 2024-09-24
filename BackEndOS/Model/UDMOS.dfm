@@ -9,7 +9,6 @@ object DMOS: TDMOS
       'Password=197382'
       'Server=HELIOLENOVO\SQLEXPRESS'
       'DriverID=MSSQL')
-    Connected = True
     LoginPrompt = False
     Left = 49
     Top = 24
@@ -230,8 +229,8 @@ object DMOS: TDMOS
         'INNER JOIN [dbo].[tab_item]       d ON d.[code_item]  = c.[code_' +
         'item] '
       'ORDER BY a.[code_order], a.[date_order]')
-    Left = 265
-    Top = 195
+    Left = 49
+    Top = 253
     object OSReportOrderscode_order: TFDAutoIncField
       FieldName = 'code_order'
       Origin = 'code_order'

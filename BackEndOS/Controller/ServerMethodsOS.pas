@@ -130,11 +130,11 @@ begin
      sIDCodeItem := '';
 
 
-  sSQL := 'SELECT '+sLimit+' a.[code_item] '+
-          ' ,a.[name_item]         '+
-          ' ,a.[description_item]  '+
-          ' ,a.[price_item]        '+
-          'FROM [dbo].[tab_item] a '+
+  sSQL := 'SELECT '+sLimit+' a.[code_item]       '+
+          ' ,a.[name_item]                       '+
+          ' ,a.[description_item]                '+
+          ' ,a.[price_item]                      '+
+          'FROM [dbo].[tab_item] a WITH (NOLOCK) '+
           sIDCodeItem+
           ' ORDER BY a.[code_item] ';
 
@@ -174,8 +174,8 @@ begin
           ' ,b.[email_client]    '+
           ' ,a.[value_order]     '+
           ' ,dbo.fn_get_total_value_ordered(a.[code_order]) as valueorder '+
-          'FROM [dbo].[tab_orders] a '+
-          'INNER JOIN [dbo].[tab_clients] b ON b.code_client = a.code_client '+
+          'FROM [dbo].[tab_orders] a WITH (NOLOCK) '+
+          'INNER JOIN [dbo].[tab_clients] b WITH (NOLOCK) ON b.code_client = a.code_client '+
           sIDCodeOrder+
           sPeriod+
           ' ORDER BY a.[code_order] ';
@@ -207,8 +207,8 @@ begin
           ',a.[amount_order_item] * a.[unitprice_order_item] as value_item '+
           ',b.[name_item]                                                  '+
           ',b.[description_item]                                           '+
-          'FROM [dbo].[tab_order_item] a                                   '+
-          'INNER JOIN [dbo].[tab_item] b ON b.[code_item] = a.[code_item]  '+
+          'FROM [dbo].[tab_order_item] a WITH (NOLOCK)                     '+
+          'INNER JOIN [dbo].[tab_item] b WITH (NOLOCK) ON b.[code_item] = a.[code_item]  '+
           sIDCodeOrder+
           ' ORDER BY a.[code_item] ';
 
@@ -268,10 +268,10 @@ begin
           ',c.[unitprice_order_item] '+
           ',(c.[amount_order_item] * c.[unitprice_order_item]) as valueorder  '+
           ',dbo.fn_get_total_value_ordered(a.[code_order]) as totalorder      '+
-          'FROM [dbo].[tab_orders] a  '+
-          'INNER JOIN [dbo].[tab_clients]    b ON b.[code_client]= a.[code_client]  '+
-          'INNER JOIN [dbo].[tab_order_item] c ON c.[code_order] = a.[code_order]   '+
-          'INNER JOIN [dbo].[tab_item]       d ON d.[code_item]  = c.[code_item]    '+
+          'FROM [dbo].[tab_orders] a WITH (NOLOCK) '+
+          'INNER JOIN [dbo].[tab_clients]    b WITH (NOLOCK) ON b.[code_client]= a.[code_client]  '+
+          'INNER JOIN [dbo].[tab_order_item] c WITH (NOLOCK) ON c.[code_order] = a.[code_order]   '+
+          'INNER JOIN [dbo].[tab_item]       d WITH (NOLOCK) ON d.[code_item]  = c.[code_item]    '+
           'WHERE a.[date_order] BETWEEN CAST('+QuotedStr(pDateI)+' AS DATETIME) AND CAST('+QuotedStr(pDateF)+' AS DATETIME) '+
           sIDCodeClient+
           'ORDER BY a.[code_order], a.[date_order]  ';

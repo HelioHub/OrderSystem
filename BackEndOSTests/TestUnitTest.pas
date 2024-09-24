@@ -30,7 +30,12 @@ type
     procedure SetUp; override;
     procedure TearDown; override;
   published
-    procedure TestfCalcValueTotalOrder;
+    procedure TestfCalcValueTotalOrder31;
+    procedure TestfCalcValueTotalOrder32;
+    procedure TestfCalcValueTotalOrder33;
+    procedure TestfCalcValueTotalOrder34;
+    procedure TestfCalcValueTotalOrder37;
+    procedure TestfCalcValueTotalOrderAll;
   end;
 
 implementation
@@ -46,15 +51,81 @@ begin
   FFUnitTest := nil;
 end;
 
-procedure TestTFUnitTest.TestfCalcValueTotalOrder;
+procedure TestTFUnitTest.TestfCalcValueTotalOrder31;
 var
   ReturnValue: Double;
   pIDCodeOrder: string;
 begin
   // TODO: Setup method call parameters
-  pIDCodeOrder := '51';
+  pIDCodeOrder := '31';
   ReturnValue := FFUnitTest.fCalcValueTotalOrder(pIDCodeOrder);
   CheckEquals(55,ReturnValue, 'Function failed Bank x Function');
+  // TODO: Validate method results
+end;
+
+procedure TestTFUnitTest.TestfCalcValueTotalOrder32;
+var
+  ReturnValue: Double;
+  pIDCodeOrder: string;
+begin
+  // TODO: Setup method call parameters
+  pIDCodeOrder := '32';
+  ReturnValue := FFUnitTest.fCalcValueTotalOrder(pIDCodeOrder);
+  CheckEquals(40,ReturnValue, 'Function failed Bank x Function');
+  // TODO: Validate method results
+end;
+
+procedure TestTFUnitTest.TestfCalcValueTotalOrder33;
+var
+  ReturnValue: Double;
+  pIDCodeOrder: string;
+begin
+  // TODO: Setup method call parameters
+  pIDCodeOrder := '33';
+  ReturnValue := FFUnitTest.fCalcValueTotalOrder(pIDCodeOrder);
+  CheckEquals(20,ReturnValue, 'Function failed Bank x Function');
+  // TODO: Validate method results
+end;
+
+procedure TestTFUnitTest.TestfCalcValueTotalOrder34;
+var
+  ReturnValue: Double;
+  pIDCodeOrder: string;
+begin
+  // TODO: Setup method call parameters
+  pIDCodeOrder := '34';
+  ReturnValue := FFUnitTest.fCalcValueTotalOrder(pIDCodeOrder);
+  CheckEquals(50,ReturnValue, 'Function failed Bank x Function');
+  // TODO: Validate method results
+end;
+
+procedure TestTFUnitTest.TestfCalcValueTotalOrder37;
+var
+  ReturnValue: Double;
+  pIDCodeOrder: string;
+begin
+  // TODO: Setup method call parameters
+  pIDCodeOrder := '37';
+  ReturnValue := FFUnitTest.fCalcValueTotalOrder(pIDCodeOrder);
+  CheckEquals(20,ReturnValue, 'Function failed Bank x Function');
+  // TODO: Validate method results
+end;
+
+procedure TestTFUnitTest.TestfCalcValueTotalOrderAll;
+var
+  ReturnValue: Double;
+  pIDCodeOrder: string;
+begin
+  // TODO: Setup method call parameters
+  FFUnitTest.FDQueryOrderTotalValue.Close;
+  FFUnitTest.FDQueryOrderTotalValue.Open;
+  while not FFUnitTest.FDQueryOrderTotalValue.eof do
+  begin
+    pIDCodeOrder := FFUnitTest.FDQueryOrderTotalValue.FieldByName('code_order').AsString;
+    ReturnValue  := FFUnitTest.fCalcValueTotalOrder(pIDCodeOrder);
+    CheckEquals(FFUnitTest.FDQueryOrderTotalValue.FieldByName('totalvalue').AsFloat,ReturnValue, 'Function failed Bank x Function');
+    FFUnitTest.FDQueryOrderTotalValue.next;
+  end;
   // TODO: Validate method results
 end;
 

@@ -93,11 +93,6 @@
         <DCCReference Include="..\BackEndOS\View\UnitTest.pas">
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\BackEndOS\Model\UDMOS.pas">
-            <Form>DMOS</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

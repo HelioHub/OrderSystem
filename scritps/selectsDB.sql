@@ -6,27 +6,27 @@ SELECT TOP (1000) [code_client]
     ,[address_client]
     ,[phone_client]
     ,[email_client]
-FROM [ordersystem].[dbo].[tab_clients]
+FROM [ordersystem].[dbo].[tab_clients] WITH (NOLOCK)
 
 SELECT TOP (1000) [code_item]
     ,[name_item]
     ,[description_item]
     ,[price_item]
-FROM [ordersystem].[dbo].[tab_item]
+FROM [ordersystem].[dbo].[tab_item] WITH (NOLOCK)
 
 SELECT TOP (1000) [code_order]
       ,[date_order]
       ,[value_order]
       ,[code_client]
-FROM [ordersystem].[dbo].[tab_orders]
+FROM [ordersystem].[dbo].[tab_orders] WITH (NOLOCK)
 
 SELECT TOP (1000) [code_order_item]
       ,[code_order]
       ,[code_item]
       ,[amount_order_item]
       ,[unitprice_order_item]
-FROM [ordersystem].[dbo].[tab_order_item] a
-INNER JOIN 
+FROM [ordersystem].[dbo].[tab_order_item] a WITH (NOLOCK)
+
 
 -- Request Function 
 USE [ordersystem]
@@ -44,8 +44,8 @@ SELECT TOP (1000) a.[code_order]
       ,b.[email_client]
       ,a.[value_order]
 	  ,dbo.fn_get_total_value_ordered(a.[code_order]) as valueorder 
-FROM [dbo].[tab_orders] a
-INNER JOIN [dbo].[tab_clients] b ON b.code_client = a.code_client 
+FROM [dbo].[tab_orders] a WITH (NOLOCK)
+INNER JOIN [dbo].[tab_clients] b WITH (NOLOCK) ON b.code_client = a.code_client  
 
 USE [ordersystem]
 go
@@ -59,8 +59,8 @@ SELECT TOP (1000) a.[code_order]
       ,a.[amount_order_item] * a.[unitprice_order_item] as value_item
       ,b.[name_item]
       ,b.[description_item]
-FROM [dbo].[tab_order_item] a
-INNER JOIN [dbo].[tab_item] b ON b.[code_item] = a.[code_item] 
+FROM [dbo].[tab_order_item] a WITH (NOLOCK)
+INNER JOIN [dbo].[tab_item] b WITH (NOLOCK) ON b.[code_item] = a.[code_item] 
 
 
 
@@ -71,8 +71,8 @@ INNER JOIN [dbo].[tab_item] b ON b.[code_item] = a.[code_item]
  ,a.[amount_order_item] * a.[unitprice_order_item] as value_item 
  ,b.[name_item]        
  ,b.[description_item]                                           
- FROM [dbo].[tab_order_item] a                                   
- INNER JOIN [dbo].[tab_item] b ON b.[code_item] = a.[code_item]  
+ FROM [dbo].[tab_order_item] a WITH (NOLOCK)                                  
+ INNER JOIN [dbo].[tab_item] b WITH (NOLOCK) ON b.[code_item] = a.[code_item]  
  WHERE a.[code_order] = 31 ORDER BY a.[code_item] 
 
  SELECT	TOP (100) a.[code_item] 
@@ -100,10 +100,10 @@ SELECT TOP (1000) a.[code_order]
 	  ,c.[unitprice_order_item]
 	  ,(c.[amount_order_item] * c.[unitprice_order_item]) as valueorder
 	  ,dbo.fn_get_total_value_ordered(a.[code_order]) as totalorder 
-FROM [dbo].[tab_orders] a
-INNER JOIN [dbo].[tab_clients]    b ON b.[code_client]= a.[code_client] 
-INNER JOIN [dbo].[tab_order_item] c ON c.[code_order] = a.[code_order] 
-INNER JOIN [dbo].[tab_item]       d ON d.[code_item]  = c.[code_item] 
+FROM [dbo].[tab_orders] a WITH (NOLOCK)
+INNER JOIN [dbo].[tab_clients]    b WITH (NOLOCK) ON b.[code_client]= a.[code_client] 
+INNER JOIN [dbo].[tab_order_item] c WITH (NOLOCK) ON c.[code_order] = a.[code_order] 
+INNER JOIN [dbo].[tab_item]       d WITH (NOLOCK) ON d.[code_item]  = c.[code_item] 
 WHERE a.[date_order] BETWEEN CAST('2024-09-17' AS DATETIME) AND CAST('2024-09-19' AS DATETIME)+1
 --  AND a.[code_client] = 51
 ORDER BY a.[code_order], a.[date_order]
@@ -135,8 +135,6 @@ Code Item Name Item                    Amount Item Unit Price Item Value Item
                                                   Total do Pedido: R$ 55.0000
 */
 
-
-
 DELETE FROM dbo.tab_order_item WHERE code_order_item = 35
 
 USE [ordersystem]
@@ -144,18 +142,25 @@ go
 SET DATEFORMAT dmy; 
 GO
 SELECT a.[code_order]   ,a.[date_order]         ,a.[code_client]        ,b.[name_client]        ,b.[phone_client]       ,b.[email_client]       ,c.[code_item]          ,d.[name_item]          ,c.[amount_order_item]  ,c.[unitprice_order_item] ,(c.[amount_order_item] * c.[unitprice_order_item]) as valueorder  ,dbo.fn_get_total_value_ordered(a.[code_order]) as totalorder      
-FROM [dbo].[tab_orders] a  
-INNER JOIN [dbo].[tab_clients]    b ON b.[code_client]= a.[code_client]  
-INNER JOIN [dbo].[tab_order_item] c ON c.[code_order] = a.[code_order]   INNER JOIN [dbo].[tab_item]       d ON d.[code_item]  = c.[code_item]    
+FROM [dbo].[tab_orders] a WITH(NOLOCK)
+INNER JOIN [dbo].[tab_clients]    b WITH(NOLOCK) ON b.[code_client]= a.[code_client]  
+INNER JOIN [dbo].[tab_order_item] c WITH(NOLOCK) ON c.[code_order] = a.[code_order]   INNER JOIN [dbo].[tab_item]       d ON d.[code_item]  = c.[code_item]    
 WHERE a.[date_order] BETWEEN CAST('01/09/2024' AS DATETIME) AND CAST('30/09/2024' AS DATETIME)+1 
 ORDER BY a.[code_order], a.[date_order]  
-
-
-
 
 SELECT top 5 a.code_order, ISNULL(SUM(b.amount_order_item * b.unitprice_order_item), 0) as totalvalue
 FROM tab_orders a WITH (NOLOCK)
 INNER JOIN tab_order_item b WITH(NOLOCK) ON b.code_order = a.code_order 
 GROUP BY a.code_order
+
+-- Request Function 
+USE [ordersystem]
+go
+select dbo.fn_get_total_value_ordered(31) 
+go
+
+
+SELECT top 1 dbo.fn_get_total_value_ordered('31') as valuetotal 
+FROM tab_clients
 
 
