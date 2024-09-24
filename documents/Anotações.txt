@@ -121,3 +121,151 @@ PROCURA POR CODE_ORDER E EVITAR O NUMBER RECORDS
 
 
 MemTableItems
+
+
+
+“Os padrões de projeto são muito complexos para iniciantes.”
+
+Essa é uma mensagem que recebi de alguém que está tendo dificuldades com o design de software.
+
+Então, caro iniciante, aqui está o que você não entende.
+
+Os padrões de design são, na verdade, simples se explicados corretamente.
+
+Vamos detalhar 12 padrões-chave em termos simples.
+
+1. Factory
+↳ Pense nisso como uma pizzaria.
+↳ Você diz à loja o tipo de pizza que deseja e eles a fazem para você.
+
+2. Observer
+↳ Imagine se inscrever em um canal do YouTube.
+↳ Você é notificado sempre que o canal publica um novo vídeo.
+
+3. Singleton
+↳ Isso é como ter apenas um diretor em uma escola.
+↳ Não importa quantas vezes você pergunte, sempre terá a mesma pessoa.
+
+4. Builder
+↳ Pense nisso como a montagem de um computador personalizado.
+↳ Você escolhe cada peça passo a passo em vez de obter um sistema pré-montado.
+
+5. Adapter
+↳ É como um adaptador de energia para viagens internacionais.
+↳ Permite que interfaces incompatíveis funcionem juntas.
+
+6. Decorator
+↳ Imagine personalizar seu café.
+↳ Cada adição, como leite ou açúcar, “decora” o café sem alterar sua natureza básica.
+
+7. Proxy
+↳ Pense nisso como um segurança em uma boate.
+↳ O segurança (proxy) controla o acesso à boate (objeto real).
+
+8. Strategy
+↳ Imagine diferentes rotas para chegar a um destino.
+↳ Você pode escolher a rota mais rápida, a mais panorâmica ou a mais barata.
+
+9. Command
+↳ É como um pedido de restaurante.
+↳ O garçom leva seu pedido (comando) para a cozinha sem saber cozinhar.
+
+10. Template
+↳ Pense nele como um cortador de biscoitos.
+↳ A forma básica é definida, mas você pode personalizar as decorações.
+
+11. Iterator
+↳ Imagine folhear um álbum de fotos.
+↳ Você pode percorrer as fotos uma a uma sem precisar saber como elas estão armazenadas.
+
+12. State
+↳ Pense em uma máquina de venda automática.
+↳ Seu comportamento muda com base em seu estado (tem moedas, está fora de estoque etc.).
+
+Esses padrões ajudam a resolver problemas comuns de design de software e tornam o código mais flexível, reutilizável e passível de manutenção.
+
+♻️ Reposte este post para compartilhar conhecimento.
+
+Siga-me, Lucas Gertel, para nunca perder uma postagem.
+
+PS: Qual assunto vocês gostariam de ver por aqui?
+
+Créditos GIF: Nelson Djalo
+
+
+
+
+
+A qualidade do código e a velocidade de entrega são vitais.
+
+E muitas vezes entram em conflito.
+
+Muitos acham que não é possível ter os dois:
+→ O código de alta qualidade deixa você mais lento
+→ Entrega rápida significa código ruim
+→ É uma troca que você precisa fazer
+
+Mas isso não é verdade:
+- O código de qualidade tem menos bugs
+- É mais fácil de manter
+- Melhora a colaboração da equipe
+
+A entrega rápida também é importante:
+- Tempo mais rápido para o mercado
+- Resposta rápida ao feedback
+- Ficar à frente dos concorrentes
+
+A verdade é que qualidade e velocidade podem coexistir:
+- O código de alta qualidade acelera o desenvolvimento futuro
+- Os testes automatizados detectam os problemas com antecedência
+- O código claro aumenta a eficiência da equipe
+
+Veja a seguir como equilibrar ambos:
+
+1. Adotar metodologias ágeis:
+ - Entregar software funcional rapidamente
+ - Melhorar continuamente a qualidade
+
+2. Implementar CI/CD:
+ - Automatize os testes e a implementação
+ - Detectar problemas antecipadamente
+
+3. Use revisões de código:
+ - As revisões regulares por pares mantêm a qualidade
+ - Elas não atrasam significativamente o desenvolvimento
+
+4. Investir nas habilidades do desenvolvedor:
+ - Os desenvolvedores bem treinados escrevem códigos melhores
+ - Eles o fazem mais rapidamente
+
+5. Priorize com sabedoria:
+ - Concentre-se nos recursos essenciais
+ - Níveis de qualidade aceitáveis para cada versão
+
+6. Refatorar regularmente:
+ - Melhorar continuamente o código existente
+ - Evitar que a dívida técnica o atrase
+
+7. Utilize ferramentas:
+ - Use ferramentas de análise de código estático
+ - Os testes automatizados detectam os problemas com antecedência
+
+É essencial equilibrar a qualidade e a velocidade do código.
+
+Não se trata de perfeição.
+
+Trata-se de fornecer software valioso e confiável com eficiência.
+
+
+INDICE CLUSTERED E NONCLUSTERED
+
+SEEK   > PROCURAR
+LOOKUP > PESQUISA
+SCAN   > VERIFICAR
+
+
+TOP
+....
+FOLHA 8KB BLOCOS
+
+

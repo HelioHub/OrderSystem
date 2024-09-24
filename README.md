@@ -225,8 +225,10 @@ Develop Customer Order Management System for candidate evaluation -  Hélio Marq
 		value_order  decimal(20,4)  NULL 
 	)
 	go
-	CREATE INDEX XIFKtab_orders_code_client ON tab_orders (code_client  ASC) 
+	CREATE INDEX XIFKtab_orders_code_client ON tab_orders (code_client  ASC) 	
 	go
+	CREATE INDEX XIFKtab_orders_client_date_ ON tab_orders (code_client, date_order  ASC) 
+    go
 	GRANT SELECT, UPDATE, DELETE, INSERT ON tab_orders TO helio;
 	go
 
@@ -503,7 +505,7 @@ Develop Customer Order Management System for candidate evaluation -  Hélio Marq
 	END
 	GO
 
-### Server, Main and Order Screen 
+### Server, Main and Order Screen (DATASNAP REST FIREDAC)
 	````
 	Server and Main Screen
 	````
@@ -591,6 +593,14 @@ Develop Customer Order Management System for candidate evaluation -  Hélio Marq
 
 ![## Diagrama de Entidade e Relacionamento Lógico OrderSystem](https://github.com/HelioHub/OrderSystem/blob/main/images/Test4.png)
 
+### New non-clustered
+
+	````
+	New non-clustered index to perform reporting
+	````
+
+	CREATE INDEX XIFKtab_orders_client_date_ ON tab_orders (code_client, date_order  ASC) 
+    go
 
 
 
