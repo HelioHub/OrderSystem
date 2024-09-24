@@ -34,7 +34,6 @@ type
     cxLabel2: TcxLabel;
     cxLabel3: TcxLabel;
     cxLabel4: TcxLabel;
-    cxTENumberRecords: TcxTextEdit;
     cxGridOrdersDBTableView1Column_code_order: TcxGridDBColumn;
     cxGridOrdersDBTableView1Column_date_order: TcxGridDBColumn;
     cxGridOrdersDBTableView1Column_code_client: TcxGridDBColumn;
@@ -65,6 +64,7 @@ type
     cxDEcon: TcxDateEdit;
     cxLCodeClient: TcxLabel;
     cxCECodeOrder: TcxCurrencyEdit;
+    cxTENumberRecords: TcxCurrencyEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure cxBCloseClick(Sender: TObject);
     procedure cxBIncludeClick(Sender: TObject);
@@ -74,6 +74,7 @@ type
     procedure cxBItemsClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure cxBReportOrderClick(Sender: TObject);
+    procedure cxGridOrdersDBTableView1DblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -128,16 +129,31 @@ begin
 end;
 
 procedure TFViewOrder.cxBRefreshClick(Sender: TObject);
-var sNumberRecords : String;
 begin
-  Try
-    sNumberRecords := IntToStr(StrToInt(Trim(cxTENumberRecords.Text)));
-  Except
-    ShowMessage('Attention! Invalid number of records.');
-  End;
+  if not Trim(cxDEini.Text).IsEmpty then
+  begin
+    if Trim(cxDEcon.Text).IsEmpty then
+    begin
+      Beep;
+      ShowMessage('Enter the end date!');
+      cxDEcon.SetFocus;
+      Exit;
+    end;
+  end;
+
+  if not Trim(cxDEcon.Text).IsEmpty then
+  begin
+    if Trim(cxDEini.Text).IsEmpty then
+    begin
+      Beep;
+      ShowMessage('Enter the start date!');
+      cxDEini.SetFocus;
+      Exit;
+    end;
+  end;
 
   DSOrders.DataSet.Close;
-  DMConnection.LoadOrders('', sNumberRecords);
+  DMConnection.LoadOrders(Trim(cxCECodeOrder.Text), Trim(cxTENumberRecords.Text), cxDEini.Text, cxDEcon.Text);
 end;
 
 procedure TFViewOrder.cxBReportOrderClick(Sender: TObject);
@@ -160,6 +176,13 @@ begin
     DMConnection.frxReportOrders.ShowReport();
   end;
   Form.Destroy;
+end;
+
+procedure TFViewOrder.cxGridOrdersDBTableView1DblClick(Sender: TObject);
+var Form : TFDataOrder;
+begin
+  Form := TFDataOrder.Create (Application);
+  Form.ShowModal;
 end;
 
 procedure TFViewOrder.FormClose(Sender: TObject; var Action: TCloseAction);

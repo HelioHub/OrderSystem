@@ -8,23 +8,22 @@ uses
   cxLookAndFeelPainters, Vcl.Menus, Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls,
   cxControls, cxPCdxBarPopupMenu, cxContainer, cxEdit, cxTextEdit, cxGroupBox,
   cxRadioGroup, cxLabel, cxPC, dxSkinsCore, dxSkinDevExpressStyle,
-  dxSkinscxPCPainter, dxSkinBlue, dxBarBuiltInMenu;
+  dxSkinscxPCPainter, dxSkinBlue, dxBarBuiltInMenu, UConstants;
 
 type
   TFDataOrder = class(TForm)
-    cxPageControl1: TcxPageControl;
-    cxTabSheet1: TcxTabSheet;
+    cxPageControlOrder: TcxPageControl;
+    cxTabSheetOrder: TcxTabSheet;
     cxTCrodape: TcxTabControl;
     cxBOK: TcxButton;
     cxBCancel: TcxButton;
     procedure cxBCancelClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
-    GAction : String[1];
+    pAction : TAction;
   end;
 
 var
@@ -44,14 +43,6 @@ end;
 procedure TFDataOrder.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
    Action := CaFree;
-end;
-
-procedure TFDataOrder.FormShow(Sender: TObject);
-begin
-  If GAction = 'A' Then
-     cxTabSheet1.Caption := 'Alter Order'
-  Else
-     cxTabSheet1.Caption := 'Include Order';
 end;
 
 end.

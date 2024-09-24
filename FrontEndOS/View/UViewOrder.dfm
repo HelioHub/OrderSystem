@@ -24,7 +24,6 @@ object FViewOrder: TFViewOrder
     Align = alTop
     TabOrder = 0
     Properties.CustomButtons.Buttons = <>
-    ExplicitWidth = 1087
     DesignSize = (
       1077
       54)
@@ -168,7 +167,6 @@ object FViewOrder: TFViewOrder
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
       Style.IsFontAssigned = True
-      ExplicitLeft = 864
     end
     object cxBItems: TcxButton
       Left = 457
@@ -228,7 +226,6 @@ object FViewOrder: TFViewOrder
       Style.Font.Style = []
       Style.IsFontAssigned = True
       TabOrder = 8
-      ExplicitLeft = 1010
       Width = 66
     end
   end
@@ -237,6 +234,7 @@ object FViewOrder: TFViewOrder
     Top = 143
     Width = 1077
     Height = 280
+    Hint = 'Double click to check Order...'
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -245,9 +243,8 @@ object FViewOrder: TFViewOrder
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    ExplicitWidth = 1087
-    ExplicitHeight = 246
     object cxGridOrdersDBTableView1: TcxGridDBTableView
+      OnMouseDown = cxGridOrdersDBTableView1MouseDown
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.Insert.Visible = False
       Navigator.Buttons.Delete.Visible = False
@@ -259,6 +256,7 @@ object FViewOrder: TFViewOrder
       Navigator.Buttons.GotoBookmark.Visible = False
       Navigator.InfoPanel.Visible = True
       Navigator.Visible = True
+      OnEditDblClick = cxGridOrdersDBTableView1EditDblClick
       DataController.DataSource = DSOrders
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <>
@@ -311,8 +309,6 @@ object FViewOrder: TFViewOrder
     TabOrder = 2
     Properties.ActivePage = cxTabSheet1
     Properties.CustomButtons.Buttons = <>
-    ExplicitTop = 549
-    ExplicitWidth = 1087
     ClientRectBottom = 100
     ClientRectLeft = 2
     ClientRectRight = 1072
@@ -320,7 +316,6 @@ object FViewOrder: TFViewOrder
     object cxTabSheet1: TcxTabSheet
       Caption = 'Data Client'
       ImageIndex = 0
-      ExplicitWidth = 1080
       object cxLabel1: TcxLabel
         Left = 9
         Top = 2
@@ -432,7 +427,6 @@ object FViewOrder: TFViewOrder
     Font.Style = []
     ParentFont = False
     TabOrder = 3
-    ExplicitTop = 373
     object cxGridDBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.Insert.Visible = False
@@ -507,7 +501,6 @@ object FViewOrder: TFViewOrder
     TabOrder = 4
     Properties.ActivePage = cxTabSheet2
     Properties.CustomButtons.Buttons = <>
-    ExplicitWidth = 1087
     ClientRectBottom = 84
     ClientRectLeft = 2
     ClientRectRight = 1072
@@ -515,7 +508,6 @@ object FViewOrder: TFViewOrder
     object cxTabSheet2: TcxTabSheet
       Caption = 'Filter Order'
       ImageIndex = 0
-      ExplicitWidth = 1080
       object cxLPeriod: TcxLabel
         Left = 4
         Top = 33

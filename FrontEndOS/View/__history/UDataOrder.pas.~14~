@@ -32,12 +32,9 @@ type
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
-    procedure pEnableControls;
-    procedure pDisableControls;
-
   public
     { Public declarations }
-    cAction : TAction;
+    pAction : TAction;
 
     destructor Destroy; override;
   end;
@@ -69,41 +66,31 @@ end;
 
 procedure TFDataOrder.FormShow(Sender: TObject);
 begin
-  case cAction of
+  case pAction of
     acInclude: Self.Caption := Self.Caption + ' - ' + cActionInclude;
     acAlter  : Self.Caption := Self.Caption + ' - ' + cActionAlter;
     acDelete : Self.Caption := Self.Caption + ' - ' + cActionDelete;
     else       Self.Caption := Self.Caption + ' - ' + cActionConsult;
   end;
 
-  if cAction <> acInclude then
+  if pAction <> acInclude then
   begin
-    //Order
+    //Item
+    cxTECode.Text        := IntToStr(ObjItem.code_item);
+    cxTEName.Text        := ObjItem.name_item;
+    cxTEDescription.Text := ObjItem.description_item;
+    cxCEPrice.Value      := ObjItem.price_item;
   end;
 
-  case cAction of
+  case pAction of
     acInclude: pEnableControls;
     acAlter  : pEnableControls;
     acDelete : pDisableControls;
     else       pDisableControls;
   end;
 
-  if (cAction <> acDelete) and (cAction <> acConsult) then
+  if (pAction <> acDelete) then
     cxTEName.SetFocus;
-end;
-
-procedure TFDataOrder.pDisableControls;
-begin
-  cxTEName.Enabled  := False;
-  cxDEini.Enabled   := False;
-  cxCEPrice.Enabled := False;
-end;
-
-procedure TFDataOrder.pEnableControls;
-begin
-  cxTEName.Enabled  := True;
-  cxDEini.Enabled   := True;
-  cxCEPrice.Enabled := True;
 end;
 
 end.

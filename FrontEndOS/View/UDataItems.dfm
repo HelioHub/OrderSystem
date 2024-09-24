@@ -159,7 +159,7 @@ object FDataItems: TFDataItems
         Style.Font.Name = 'Tahoma'
         Style.Font.Style = []
         Style.IsFontAssigned = True
-        TabOrder = 2
+        TabOrder = 1
         Width = 343
       end
       object cxLPrice: TcxLabel
@@ -178,7 +178,7 @@ object FDataItems: TFDataItems
       object cxCEPrice: TcxCurrencyEdit
         Left = 107
         Top = 134
-        TabOrder = 6
+        TabOrder = 5
         Width = 121
       end
       object cxLDescription: TcxLabel
@@ -208,7 +208,7 @@ object FDataItems: TFDataItems
         Style.Font.Name = 'Tahoma'
         Style.Font.Style = []
         Style.IsFontAssigned = True
-        TabOrder = 4
+        TabOrder = 3
         Width = 583
       end
       object cxLabel1: TcxLabel

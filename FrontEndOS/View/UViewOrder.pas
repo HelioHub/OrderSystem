@@ -12,7 +12,7 @@ uses
   cxTL, dxSkinBlue, dxSkinsCore, dxSkinscxPCPainter, cxLocalization,
   dxBarBuiltInMenu, cxDataControllerConditionalFormattingRulesManagerDialog,
   cxContainer, cxTextEdit, cxLabel, cxDBLabel, Vcl.ComCtrls, dxCore,
-  cxDateUtils, cxCurrencyEdit, cxMaskEdit, cxDropDownEdit, cxCalendar;
+  cxDateUtils, cxCurrencyEdit, cxMaskEdit, cxDropDownEdit, cxCalendar, UConstants;
 
 type
   TFViewOrder = class(TForm)
@@ -74,8 +74,14 @@ type
     procedure cxBItemsClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure cxBReportOrderClick(Sender: TObject);
+    procedure cxGridOrdersDBTableView1EditDblClick(
+      Sender: TcxCustomGridTableView; AItem: TcxCustomGridTableItem;
+      AEdit: TcxCustomEdit);
+    procedure cxGridOrdersDBTableView1MouseDown(Sender: TObject;
+      Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
   private
     { Private declarations }
+    procedure pCRUD(pActoin: TAction);
   public
     { Public declarations }
   end;
@@ -87,13 +93,13 @@ implementation
 
 {$R *.dfm}
 
-uses UDMConnection, UDataOrder, UConstants, UReportOrders;
+uses UDMConnection, UDataOrder, UReportOrders;
 
 procedure TFViewOrder.cxBAlterClick(Sender: TObject);
-var Form : TFDataOrder;
 begin
-  Form := TFDataOrder.Create (Application);
-  Form.ShowModal;
+  Beep;
+  ShowMessage('In Development!');
+  pCRUD(acAlter);
 end;
 
 procedure TFViewOrder.cxBCloseClick(Sender: TObject);
@@ -105,13 +111,14 @@ procedure TFViewOrder.cxBDeleteClick(Sender: TObject);
 begin
   Beep;
   ShowMessage('In Development!');
+  pCRUD(acDelete);
 end;
 
 procedure TFViewOrder.cxBIncludeClick(Sender: TObject);
-var Form : TFDataOrder;
 begin
-  Form := TFDataOrder.Create (Application);
-  Form.ShowModal;
+  Beep;
+  ShowMessage('In Development!');
+  pCRUD(acInclude);
 end;
 
 procedure TFViewOrder.cxBItemsClick(Sender: TObject);
@@ -177,6 +184,20 @@ begin
   Form.Destroy;
 end;
 
+procedure TFViewOrder.cxGridOrdersDBTableView1EditDblClick(
+  Sender: TcxCustomGridTableView; AItem: TcxCustomGridTableItem;
+  AEdit: TcxCustomEdit);
+begin
+  ShowHint := true;
+  pCRUD(acConsult);
+end;
+
+procedure TFViewOrder.cxGridOrdersDBTableView1MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+begin
+  ShowHint := true;
+end;
+
 procedure TFViewOrder.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := CaFree;
@@ -185,6 +206,31 @@ end;
 procedure TFViewOrder.FormShow(Sender: TObject);
 begin
   cxTENumberRecords.Text := cNumberRecords;
+end;
+
+procedure TFViewOrder.pCRUD(pActoin: TAction);
+var Form: TFDataOrder;
+begin
+  inherited;
+  if (DSOrders.DataSet.FieldByName('code_order').IsNull) and (pActoin <> acInclude) then
+  begin
+    Beep;
+    ShowMessage('Select a valid record '+cEOL+'to perform the desired operation.');
+    Exit;
+  end;
+
+  Form := TFDataOrder.Create(Application);
+  if (pActoin <> acInclude) then
+  begin
+    //Order
+    Form.cxTECode.Text   := DSOrders.DataSet.FieldByName('code_order').Text;
+    Form.cxTEName.Text   := DSOrders.DataSet.FieldByName('name_client').Text;
+    Form.cxDEini.Text    := DSOrders.DataSet.FieldByName('date_order').Text;
+    Form.cxCEPrice.Value := DSOrders.DataSet.FieldByName('valueorder').AsFloat;
+  end;
+
+  Form.cAction := pActoin;
+  Form.ShowModal;
 end;
 
 end.

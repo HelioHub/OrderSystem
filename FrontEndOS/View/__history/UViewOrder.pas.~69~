@@ -11,7 +11,8 @@ uses
   cxGridTableView, cxGridDBTableView, cxGrid, Vcl.StdCtrls, cxButtons, cxPC,
   cxTL, dxSkinBlue, dxSkinsCore, dxSkinscxPCPainter, cxLocalization,
   dxBarBuiltInMenu, cxDataControllerConditionalFormattingRulesManagerDialog,
-  cxContainer, cxTextEdit, cxLabel, cxDBLabel;
+  cxContainer, cxTextEdit, cxLabel, cxDBLabel, Vcl.ComCtrls, dxCore,
+  cxDateUtils, cxCurrencyEdit, cxMaskEdit, cxDropDownEdit, cxCalendar, UConstants;
 
 type
   TFViewOrder = class(TForm)
@@ -33,7 +34,6 @@ type
     cxLabel2: TcxLabel;
     cxLabel3: TcxLabel;
     cxLabel4: TcxLabel;
-    cxTENumberRecords: TcxTextEdit;
     cxGridOrdersDBTableView1Column_code_order: TcxGridDBColumn;
     cxGridOrdersDBTableView1Column_date_order: TcxGridDBColumn;
     cxGridOrdersDBTableView1Column_code_client: TcxGridDBColumn;
@@ -56,6 +56,15 @@ type
     cxGridDBTableView1Column7: TcxGridDBColumn;
     cxBReportOrder: TcxButton;
     cxGridOrdersDBTableView1Column_name_client: TcxGridDBColumn;
+    cxPageControl2: TcxPageControl;
+    cxTabSheet2: TcxTabSheet;
+    cxLPeriod: TcxLabel;
+    cxDEini: TcxDateEdit;
+    cxLa: TcxLabel;
+    cxDEcon: TcxDateEdit;
+    cxLCodeClient: TcxLabel;
+    cxCECodeOrder: TcxCurrencyEdit;
+    cxTENumberRecords: TcxCurrencyEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure cxBCloseClick(Sender: TObject);
     procedure cxBIncludeClick(Sender: TObject);
@@ -65,8 +74,14 @@ type
     procedure cxBItemsClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure cxBReportOrderClick(Sender: TObject);
+    procedure cxGridOrdersDBTableView1EditDblClick(
+      Sender: TcxCustomGridTableView; AItem: TcxCustomGridTableItem;
+      AEdit: TcxCustomEdit);
+    procedure cxGridOrdersDBTableView1MouseDown(Sender: TObject;
+      Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
   private
     { Private declarations }
+    procedure pCRUD(pActoin: TAction);
   public
     { Public declarations }
   end;
@@ -78,13 +93,13 @@ implementation
 
 {$R *.dfm}
 
-uses UDMConnection, UDataOrder, UConstants, UReportOrders;
+uses UDMConnection, UDataOrder, UReportOrders;
 
 procedure TFViewOrder.cxBAlterClick(Sender: TObject);
-var Form : TFDataOrder;
 begin
-  Form := TFDataOrder.Create (Application);
-  Form.ShowModal;
+  Beep;
+  ShowMessage('In Development!');
+  pCRUD(acAlter);
 end;
 
 procedure TFViewOrder.cxBCloseClick(Sender: TObject);
@@ -96,13 +111,14 @@ procedure TFViewOrder.cxBDeleteClick(Sender: TObject);
 begin
   Beep;
   ShowMessage('In Development!');
+  pCRUD(acDelete);
 end;
 
 procedure TFViewOrder.cxBIncludeClick(Sender: TObject);
-var Form : TFDataOrder;
 begin
-  Form := TFDataOrder.Create (Application);
-  Form.ShowModal;
+  Beep;
+  ShowMessage('In Development!');
+  pCRUD(acInclude);
 end;
 
 procedure TFViewOrder.cxBItemsClick(Sender: TObject);
@@ -119,31 +135,67 @@ begin
 end;
 
 procedure TFViewOrder.cxBRefreshClick(Sender: TObject);
-var sNumberRecords : String;
 begin
-  Try
-    sNumberRecords := IntToStr(StrToInt(Trim(cxTENumberRecords.Text)));
-  Except
-    ShowMessage('Attention! Invalid number of records.');
-  End;
+  if not Trim(cxDEini.Text).IsEmpty then
+  begin
+    if Trim(cxDEcon.Text).IsEmpty then
+    begin
+      Beep;
+      ShowMessage('Enter the end date!');
+      cxDEcon.SetFocus;
+      Exit;
+    end;
+  end;
+
+  if not Trim(cxDEcon.Text).IsEmpty then
+  begin
+    if Trim(cxDEini.Text).IsEmpty then
+    begin
+      Beep;
+      ShowMessage('Enter the start date!');
+      cxDEini.SetFocus;
+      Exit;
+    end;
+  end;
 
   DSOrders.DataSet.Close;
-  DMConnection.LoadOrders('', sNumberRecords);
+  DMConnection.LoadOrders(Trim(cxCECodeOrder.Text), Trim(cxTENumberRecords.Text), cxDEini.Text, cxDEcon.Text);
 end;
 
 procedure TFViewOrder.cxBReportOrderClick(Sender: TObject);
 var Form : TFReportOrders;
+    sCodeClient : String;
 begin
   Form := TFReportOrders.Create (Application);
   If Form.ShowModal = mrOk Then
   begin
+    sCodeClient := Trim(Form.cxCECodeClient.Text);
+
     DMConnection.MemTableReportOrders.Close;
-    DMConnection.LoadReportOrders(Trim(Form.cxCECodeClient.Text), Form.cxDEini.Text, Form.cxDEcon.Text);
-    DMConnection.frxReportOrders.Variables['ClientX'] := QuotedStr(Trim(Form.cxCECodeClient.Text));
-    DMConnection.frxReportOrders.Variables['PeriodX'] := QuotedStr(Form.cxDEini.Text+' - '+Form.cxDEcon.Text);
+    DMConnection.LoadReportOrders(sCodeClient, Form.cxDEini.Text, Form.cxDEcon.Text);
+
+    if sCodeClient.IsEmpty then
+      DMConnection.frxReportOrders.Variables['ClientX'] := QuotedStr('All')
+    else
+      DMConnection.frxReportOrders.Variables['ClientX'] := QuotedStr(sCodeClient);
+    DMConnection.frxReportOrders.Variables['PeriodX']   := QuotedStr(Form.cxDEini.Text+' - '+Form.cxDEcon.Text);
     DMConnection.frxReportOrders.ShowReport();
   end;
   Form.Destroy;
+end;
+
+procedure TFViewOrder.cxGridOrdersDBTableView1EditDblClick(
+  Sender: TcxCustomGridTableView; AItem: TcxCustomGridTableItem;
+  AEdit: TcxCustomEdit);
+begin
+  ShowHint := true;
+  pCRUD(acConsult);
+end;
+
+procedure TFViewOrder.cxGridOrdersDBTableView1MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+begin
+  ShowHint := true;
 end;
 
 procedure TFViewOrder.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -154,6 +206,31 @@ end;
 procedure TFViewOrder.FormShow(Sender: TObject);
 begin
   cxTENumberRecords.Text := cNumberRecords;
+end;
+
+procedure TFViewOrder.pCRUD(pActoin: TAction);
+var Form: TFDataOrder;
+begin
+  inherited;
+  if (DSOrders.DataSet.FieldByName('code_order').IsNull) and (pActoin <> acInclude) then
+  begin
+    Beep;
+    ShowMessage('Select a valid record '+cEOL+'to perform the desired operation.');
+    Exit;
+  end;
+
+  Form := TFDataOrder.Create(Application);
+  if (pActoin <> acInclude) then
+  begin
+    //Order
+    Form.cxTECode.Text   := DSOrders.DataSet.FieldByName('code_order').Text;
+    Form.cxTEName.Text   := DSOrders.DataSet.FieldByName('name_client').Text;
+    Form.cxDEini.Text    := DSOrders.DataSet.FieldByName('date_order').Text;
+    Form.cxCEPrice.Value := DSOrders.DataSet.FieldByName('valueorder').AsFloat;
+  end;
+
+  Form.pAction := pActoin;
+  Form.ShowModal;
 end;
 
 end.

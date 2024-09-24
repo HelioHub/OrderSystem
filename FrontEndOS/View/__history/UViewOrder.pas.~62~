@@ -11,7 +11,8 @@ uses
   cxGridTableView, cxGridDBTableView, cxGrid, Vcl.StdCtrls, cxButtons, cxPC,
   cxTL, dxSkinBlue, dxSkinsCore, dxSkinscxPCPainter, cxLocalization,
   dxBarBuiltInMenu, cxDataControllerConditionalFormattingRulesManagerDialog,
-  cxContainer, cxTextEdit, cxLabel, cxDBLabel;
+  cxContainer, cxTextEdit, cxLabel, cxDBLabel, Vcl.ComCtrls, dxCore,
+  cxDateUtils, cxCurrencyEdit, cxMaskEdit, cxDropDownEdit, cxCalendar;
 
 type
   TFViewOrder = class(TForm)
@@ -33,7 +34,6 @@ type
     cxLabel2: TcxLabel;
     cxLabel3: TcxLabel;
     cxLabel4: TcxLabel;
-    cxTENumberRecords: TcxTextEdit;
     cxGridOrdersDBTableView1Column_code_order: TcxGridDBColumn;
     cxGridOrdersDBTableView1Column_date_order: TcxGridDBColumn;
     cxGridOrdersDBTableView1Column_code_client: TcxGridDBColumn;
@@ -56,6 +56,15 @@ type
     cxGridDBTableView1Column7: TcxGridDBColumn;
     cxBReportOrder: TcxButton;
     cxGridOrdersDBTableView1Column_name_client: TcxGridDBColumn;
+    cxPageControl2: TcxPageControl;
+    cxTabSheet2: TcxTabSheet;
+    cxLPeriod: TcxLabel;
+    cxDEini: TcxDateEdit;
+    cxLa: TcxLabel;
+    cxDEcon: TcxDateEdit;
+    cxLCodeClient: TcxLabel;
+    cxCECodeOrder: TcxCurrencyEdit;
+    cxTENumberRecords: TcxCurrencyEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure cxBCloseClick(Sender: TObject);
     procedure cxBIncludeClick(Sender: TObject);
@@ -65,6 +74,10 @@ type
     procedure cxBItemsClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure cxBReportOrderClick(Sender: TObject);
+    procedure cxGridOrdersDBTableView1CellDblClick(
+      Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
   private
     { Private declarations }
   public
@@ -119,29 +132,62 @@ begin
 end;
 
 procedure TFViewOrder.cxBRefreshClick(Sender: TObject);
-var sNumberRecords : String;
 begin
-  Try
-    sNumberRecords := IntToStr(StrToInt(Trim(cxTENumberRecords.Text)));
-  Except
-    ShowMessage('Attention! Invalid number of records.');
-  End;
+  if not Trim(cxDEini.Text).IsEmpty then
+  begin
+    if Trim(cxDEcon.Text).IsEmpty then
+    begin
+      Beep;
+      ShowMessage('Enter the end date!');
+      cxDEcon.SetFocus;
+      Exit;
+    end;
+  end;
+
+  if not Trim(cxDEcon.Text).IsEmpty then
+  begin
+    if Trim(cxDEini.Text).IsEmpty then
+    begin
+      Beep;
+      ShowMessage('Enter the start date!');
+      cxDEini.SetFocus;
+      Exit;
+    end;
+  end;
 
   DSOrders.DataSet.Close;
-  DMConnection.LoadOrders('', sNumberRecords);
+  DMConnection.LoadOrders(Trim(cxCECodeOrder.Text), Trim(cxTENumberRecords.Text), cxDEini.Text, cxDEcon.Text);
 end;
 
 procedure TFViewOrder.cxBReportOrderClick(Sender: TObject);
 var Form : TFReportOrders;
+    sCodeClient : String;
 begin
   Form := TFReportOrders.Create (Application);
   If Form.ShowModal = mrOk Then
   begin
+    sCodeClient := Trim(Form.cxCECodeClient.Text);
+
     DMConnection.MemTableReportOrders.Close;
-    DMConnection.LoadReportOrders(Trim(Form.cxCECodeClient.Text), Form.cxDEini.Text, Form.cxDEcon.Text);
+    DMConnection.LoadReportOrders(sCodeClient, Form.cxDEini.Text, Form.cxDEcon.Text);
+
+    if sCodeClient.IsEmpty then
+      DMConnection.frxReportOrders.Variables['ClientX'] := QuotedStr('All')
+    else
+      DMConnection.frxReportOrders.Variables['ClientX'] := QuotedStr(sCodeClient);
+    DMConnection.frxReportOrders.Variables['PeriodX']   := QuotedStr(Form.cxDEini.Text+' - '+Form.cxDEcon.Text);
     DMConnection.frxReportOrders.ShowReport();
   end;
   Form.Destroy;
+end;
+
+procedure TFViewOrder.cxGridOrdersDBTableView1CellDblClick(
+  Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
+  AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
+var Form : TFDataOrder;
+begin
+  Form := TFDataOrder.Create (Application);
+  Form.ShowModal;
 end;
 
 procedure TFViewOrder.FormClose(Sender: TObject; var Action: TCloseAction);

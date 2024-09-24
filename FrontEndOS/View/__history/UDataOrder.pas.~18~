@@ -88,7 +88,7 @@ begin
     else       pDisableControls;
   end;
 
-  if (cAction <> acDelete) and (cAction <> acConsult) then
+  if (cAction <> acDelete) or (cAction <> acConsult) then
     cxTEName.SetFocus;
 end;
 
