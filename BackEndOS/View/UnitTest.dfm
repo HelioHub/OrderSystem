@@ -66,7 +66,6 @@ object FUnitTest: TFUnitTest
     Align = alTop
     Caption = 'Functions Tests - UnitTest'
     TabOrder = 0
-    ExplicitWidth = 702
   end
   object Edit1: TEdit
     Left = 120

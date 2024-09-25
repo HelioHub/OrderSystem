@@ -171,7 +171,8 @@ begin
 end;
 
 function TFUnitTest.fTestValueTotalText(const sOrder: String; fTotal: Double) : String;
-var fCalcValueTotal : Double;
+var
+  fCalcValueTotal : Double;
 begin
   fCalcValueTotal := fCalcValueTotalOrder(sOrder);
   if fCalcValueTotal = fTotal then

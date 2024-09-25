@@ -49,7 +49,8 @@ begin
 end;
 
 procedure TFServerOS.Button1Click(Sender: TObject);
-var Form: TFUnitTest;
+var
+  Form: TFUnitTest;
 begin
   Form := TFUnitTest.Create(Application);
   Form.ShowModal;

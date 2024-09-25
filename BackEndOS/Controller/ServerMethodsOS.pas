@@ -88,7 +88,8 @@ begin
 end;
 
 procedure TServerMethodsOS.PersistenceItem(const jObjectItem: TJSONObject);
-var oItem: TItem;
+var
+  oItem: TItem;
 begin
   try
     oItem := TJson.JsonToObject<TItem>(jObjectItem);
@@ -116,7 +117,8 @@ begin
 end;
 
 procedure TServerMethodsOS.PrepareItems(const pIDCodeItem, pLimit: String);
-var sSQL, sLimit, sIDCodeItem: string;
+var
+  sSQL, sLimit, sIDCodeItem: String;
 begin
   sLimit := pLimit;
   sIDCodeItem := pIDCodeItem;
@@ -143,7 +145,8 @@ begin
 end;
 
 procedure TServerMethodsOS.PrepareOrders(const pIDCodeOrder, pLimit: String; pDateI: String; pDateF: String);
-var sSQL, sLimit, sIDCodeOrder, sPeriod: string;
+var
+  sSQL, sLimit, sIDCodeOrder, sPeriod: String;
 begin
   sLimit  := pLimit;
   sPeriod := '';
@@ -185,7 +188,8 @@ begin
 end;
 
 procedure TServerMethodsOS.PrepareOrders_Items(const pIDCodeOrder,  pLimit: String);
-var sSQL, sLimit, sIDCodeOrder: string;
+var
+  sSQL, sLimit, sIDCodeOrder: String;
 begin
   sLimit := pLimit;
   sIDCodeOrder := pIDCodeOrder;
@@ -217,7 +221,8 @@ begin
 end;
 
 procedure TServerMethodsOS.InsertItem(const oItem: TItem);
-var sSQL: String;
+var
+  sSQL: String;
 begin
   sSQL := 'INSERT INTO [dbo].[tab_item] ([name_item], [description_item], [price_item]) '+
           ' VALUES ('+QuotedStr(oItem.name_item)         +', '+
@@ -227,7 +232,8 @@ begin
 end;
 
 procedure TServerMethodsOS.UpdateItem(const oItem: TItem);
-var sSQL: String;
+var
+  sSQL: String;
 begin
   sSQL := 'UPDATE [dbo].[tab_item] SET '+
           ' [name_item]        = '+ QuotedStr(oItem.name_item)        +', '+
@@ -238,7 +244,8 @@ begin
 end;
 
 procedure TServerMethodsOS.DeleteItem(const oItem: TItem);
-var sSQL: String;
+var
+  sSQL: String;
 begin
   sSQL := 'DELETE FROM [dbo].[tab_item] '+
           'WHERE [code_item] = '+IntToStr(oItem.code_item);
@@ -247,7 +254,8 @@ end;
 
 procedure TServerMethodsOS.PrepareReportOrders(const pIDCodeClient: String;
   pDateI, pDateF: String);
-var sSQL, sIDCodeClient: string;
+var
+  sSQL, sIDCodeClient: string;
 begin
   sIDCodeClient := pIDCodeClient;
 
