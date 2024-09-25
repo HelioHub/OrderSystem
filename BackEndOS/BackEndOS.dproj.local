@@ -59,24 +59,6 @@
     <Transaction>2024/09/20 15:17:23.000.647,D:\HelioMarques\projects\OrderSystem\BackEndOS\View\UnitTest.pas=D:\HelioMarques\projects\OrderSystem\BackEndOS\Unit1.pas</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
-    <File Path="..\..\OrderSystem"/>
-    <File Path="..\FrontEndOS"/>
-    <File Path="..\FrontEndOS\Model"/>
-    <File Path="..\FrontEndOS\Model\UClassItem.pas"/>
-    <File Path="..\FrontEndOS\UConstants.pas"/>
-    <File Path="Controller"/>
-    <File Path="Controller\ServerMethodsOS.pas"/>
-    <File Path="Controller\ServerMethodsOS.dfm"/>
-    <File Path="js"/>
-    <File Path="js\base64-min.js"/>
-    <File Path="js\base64.js"/>
-    <File Path="js\CallbackFramework-min.js"/>
-    <File Path="js\CallbackFramework.js"/>
-    <File Path="js\json2-min.js"/>
-    <File Path="js\json2.js"/>
-    <File Path="js\ServerFunctionExecutor-min.js"/>
-    <File Path="js\ServerFunctionExecutor.js"/>
-    <File Path="js\ServerFunctions.js"/>
     <File Path="Model"/>
     <File Path="Model\UDMOS.pas"/>
     <File Path="Model\UDMOS.dfm"/>
@@ -89,5 +71,23 @@
     <File Path="View\WebModuleOS.dfm"/>
     <File Path="View\UnitTest.pas"/>
     <File Path="View\UnitTest.dfm"/>
+    <File Path="Controller"/>
+    <File Path="Controller\ServerMethodsOS.pas"/>
+    <File Path="Controller\ServerMethodsOS.dfm"/>
+    <File Path="..\..\OrderSystem"/>
+    <File Path="..\FrontEndOS"/>
+    <File Path="..\FrontEndOS\Model"/>
+    <File Path="..\FrontEndOS\Model\UClassItem.pas"/>
+    <File Path="..\FrontEndOS\UConstants.pas"/>
+    <File Path="js"/>
+    <File Path="js\base64-min.js"/>
+    <File Path="js\base64.js"/>
+    <File Path="js\CallbackFramework-min.js"/>
+    <File Path="js\CallbackFramework.js"/>
+    <File Path="js\json2-min.js"/>
+    <File Path="js\json2.js"/>
+    <File Path="js\ServerFunctionExecutor-min.js"/>
+    <File Path="js\ServerFunctionExecutor.js"/>
+    <File Path="js\ServerFunctions.js"/>
   </ProjectSortOrder>
 </BorlandProject>

@@ -16,13 +16,13 @@ type
     ApplicationEvents1: TApplicationEvents;
     ButtonOpenBrowser: TButton;
     LWK: TLabel;
-    Button1: TButton;
+    ButtonTestUnit: TButton;
     procedure FormCreate(Sender: TObject);
     procedure ApplicationEvents1Idle(Sender: TObject; var Done: Boolean);
     procedure ButtonStartClick(Sender: TObject);
     procedure ButtonStopClick(Sender: TObject);
     procedure ButtonOpenBrowserClick(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    procedure ButtonTestUnitClick(Sender: TObject);
   private
     FServer: TIdHTTPWebBrokerBridge;
     procedure StartServer;
@@ -48,7 +48,7 @@ begin
   EditPort.Enabled := not FServer.Active;
 end;
 
-procedure TFServerOS.Button1Click(Sender: TObject);
+procedure TFServerOS.ButtonTestUnitClick(Sender: TObject);
 var
   Form: TFUnitTest;
 begin

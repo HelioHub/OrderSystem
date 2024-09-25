@@ -83,7 +83,7 @@ type
     procedure cxLPeriodClick(Sender: TObject);
   private
     { Private declarations }
-    procedure pCRUD(pActoin: TAction);
+    procedure pCRUD(pAction: TAction);
   public
     { Public declarations }
   end;
@@ -219,12 +219,12 @@ begin
   cxTENumberRecords.Text := cNumberRecords;
 end;
 
-procedure TFViewOrder.pCRUD(pActoin: TAction);
+procedure TFViewOrder.pCRUD(pAction: TAction);
 var
   Form: TFDataOrder;
 begin
   inherited;
-  if (DSOrders.DataSet.FieldByName('code_order').IsNull) and (pActoin <> acInclude) then
+  if (DSOrders.DataSet.FieldByName('code_order').IsNull) and (pAction <> acInclude) then
   begin
     Beep;
     ShowMessage('Select a valid record '+cEOL+'to perform the desired operation.');
@@ -232,7 +232,7 @@ begin
   end;
 
   Form := TFDataOrder.Create(Application);
-  if (pActoin <> acInclude) then
+  if (pAction <> acInclude) then
   begin
     //Order
     Form.cxTECode.Text   := DSOrders.DataSet.FieldByName('code_order').Text;
@@ -241,7 +241,7 @@ begin
     Form.cxCEPrice.Value := DSOrders.DataSet.FieldByName('valueorder').AsFloat;
   end;
 
-  Form.cAction := pActoin;
+  Form.cAction := pAction;
   Form.ShowModal;
 end;
 

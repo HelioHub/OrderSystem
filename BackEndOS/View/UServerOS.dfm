@@ -77,14 +77,14 @@ object FServerOS: TFServerOS
     TabOrder = 3
     OnClick = ButtonOpenBrowserClick
   end
-  object Button1: TButton
+  object ButtonTestUnit: TButton
     Left = 76
     Top = 154
     Width = 154
     Height = 25
     Caption = 'Test Unit'
     TabOrder = 4
-    OnClick = Button1Click
+    OnClick = ButtonTestUnitClick
   end
   object ApplicationEvents1: TApplicationEvents
     OnIdle = ApplicationEvents1Idle

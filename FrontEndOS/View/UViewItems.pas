@@ -41,7 +41,7 @@ type
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
-    procedure pCRUD(pActoin: TAction);
+    procedure pCRUD(pAction: TAction);
   public
     { Public declarations }
   end;
@@ -91,12 +91,12 @@ begin
   cxTENumberRecords.Text := cNumberRecords;
 end;
 
-procedure TFViewItems.pCRUD(pActoin: TAction);
+procedure TFViewItems.pCRUD(pAction: TAction);
 var
   Form: TFDataItems;
 begin
   inherited;
-  if (DSItems.DataSet.FieldByName('code_item').IsNull) and (pActoin <> acInclude) then
+  if (DSItems.DataSet.FieldByName('code_item').IsNull) and (pAction <> acInclude) then
   begin
     Beep;
     ShowMessage('Select a valid record '+cEOL+'to perform the desired operation.');
@@ -104,7 +104,7 @@ begin
   end;
 
   Form := TFDataItems.Create(Application);
-  if (pActoin <> acInclude) then
+  if (pAction <> acInclude) then
   begin
     //Item
     Form.ObjItem.code_item        := DSItems.DataSet.FieldByName('code_item').Asinteger;
@@ -113,7 +113,7 @@ begin
     Form.ObjItem.price_item       := DSItems.DataSet.FieldByName('price_item').AsFloat;
   end;
 
-  Form.ObjItem.Action := pActoin;
+  Form.ObjItem.Action := pAction;
   Form.ShowModal;
 end;
 

@@ -616,3 +616,18 @@ Develop Customer Order Management System for candidate evaluation -  Hélio Marq
 	````
 	Apply Clear Code:
 	````
+
+### SOLID
+
+	````
+	Refactoring code to apply SOLID principles (beginning):
+	· S – Single Responsibility Principle (SRP): princípio da responsabilidade única;
+
+	· O – Open Closed Principle (OCP): princípio do aberto/fechado;
+
+	· L – Liskov Substituition Principle (LSP): princípio da substituição de Liskov;
+
+	· I – Inteface Segregation Principle (ISP): princípio da segregação de interfaces;
+
+	· D – Dependency Inversion Principle (DIP): princípio da inversão de dependência;
+	````
